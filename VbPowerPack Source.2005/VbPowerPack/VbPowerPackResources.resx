@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="ResMimeType">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="Version">
+		<value>1.0.0.0</value>
+	</resheader>
+	<resheader name="Reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="Writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="excFileViewerPathInvalid">
+		<value>The specified path is not a valid path on this computer.</value>
+	</data>
+	<data name="excFileViewerSortByInvalid">
+		<value>The specified value for the SortBy property is not valid.</value>
+	</data>
+	<data name="FileViewerMiscSystemFolder">
+		<value>System Folder</value>
+		<comment>Description in MyComputer for Control Panel</comment>
+	</data>
+	<data name="FileViewerMiscBytes">
+		<value>bytes</value>
+		<comment>ie.  1024 bytes</comment>
+	</data>
+	<data name="excFolderViewerDesktopError">
+		<value>Unable to get information about the Windows Shell Desktop.</value>
+		<comment>more info in inner exception</comment>
+	</data>
+	<data name="excImageButtonSizeModeInvalid">
+		<value>The specified value for the SizeMode property is not valid.</value>
+	</data>
+	<data name="excImageButtonTextAlignInvalid">
+		<value>The specified value for the TextAlign property is not valid.</value>
+	</data>
+	<data name="excImageDevicesInvalidPath">
+		<value>System Error:  The system has signalled the attachment of an invalid drive.</value>
+	</data>
+	<data name="excNotificationWindowNegTime">
+		<value>Negative times are not possible (yet).</value>
+	</data>
+	<data name="excNotificationWindowCorner3232">
+		<value>The CornerImage property is limited to 32x32 pixels.</value>
+	</data>
+	<data name="excShellFolderNoDesktop">
+		<value>System Error:  Unable to obtain information about the Desktop.</value>
+	</data>
+	<data name="excShellFolderCantEnum">
+		<value>System Error:  Unable to get the contents of a system folder.</value>
+	</data>
+	<data name="excTaskPaneTaskFramesOnly">
+		<value>The given '{0}' cannot be added to the TaskPane.  Only TaskFrames may be added to a TaskPane. </value>
+		<comment>{0} is type name</comment>
+	</data>
+	<data name="excTaskPaneBogusIdx">
+		<value>The specified index into the collection is out of bounds.</value>
+	</data>
+	<data name="excTaskPaneNullFrame">
+		<value>A valid TaskFrame must be specified to this method.</value>
+	</data>
+	<data name="excTaskPaneInsertNotImpl">
+		<value>This method is not supported.  Please use Add() or AddRange().</value>
+	</data>
+	<data name="TaskPaneMiscAddNew">
+		<value>Add New TaskFrame</value>
+	</data>
+	<data name="TaskPaneMiscTransR">
+		<value>TaskFrame.Remove</value>
+	</data>
+	<data name="TaskPaneMiscTransA">
+		<value>TaskFrame.Add</value>
+	</data>
+	<data name="excUTBInvalidButton">
+		<value>The specified Button object was not a UtilityToolBarButton.</value>
+	</data>
+	<data name="excImageDevicesBadXFerPath">
+		<value>The specified transfer destination path is invalid.</value>
+	</data>
+	<data name="excImageDevicesAsyncGoing">
+		<value>An asynchronous transfer is already in progress.</value>
+	</data>
+	<data name="UTBButton_Back">
+		<value>Back</value>
+	</data>
+	<data name="UTBButton_Forward">
+		<value>Forward</value>
+	</data>
+	<data name="UTBButton_Up">
+		<value>Up</value>
+	</data>
+	<data name="UTBButton_Search">
+		<value>Search</value>
+	</data>
+	<data name="UTBButton_Folders">
+		<value>Folders</value>
+	</data>
+	<data name="UTBButton_Views">
+		<value>Views</value>
+	</data>
+	<data name="UTBButton_Stop">
+		<value>Stop</value>
+	</data>
+	<data name="UTBButton_Refresh">
+		<value>Refresh</value>
+	</data>
+	<data name="UTBButton_Home">
+		<value>Home</value>
+	</data>
+	<data name="UTBButton_MapDrive">
+		<value>Map Drive</value>
+	</data>
+	<data name="UTBButton_Disconnect">
+		<value>Disconnect</value>
+	</data>
+	<data name="UTBButton_Favorites">
+		<value>Favorites</value>
+	</data>
+	<data name="UTBButton_History">
+		<value>History</value>
+	</data>
+	<data name="UTBButton_FullScreen">
+		<value>Full Screen</value>
+	</data>
+	<data name="UTBButton_MoveTo">
+		<value>Move To</value>
+	</data>
+	<data name="UTBButton_CopyTo">
+		<value>Copy To</value>
+	</data>
+	<data name="UTBButton_Delete">
+		<value>Delete</value>
+	</data>
+	<data name="UTBButton_Undo">
+		<value>Undo</value>
+	</data>
+	<data name="UTBButton_Properties">
+		<value>Properties</value>
+	</data>
+	<data name="UTBButton_Cut">
+		<value>Cut</value>
+	</data>
+	<data name="UTBButton_Copy">
+		<value>Copy</value>
+	</data>
+	<data name="UTBButton_Paste">
+		<value>Paste</value>
+	</data>
+	<data name="UTBButton_FolderOptions">
+		<value>Folder Options</value>
+	</data>
+	<data name="UTBButton_Mail">
+		<value>Mail</value>
+	</data>
+	<data name="UTBButton_Print">
+		<value>Print</value>
+	</data>
+	<data name="UTBButton_Save">
+		<value>Save</value>
+	</data>
+	<data name="UTBButton_Load">
+		<value>Load</value>
+	</data>
+	<data name="UTBButton_SaveAll">
+		<value>Save All</value>
+	</data>
+	<data name="UTBButton_PrintPreview">
+		<value>Print Preview</value>
+	</data>
+	<data name="excNotificationWindowBadRTL">
+		<value>The specified value for the RightToLeft property is invalid.</value>
+	</data>
+	<data name="FileViewerMiscKB">
+		<value>KB</value>
+	</data>
+	<data name="FileViewerMiscMB">
+		<value>MB</value>
+	</data>
+	<data name="FileViewerMiscGB">
+		<value>GB</value>
+	</data>
+	<data name="FileViewerMiscTB">
+		<value>TB</value>
+	</data>
+	<data name="FileViewerMiscSizeFormat">
+		<value>{0:F1} {1}</value>
+	</data>
+	<data name="FileViewerMiscBytes">
+		<value>bytes</value>
+	</data>
+	<data name="FileViewerHdrName">
+		<value>Name</value>
+	</data>
+	<data name="FileViewerHdrSize">
+		<value>Size</value>
+	</data>
+	<data name="FileViewerHdrType">
+		<value>Type</value>
+	</data>
+	<data name="FileViewerHdrTotalSize">
+		<value>Total Size</value>
+	</data>
+	<data name="FileViewerHdrDateModified">
+		<value>Date Modified</value>
+	</data>
+	<data name="FileViewerHdrFreeSpace">
+		<value>Free Space</value>
+	</data>
+	<data name="excBlendFillParse">
+		<value>The specified string does not represent a valid BlendFill object.  The string is expected to be of the format: [BlendStyle], [StartColor], [EndColor]</value>
+	</data>
+	<data name="excTaskPaneCornerStyleRange">
+		<value>The specified value is not valid for the CornerStyle property.</value>
+	</data>
+	<data name="TaskPaneMiscRemove">
+		<value>Remove TaskFrame</value>
+	</data>
+	<data name="excFolderViewerBadPath">
+		<value>The given path '{0}' is not valid on this computer.</value>
+	</data>
+	<data name="excFolderViewerNotRooted">
+		<value>The directory '{0}' is not a sub-directory of the current RootPath '{1}'.</value>
+	</data>
+	<data name="UtilityToolBar.textOptions1">
+		<value>Show text labels</value>
+	</data>
+	<data name="UtilityToolBar.textOptions2">
+		<value>Selective text on right</value>
+	</data>
+	<data name="UtilityToolBar.textOptions3">
+		<value>No text labels</value>
+	</data>
+	<data name="UtilityToolBar.iconOptions1">
+		<value>Small icons</value>
+	</data>
+	<data name="UtilityToolBar.iconOptions2">
+		<value>Large icons</value>
+	</data>
+	<data name="UtilityToolBar.Separator">
+		<value>Separator</value>
+	</data>
+</root>

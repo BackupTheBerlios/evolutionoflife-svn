@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="ResMimeType">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="Version">
+		<value>1.0.0.0</value>
+	</resheader>
+	<resheader name="Reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="Writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="Generic.BlendFill">
+		<value>Controls how the background of the given control is painted.</value>
+	</data>
+	<data name="BlendPanel.BlendChanged">
+		<value>Event fired when whenever the Blend property is changed on a BlendPanel.</value>
+	</data>
+	<data name="BlendFill.Style">
+		<value>The style of blended painting this object represents.</value>
+	</data>
+	<data name="BlendFill.StartColour">
+		<value>The 'starting' color for the linear blend operation.</value>
+	</data>
+	<data name="BlendFill.FinishColour">
+		<value>The 'finishing' color for the linear blend operation.</value>
+	</data>
+	<data name="BlendFill.GetLinearGradientBrush">
+		<value>Returns a LinearGradientBrush object for the currently specified values for this object.</value>
+	</data>
+	<data name="BlendFill.GetLinearGradientBrush2">
+		<value>Returns a LinearGradientBrush object for the currently specified values for this object, letting the caller optionally reverse the values for RightToLeft painting.</value>
+	</data>
+	<data name="BlendStyle.Horizontal">
+		<value>The blend starts with the BlendStartColor at the left and blends to the BlendFinishColor at the right.</value>
+	</data>
+	<data name="BlendStyle.Vertical">
+		<value>The blend starts with the BlendStartColor at the top of the panel and blends to the BlendFinishColor at the bottom.</value>
+	</data>
+	<data name="BlendStyle.ForwardDiagonal">
+		<value>The blend starts with the BlendStartColor at the top-left, and blends to the BlendFinishColor at the bottom-right.</value>
+	</data>
+	<data name="BlendStyle.BackwardDiagonal">
+		<value>The blend starts with the BlendStartColor at the top-right and blends to the BlendFinishColor at the bottom-left.</value>
+	</data>
+	<data name="BlendStyle">
+		<value>Specifies the values for controlling how a background is drawn in various blended controls, such as the BlendPanel.</value>
+	</data>
+	<data name="FileViewer.Refresh">
+		<value>Completely refills the list of items based on the current path.</value>
+	</data>
+	<data name="FileViewer.Path">
+		<value>Indicates the path to be browsed by the FileViewer.</value>
+	</data>
+	<data name="FileViewer.Pattern">
+		<value>Specifies a pattern against which files should be matched, with only those matching shown in the FileViewer.</value>
+	</data>
+	<data name="FileViewer.ShowFiles">
+		<value>Indicates whether or not we should show files or only directories in the FileViewer.</value>
+	</data>
+	<data name="FileViewer.ShowFolders">
+		<value>Indicates whether or not folders will be shown in the FileViewer control.</value>
+	</data>
+	<data name="FileViewer.ShowHidden">
+		<value>Indicates whether or not Hidden files will be shown in the FileViewer control.</value>
+	</data>
+	<data name="FileViewer.View">
+		<value>Specifies how items are displayed in the FileViewer control.</value>
+	</data>
+	<data name="FileViewer.Files">
+		<value>A list of all the files currently being shown in the FileViewer control.  Does not include files filtered out by the Pattern or ShowXXXX properties.</value>
+	</data>
+	<data name="FileViewer.Folders">
+		<value>A list of all the folders currently being shown in the FileViewer control.  Does not include folders filtered out by the Pattern or ShowXXXX properties.</value>
+	</data>
+	<data name="FileViewer.SelectedFiles">
+		<value>Returns a list of all the files currently selected in the FileViewer control.</value>
+	</data>
+	<data name="FileViewer.SelectedFolders">
+		<value>Returns a list of all the folders currently selected in the FileViewer control.</value>
+	</data>
+	<data name="FileViewer.SortBy">
+		<value>Controls by which column the items in the FileViewer are sorted.</value>
+	</data>
+	<data name="FileViewer.ViewChanged">
+		<value>The current View on the FileViewer control has changed.</value>
+	</data>
+	<data name="FileViewer.SortByChanged">
+		<value>The way in which items in the FileViewer control are sorted has changed.</value>
+	</data>
+	<data name="FileViewerSortBy">
+		<value>Controls how files and folders are sorted in the FileViewer control.</value>
+	</data>
+	<data name="FileViewerSortBy.None">
+		<value>Items should not be sorted in any particular manner.</value>
+	</data>
+	<data name="FileViewerSortBy.Name">
+		<value>Items should be sorted alphabetically by their names.</value>
+	</data>
+	<data name="FileViewerSortBy.Type">
+		<value>Items are sorted by their Type.</value>
+	</data>
+	<data name="FileViewerSortBy.Size">
+		<value>Items are sorted by their sizes.</value>
+	</data>
+	<data name="FileViewerSortBy.ModifiedTime">
+		<value>Items are sorted by their last modification time.</value>
+	</data>
+	<data name="FolderViewer.Nodes">
+		<value>A hierarchy of objects of FolderViewerTreeNode objects, representing all the drives, folders, and special locations on this computer.</value>
+	</data>
+	<data name="FolderViewer.CurrentFolder">
+		<value>The name or path of the currently selected item.</value>
+	</data>
+	<data name="FolderViewer.RootPath">
+		<value>The path that should be considered the 'root' of the Tree.  By default, this is empty, or the Desktop.</value>
+	</data>
+	<data name="FolderViewer.ShowHidden">
+		<value>Indicates whether or not hidden folders should be shown.</value>
+	</data>
+	<data name="FolderViewer.Refresh">
+		<value>Completely rebuilds the list of items in the FolderViewer control.</value>
+	</data>
+	<data name="FolderViewerTreeNode.Path">
+		<value>Returns the folder path represented by this node, for those node types for which this makes sense (Folder, etc), or simply and empty string for other types.</value>
+	</data>
+	<data name="ImageButton.NormalImage">
+		<value>This image is displayed when the control is in its ready state and not actively doing anything.</value>
+	</data>
+	<data name="ImageButton.HoverImage">
+		<value>This image is displayed when the user moves the mouse over the control.</value>
+	</data>
+	<data name="ImageButton.PressedImage">
+		<value>The image displayed when the user presses on the button with the mouse or Space key.</value>
+	</data>
+	<data name="ImageButton.DisabledImage">
+		<value>The image displayed when the Enabled property is set to False.  If not specified, a default image is generated.</value>
+	</data>
+	<data name="ImageButton.SizeMode">
+		<value>Controls how the ImageButton control is resized when images are set.</value>
+	</data>
+	<data name="ImageButton.ShowFocusRect">
+		<value>Normally, the control draws a focus rect when it has the keyboard focus.  Setting this to false tells the control not to do so.</value>
+	</data>
+	<data name="ImageButton.TransparentColour">
+		<value>Indicates what the transparent "mask" color should be for the two images (CornerImage and BottomImage) on this window.</value>
+	</data>
+	<data name="ImageButton.DialogResult">
+		<value>The dialog result produced when the user clicks on this button as part of a modal form.</value>
+	</data>
+	<data name="ImageButton.TextAlign">
+		<value>Controls where the text caption (if any) for the control will be displayed.</value>
+	</data>
+	<data name="ImageButton.Font">
+		<value>The font used to display text in the control.</value>
+	</data>
+	<data name="ImageButton.Text">
+		<value>The text caption displayed next to the image in the control.  The location of the text is controlled by the TextLocation property.</value>
+	</data>
+	<data name="ImageButton.Click">
+		<value>The user has pressed on the button, either with the mouse or with the keyboard.</value>
+	</data>
+	<data name="ImageButtonSizeMode">
+		<value>Controls how the ImageButton resizes itself when images are set.</value>
+	</data>
+	<data name="ImageButtonSizeMode.AutoSize">
+		<value>The ImageButton should automatically resize itself to the smallest rectangle containing its images and text.</value>
+	</data>
+	<data name="ImageButtonSizeMode.StretchImage">
+		<value>The ImageButton will strecth its images to the size specified in the Size property.</value>
+	</data>
+	<data name="ImageDevices.ImagingDevices">
+		<value>A collection/list of all currently available imaging devices on this system.</value>
+	</data>
+	<data name="ImageDevices.DeviceConnected">
+		<value>A new imaging device or associated mass storage has been attached to the system.</value>
+	</data>
+	<data name="ImageDevices.DeviceDisconnected">
+		<value>An imaging device already connected to the system has just been disconnected and is no longer available.</value>
+	</data>
+	<data name="ImageDevices.TransferComplete">
+		<value>A previously started asynchonous file transfer from the imaging device has completely successfully.</value>
+	</data>
+	<data name="ImageDevices.TransferError">
+		<value>A previously initiated asynchronous file transfer from the device has ended in failure.</value>
+	</data>
+	<data name="ImagingDevice.Name">
+		<value>The Name of the device as best as we can determine it.  If it is not possible to determine this, then it is the same as the SystemID property.</value>
+	</data>
+	<data name="ImagingDevice.SystemID">
+		<value>A unique string identifier for this device on the system, valid for the duration of the current connection.</value>
+	</data>
+	<data name="ImagingDevice.Media">
+		<value>The collection of ImagingDeviceMedia objects available from this media device.</value>
+	</data>
+	<data name="ImagingDeviceMedia.Name">
+		<value>Returns a name for the image unique to the given device.</value>
+	</data>
+	<data name="ImagingDeviceMedia.Type">
+		<value>The type of the media, as best as we can determine it.</value>
+	</data>
+	<data name="ImagingDeviceMedia.Width">
+		<value>The width of the image media object.</value>
+	</data>
+	<data name="ImagingDeviceMedia.Height">
+		<value>The height of the image media object.</value>
+	</data>
+	<data name="ImagingDeviceMedia.Time">
+		<value>The time at which this media object was generated.</value>
+	</data>
+	<data name="ImagingDeviceMedia.TransferToImage">
+		<value>Transfers the image represented by this media object and returns it in a System.Drawing.Image object.</value>
+	</data>
+	<data name="ImagingDeviceMedia.TransferToPath">
+		<value>Transfers the image represented by this media object to the specified file path.</value>
+	</data>
+	<data name="ImagingDeviceMedia.TransferAsyncToPath">
+		<value>Asyncrhonously transfers the image represented by this media object to the specified file path.</value>
+	</data>
+	<data name="NotificationClosedReason">
+		<value>Gives the method by which (or reason) the given NotificationWindow was closed.</value>
+	</data>
+	<data name="NotificationClosedReason.WindowClicked">
+		<value>The Notification Window was closed by the user clicking in the body of the window.</value>
+	</data>
+	<data name="NotificationClosedReason.CloseClicked">
+		<value>The Notification Window was closed by the user clicking on the Close ("X") button in the top corner.</value>
+	</data>
+	<data name="NotificationClosedReason.CloseMethod">
+		<value>The Notification Window was closed programmatically by caling the Close() method.</value>
+	</data>
+	<data name="NotificationClosedReason.TimedOut">
+		<value>The Notification Window was closed due to its timeout period being exceeded.</value>
+	</data>
+	<data name="NotificationShowStyle">
+		<value>Controls how a NotificationWindow is shown and/or hidden.</value>
+	</data>
+	<data name="NotificationShowStyle.Slide">
+		<value>The NotificationWindow will 'slide' into and out of view.</value>
+	</data>
+	<data name="NotificationShowStyle.Fade">
+		<value>The NotificationWindow will 'fade' into and out of view.</value>
+	</data>
+	<data name="NotificationShowStyle.Immediately">
+		<value>The NotificationWindow will be shown or hidden immediately.</value>
+	</data>
+	<data name="NotificationWindow.Notify1">
+		<value>Shows a new instance of a NotificationWindow based on the current properties that have been set by the programmer.  The window is shown and the method then immediately returns.</value>
+	</data>
+	<data name="NotificationWindow.DefaultText">
+		<value>The default content text to display in the NotificationWindow if the user doesn't specify a value for the 'text' parameter of the Notify method.</value>
+	</data>
+	<data name="NotificationWindow.DefaultTimeout">
+		<value>Default timeout in milliseconds before the window disappears for the cases where the user doesn't specify the 'timeout' parameter to the Notify method. Zero implies 'never time out'.</value>
+	</data>
+	<data name="NotificationWindow.CornerImage">
+		<value>Icon/Image displayed in the top left corner of the window.  The background is masked for transparency based on the current value of the TransparentColor property.</value>
+	</data>
+	<data name="NotificationWindow.BottomImage">
+		<value>This is the image displayed across the bottom of the NotificationWindow.  The background is masked for transparency based on the current value of the TransparentColor property.</value>
+	</data>
+	<data name="NotificationWindow.CloseButton">
+		<value>Indicates whether or not a Close or "X" button should be shown in the upper corner of the window.</value>
+	</data>
+	<data name="NotificationWindow.Blend">
+		<value>Controls how the background is painted for the next Notification Window shown.</value>
+	</data>
+	<data name="NotificationWindow.Font">
+		<value>Controls the font with which the text is drawn.</value>
+	</data>
+	<data name="NotificationWindow.ForeColour">
+		<value>The colour in which to display the text.</value>
+	</data>
+	<data name="NotificationWindow.ShowStyle">
+		<value>The method in which the notification window is shown and/or hidden.</value>
+	</data>
+	<data name="NotificationWindow.TextIsHyperLink">
+		<value>Indicates whether the content text will be displayed as a LinkLabel.</value>
+	</data>
+	<data name="NotificationWindow.TransparentColour">
+		<value>Indicates what the transparent "mask" colour should be for the two images (Icon and BottomImage) on this window.</value>
+	</data>
+	<data name="NotificationWindow.RightToLeft">
+		<value>Indicates whether the Notification Windows should draw text from right-to-left for RTL systems.  As non-visual components cannot effectively communicate with their parents, the "Inherit" value is Treated as "No".</value>
+	</data>
+	<data name="NotificationWindow.OnClosing">
+		<value>Raises the Closing event, which is optionally cancellable by the application programmer.</value>
+	</data>
+	<data name="NotificationWindow.Click">
+		<value>The user has clicked on the Notification Window.</value>
+	</data>
+	<data name="NotificationWindow.Closing">
+		<value>The Notification Window is about to close.  Unless the operation is cancelled, the window will be closed.</value>
+	</data>
+	<data name="NotificationWindow.Closed">
+		<value>The Notification Window has been closed.  The reason for this is provided.</value>
+	</data>
+	<data name="NotificationEventArgs">
+		<value>The value of the user provided "Tag", provided they specified one on the call to Notify().</value>
+	</data>
+	<data name="NotificationEventArgs.Handle">
+		<value>A handle to the Notification Window returned by the call to Notify().</value>
+	</data>
+	<data name="NotificationClosedEventArgs.Reason">
+		<value>The reason the Notification Window was closed.</value>
+	</data>
+	<data name="NotificationCancelEventArgs.Cancel">
+		<value>Setting this to True causes the happneing that generated this event to be cancelled.</value>
+	</data>
+	<data name="TaskFrame">
+		<value>These are the individual frames that show up in the TaskPane control.  They are container controls to which other controls may be added.</value>
+	</data>
+	<data name="TaskFrame.Image">
+		<value>The image we will display in the caption area.  The image is masked against the ImageTransparentColor on our TaskPane control.  The image may be a maximum of 32x32 pixels.</value>
+	</data>
+	<data name="TaskFrame.ImageTransparentColour">
+		<value>This is the colour that the individual TaskFrames will use to mask the background of their Image properties for transparency.</value>
+	</data>
+	<data name="TaskFrame.CollapseButtonVisible">
+		<value>Indicates whether or not we should show a button on our caption bar which will allow users to collapse or expand this frame.</value>
+	</data>
+	<data name="TaskFrame.IsExpanded">
+		<value>Controls and/or indicates whether or not we are expanded at this point in time.</value>
+	</data>
+	<data name="TaskFrame.CaptionBlend">
+		<value>Controls how the background of the caption at the top of this TaskFrame is painted.</value>
+	</data>
+	<data name="TaskFrame.Text">
+		<value>The text displayed in the caption across the top of this TaskFrame.</value>
+	</data>
+	<data name="TaskFrame.Font">
+		<value>The font with which the text in the caption for this TaskFrame is drawn.</value>
+	</data>
+	<data name="TaskFrame.Visible">
+		<value>Controls whether or not this TaskFrame is visible at runtime.</value>
+	</data>
+	<data name="TaskFrame.Enabled">
+		<value>Controls whether or not the user can interact with this TaskFrame with the mouse and keyboard at runtime.</value>
+	</data>
+	<data name="TaskFrameCornerStyle">
+		<value>Controls how the top corners of TaskFrame frames are drawn within the TaskFrame class.</value>
+	</data>
+	<data name="TaskFrameCornerStyle.Rounded">
+		<value>Corners are always drawn slightly rounded.</value>
+	</data>
+	<data name="TaskFrameCornerStyle.Squared">
+		<value>Corners are always drawn squared off.</value>
+	</data>
+	<data name="TaskFrameCornerStyle.SystemDefault">
+		<value>The corners are drawn according to the current system defaults and style.</value>
+	</data>
+	<data name="TaskPane.CornerStyle">
+		<value>Controls how the top corners of the caption bars at the top of individual child TaskFrames are drawn.</value>
+	</data>
+	<data name="TaskPane.Padding">
+		<value>Controls how much space will be left between TaskFrames and between frames and the edge of the TaskPane.</value>
+	</data>
+	<data name="TaskPane.TaskFrames">
+		<value>The list of child TaskFrame objects onto which controls can be placed.</value>
+	</data>
+	<data name="TaskPane.ExpandAll">
+		<value>Expands all of our child TaskFrames.</value>
+	</data>
+	<data name="TaskPane.CollapseAll">
+		<value>Collapses all of our child TaskFrames.</value>
+	</data>
+	<data name="TaskPane.FrameCollapsed">
+		<value>The given TaskFrame has been collapsed, either by the user clicking on the collapse button or programmatically via the IsExpanded property.</value>
+	</data>
+	<data name="TaskPane.FrameCollapsing">
+		<value>The given TaskFrame is about to be collapsed, either by the user clicking on the collapse button or programmatically via the IsExpanded property.  This can be cancelled.</value>
+	</data>
+	<data name="TaskPane.FrameExpanded">
+		<value>The given TaskFrame has been expanded, either by the user clicking on the collapse button or programmatically via the IsExpanded property.</value>
+	</data>
+	<data name="TaskPane.FrameExpanding">
+		<value>The given TaskFrame is about to be expanded, either by the user clicking on the collapse button or programmatically via the IsExpanded property.</value>
+	</data>
+	<data name="UtilityToolBar.BackPressed">
+		<value>The 'Back' button was pressed by the user.</value>
+	</data>
+	<data name="UtilityToolBar.ForwardPressed">
+		<value>The 'Forward' button was pressed by the user.</value>
+	</data>
+	<data name="UtilityToolBar.UpPressed">
+		<value>The 'Up' button was pressed by the user.</value>
+	</data>
+	<data name="UtilityToolBar.StopPressed">
+		<value>The 'Stop' button was pressed by the user.</value>
+	</data>
+	<data name="UtilityToolBar.RefreshPressed">
+		<value>The 'Refresh' button was pressed by the user.</value>
+	</data>
+	<data name="UtilityToolBar.HomePressed">
+		<value>The 'Home' button was pressed by the user.</value>
+	</data>
+	<data name="UtilityToolBar.SearchPressed">
+		<value>The 'Search' button was pressed by the user.</value>
+	</data>
+	<data name="UtilityToolBar.FoldersPressed">
+		<value>The 'Folders' button was pressed by the user.</value>
+	</data>
+	<data name="UtilityToolBar.ViewsPressed">
+		<value>The 'Views' button was pressed by the user.</value>
+	</data>
+	<data name="UtilityToolBar.FavoritesPressed">
+		<value>The 'Favorites' button was pressed by the user.</value>
+	</data>
+	<data name="UtilityToolBar.HistoryPressed">
+		<value>The 'History' button was pressed by the user.</value>
+	</data>
+	<data name="UtilityToolBar.FullScreenPressed">
+		<value>The 'Full Screen' button was pressed by the user.</value>
+	</data>
+	<data name="UtilityToolBar.CutPressed">
+		<value>The 'Cut' button was pressed by the user.</value>
+	</data>
+	<data name="UtilityToolBar.CopyPressed">
+		<value>The 'Copy' button was pressed by the user.</value>
+	</data>
+	<data name="UtilityToolBar.PastePressed">
+		<value>The 'Paste' button was pressed by the user.</value>
+	</data>
+	<data name="UtilityToolBar.UndoPressed">
+		<value>The 'Undo' button was pressed by the user.</value>
+	</data>
+	<data name="UtilityToolBar.SavePressed">
+		<value>The 'Save' button was pressed by the user.</value>
+	</data>
+	<data name="UtilityToolBar.SaveAllPressed">
+		<value>The 'Save All' button was pressed by the user.</value>
+	</data>
+	<data name="UtilityToolBar.LoadPressed">
+		<value>The 'Load' button was pressed by the user.</value>
+	</data>
+	<data name="UtilityToolBar.PrintPressed">
+		<value>The 'Print' button was pressed by the user.</value>
+	</data>
+	<data name="UtilityToolBar.PrintPreviewPressed">
+		<value>The 'Print Preview' button was pressed by the user.</value>
+	</data>
+	<data name="UtilityToolBar.MapDrivePressed">
+		<value>The 'Map Drive' button was pressed by the user.</value>
+	</data>
+	<data name="UtilityToolBar.DisconnectPressed">
+		<value>The 'Disconnect' button was pressed by the user.</value>
+	</data>
+	<data name="UtilityToolBar.MoveToPressed">
+		<value>The 'Move To' button was pressed by the user.</value>
+	</data>
+	<data name="UtilityToolBar.CopyToPressed">
+		<value>The 'CopyTo' button was pressed by the user.</value>
+	</data>
+	<data name="UtilityToolBar.DeletePressed">
+		<value>The 'Delete' button was pressed by the user.</value>
+	</data>
+	<data name="UtilityToolBar.PropertiesPressed">
+		<value>The 'Properties' button was pressed by the user.</value>
+	</data>
+	<data name="UtilityToolBar.FolderOptionsPressed">
+		<value>The 'Folder Options' button was pressed by the user.</value>
+	</data>
+	<data name="UtilityToolBar.MailPressed">
+		<value>The 'Mail' button was pressed by the user.</value>
+	</data>
+	<data name="UtilityToolBar.ShowText">
+		<value>Controls if and where text is shown for individual on the UtilityToolBar.  Possible values come from the UtilityToolBarShowText enumeration.</value>
+	</data>
+	<data name="UtilityToolBar.IconOptions">
+		<value>Controls how the icons/images are displayed in the control.</value>
+	</data>
+	<data name="UtilityToolBar.ShowCustomizeDialog">
+		<value>Shows the customize dialog that lets users change the set of buttons currently shown. It is up to the application to actually persist these changes across application invokes.</value>
+	</data>
+	<data name="UtilityToolBarButtonType">
+		<value>Identification values for the various UtilityToolBarButtons supported.</value>
+	</data>
+	<data name="UtilityToolBarButtonCategories">
+		<value>The broadly defined categories of UtilityToolBarButtons available.</value>
+	</data>
+	<data name="UtilityToolBarIconOptions">
+		<value>Controls the way in which Icons are displayed in the UtilityToolBar control.</value>
+	</data>
+	<data name="UtilityToolBarIconOptions.SmallIcons">
+		<value>Display small icons.</value>
+	</data>
+	<data name="UtilityToolBarIconOptions.LargeIcons">
+		<value>Display large icons.</value>
+	</data>
+	<data name="UtilityToolBarShowText">
+		<value>Values for the ShowText property on the UtilityToolBar control.</value>
+	</data>
+	<data name="UtilityToolBarShowText.ShowTextLabels">
+		<value>Text labels should be shown below all buttons on the UtilityToolBar control.</value>
+	</data>
+	<data name="UtilityToolBarShowText.ShowSelectiveLabels">
+		<value>Text labels should be shown to the right or left (depending on locale) of some buttons, and ToolTips should be shown for the others.</value>
+	</data>
+	<data name="UtilityToolBarShowText.ShowNoLabels">
+		<value>Text labels should never be shown for buttons.  ToolTips will always be shown for all buttons.</value>
+	</data>
+	<data name="FolderViewer.NodeClicked">
+		<value>One of the nodes in the FolderViewer has been clicked by the user.</value>
+	</data>
+	<data name="FolderViewer.NodeDoubleClicked">
+		<value>One of the nodes in the FolderViewer has been double clicked by the user.</value>
+	</data>
+	<data name="FileViewer.ItemClicked">
+		<value>One of the items in the FileViewer has been clicked by the user.</value>
+	</data>
+	<data name="FileViewer.ItemDoubleClicked">
+		<value>One of the items in the FileViewer has been double clicked by the user.</value>
+	</data>
+	<data name="ImagingDeviceMediaThumbnailSize">
+		<value>Controls the size of thumbnail images returned by ImagingDeviceMedia objects.</value>
+	</data>
+	<data name="IDMTS.Tiny">
+		<value>Thumbnail images will be very small, with the larger edge being roughly 100 pixels in length</value>
+	</data>
+	<data name="IDMTS.Small">
+		<value>Thumbnail images will be normally sized, with the large edge being roughly 150 pixels in length</value>
+	</data>
+	<data name="IDMTS.Medium">
+		<value>Thumbnail images will be a bit larger than normal, with the large edge being roughly 200 pixels in length.</value>
+	</data>
+	<data name="TaskPaneEA.TaskFrame">
+		<value>The TaskFrame that generated this event within the TaskPane control.</value>
+	</data>
+	<data name="TaskPaneCEA.Cancel">
+		<value>Indicates whether the TaskFrame expand/collapse be aborted.</value>
+	</data>
+</root>
