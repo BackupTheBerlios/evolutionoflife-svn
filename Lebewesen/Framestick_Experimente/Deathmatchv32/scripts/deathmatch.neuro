@@ -1,0 +1,49 @@
+class:
+name:D
+longname:Deathmatch sample neuron
+description:~
+This neuron gives:
+- negative value if strong opponents are close.
+- positive value for food if energy < starting energy
+- positive value for opponents if energy > starting energy
+~
+prefoutput:1
+preflocation:1
+vhints:32
+# 32=receptor class
+vectordata:~
+64,5,7,100,50,90,50,90,40,70,40,80,50,70,60,90,60,90,50,3,10,40,15,45,15,55,10,60,5,20,30,25,35,30,45,30,55,25,65,20,70,4,15,35,20,40,22,50,20,60,15,65,5,75,50,50,50,45,45,40,50,45,55,50,50~
+code:~
+function init()
+{}
+
+function go()
+{
+var s = 0.0;
+var i = 0;
+var st= "";
+
+		while(i < (LiveLibrary.groupcount-1))		// all expect the last group (which is food)
+		{				
+				if(i != Neuro.creature.group.index)	// except own group
+				{ 
+					s += LiveLibrary.getGroup(i).senseCreaturesProperty(
+						Neuro.position_x, Neuro.position_y, Neuro.position_z,"energy", Neuro.creature);
+				}	// s is the collected smell of all opponents
+		i++;
+		}
+//	if(Simulator.time % 100 ==0)	Simulator.print("s="+s);
+	if(Neuro.creature.energy/Neuro.creature.energ0 < 1.5)
+	{
+		if(s < 2) Neuro.state = LiveLibrary.getGroup(LiveLibrary.groupcount-1).senseCreaturesProperty(
+				Neuro.position_x, Neuro.position_y, Neuro.position_z,"energy", Neuro.creature); // smell food parts in last population
+		else Neuro.state = -s; // if strong opponents are close, smell opponents (negatively)
+	}
+	else
+	{
+		if(s < 1.5) Neuro.state = LiveLibrary.getGroup(LiveLibrary.groupcount-1).senseCreaturesProperty(
+				Neuro.position_x, Neuro.position_y, Neuro.position_z,"energy", Neuro.creature); // smell food parts in last population
+		else Neuro.state = s; // if strong opponents are close, smell opponents (negatively)
+	}
+}
+~

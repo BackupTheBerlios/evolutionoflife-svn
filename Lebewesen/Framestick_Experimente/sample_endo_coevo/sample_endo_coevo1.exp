@@ -1,0 +1,593 @@
+expdef:
+name:Endogenous co-evolution, sample code
+info:~
+Instructive Framsticks experiment definition for implementing endogenous (co-)evolution.
+Endogenous evolution is evolution without user-defined fitness functions and selection mechanisms.  
+Co-evolution is evolution of two or more interdependent populations.
+
+In this expdef there are two animated creature populations and a food population. Creatures can 
+(asexually) reproduce when colliding, and only with creatures of their own population. Both creature 
+populations feed on the same food population (which grows at constant rate).
+
+This sample code expdef is meant to illustrate how to model endogenous co-evolution and can be used as a 
+starting point for your own experiments. It is richly documented to enable you to understand and change 
+the experiments.
+
+IMPORTANT: Please have the FramScript reference at hand. Use it as a reference for classes and methods 
+that are used in the code. It is available in the Gui via help and on internet via 
+www.frams.alife.pl/common/script/docs/index.html
+
+Author:
+Walter de Back - walter@aisland.org
+Virtual Life lab - Utrecht University
+April 2004
+~
+code:~
+
+// >>>>>>> Load experiment definition.
+// >>>>>>> This methods is called from the parameter window of GUI when with 'apply' or 'reload'.
+
+function onExpDefLoad()
+{
+
+// Clear and create two genepools into the GenotypeLibrary
+if (GenotypeLibrary.groupcount != 0) GenotypeLibrary.clear();
+GenotypeGroup.name="Genepool A";	// The first always exist, and just needs to be named.
+GenotypeLibrary.addgroup="Genepool B";  // The second genepool must first be added, and named.
+
+// Clear and created three populations in the LiveLibrary 
+if (LiveLibrary.groupcount != 0) LiveLibrary.clear();
+CreaturesGroup.name="A";		// the first always exist, and just needs to be named.
+CreaturesGroup.nnsim=1;			// Neural net simulation is turned on for this group.
+CreaturesGroup.enableperf=1;		// Performance evaluation is turned on.
+CreaturesGroup.colmask=5; 		// Collision mask is set to 1 (Standard) + 4 (Custom handler)=5.
+					// Standard handler is mechanical bounce.
+					// Custom collision handler calls onACollision() method below.
+
+LiveLibrary.addGroup("B");		// Add a second creatures group.
+CreaturesGroup.nnsim=1;			// Neural net simulation is turned on.
+CreaturesGroup.enableperf=1;		// Performance evaluation is enabled.
+CreaturesGroup.colmask=5;		// Collision mask set to Standard.
+
+LiveLibrary.addGroup("Food");		// Add a third population.
+CreaturesGroup.nnsim=0;			// Neural net is turned off (individuals are not animated).
+CreaturesGroup.enableperf=0;		// Performance is not evaluated.
+CreaturesGroup.colmask=4;  		// Collision mask set to 4 (no standard, only custom handler).
+
+// >>>>>>> Define experiment parameters, instantiation and initialization
+// >>>>>>> These can appear in the Parameter window in GUI, see on bottom of experiment definition
+
+ExpParams.paramfile="endo_coevo.sim";
+ExpParams.genefile="endo_coevo.gen";
+
+ExpParams.waitCollide=200;
+
+ExpParams.numberCreatures=5;	// Number of creatures in a group.
+ExpParams.p_mut=50;		// Probability of mutation.
+ExpParams.Energy0=1000;		// Starting energy.
+ExpParams.reprEnergy=1000;	// Reproductive energy (individuals can only reproduce above this level).
+ExpParams.reprLifespan=1000;	// Reproductive age (individuals can only reproduce above this age).
+ExpParams.e_meta=0.01;		// Metabolistic energy (substracted for each stick each step)
+ExpParams.feedrate=0.6;		// Rate at which new food parts are added to the world per step.
+ExpParams.feedgrowth=10;	// Rate at which food parts grow (gain energy).
+ExpParams.aging=50000;		// Aging level, metabolic energy grows with age (doubled at this level).
+ExpParams.feedtrans=2;		// ?
+ExpParams.creath=0;		// Height at which creatures are spawned.
+ExpParams.foodgen="";		// Genotype of standard food part.
+ExpParams.autorestart=1;	// Automatic restart at extinction (0 or 1).
+ExpState.totaltestedcr=0;	// Keeps track of total tested creatures.
+}
+
+// <<<<<<<
+
+// >>>>>>> Initialize experiment. This is called from GUI when 'Initialise' is pressed.
+// >>>>>>> Fills populations with creatures.
+
+function onExpInit()
+{
+// Clear content of genepools (before loading genotypes)
+GenotypeLibrary.clearGroup(0);
+GenotypeLibrary.clearGroup(1);
+
+// Clear content of population groups
+LiveLibrary.clearGroup(0);					
+LiveLibrary.clearGroup(1);					
+LiveLibrary.clearGroup(2);					
+
+// Load parameter (*.sim) file and genotype (*.gen) file.
+sim_params.import(ExpParams.paramfile, 4);
+sim_params.import(ExpParams.genefile, 2);  // The genotype file should contain 2 genotypes:
+					   // The first is the ancestor of first population,
+			   		   // The second is the ancestor of second population.
+				           // Other genotype that may be in file will not be used!
+
+// Fill two groups with creatures
+var i=0;
+while(i < (LiveLibrary.groupcount() - 1))  // This loop is called two times: number of groups - food pop.
+{
+LiveLibrary.group(i);	// This selects the i-th population. 
+			// This pop will be used during the rest of the method, 
+			// until another is selected.
+
+Simulator.print("TEAMBUILDER: Building Team nr. "+i); // Print message to GUI message window.
+
+	var j=0;
+	while(j < ExpParams.numberCreatures)	// This loop is called once for every creature.
+	{
+		var mutant;			
+		var newcreature;
+		// Get genotype from genepool on location corresponding to the population index i.
+		GenotypeLibrary.genotype=GenotypeLibrary.group.getGenotype(i);
+		// Mutate this genotype.
+		mutant=GenotypeLibrary.mutate(GenotypeLibrary.genotype);
+		// Create creature object from mutated genotype object.
+		newcreature = LiveLibrary.getGroup(i).createFromGenotype(mutant);
+		// Extend the creatures name with index j.
+		newcreature.name=newcreature.name+"_"+(j+1);
+		// Print message to GUI message window.
+		Simulator.print("TEAMBUILDER: "+Creature.name(newcreature));	
+		// Assign population number to user field 1 (starting from 0).
+		newcreature.user1=i;
+		// Give the new creature its starting energy.
+		newcreature.energy = ExpParams.Energy0;
+		// Place the new creature on a random location in the world. See method below.
+		place_randomly(newcreature);
+	j++;
+	}
+i++;
+}
+// Creature populations are now filled with creatures, mutants from the ancestor.
+// Food parts will be added and grow step by step.
+}
+
+// >>>>>>>>>> This method is called from onInitExp for initial *created* population
+// >>>>>>>>>> and from onBorn for *born* individuals, resulting from mating.
+function place_randomly(cr)
+{
+// Pick random x and y coordinates in the world.
+var x=(World.wrldsiz-cr.size_x)*Math.rnd01-cr.size_x/2;
+var y=(World.wrldsiz-cr.size_y)*Math.rnd01-cr.size_y/2;
+
+// The z coordinate is not randomly chosen, but determined by creatheight parameter.
+var z=WorldMap.getHeight(x,y);
+if (World.wrldwat>z) // water here
+  {
+  if (ExpParams.creath>0)
+    z=World.wrldwat+ExpParams.creath;
+  else
+    z=(1.0+ExpParams.creath)*World.wrldwat - z*ExpParams.creath;
+  }
+else // land area
+  {
+  if (ExpParams.creath>0)
+    z+=ExpParams.creath;
+  }
+
+// After setting the x, y, and z coordinates, place it in this location.
+cr.moveAbs(x,y,z-0.999);
+return;
+}
+// <<<<<<<<<<<
+
+// >>>>>>>>>>> This method is automatically called when creature is created in livelibrary.
+// >>>>>>>>>>> It simply tries to place creatures randomly in the world, for 20 times.
+function onBorn()
+{
+var retry=20; //retry 20 times
+while(retry--)
+  {
+  place_randomly(Creature.*);
+  if (!LiveLibrary.creatBBCollisions(0))
+	return;
+  }
+  Simulator.message("couldn't avoid collisions!",2);
+}
+
+// >>>>>>>> The onStep method is called every step, mainly used for adjusting idle energy levels.
+// >>>>>>>> In some case it is advisable to divide this in population specific onAStep, onBStep en 
+// >>>>>>>> onFoodStep methods, but in this case it is more compact in this way.
+function onStep(creature)
+{
+// UPDATING WAITING TIME FOR COLLIDING 
+
+	if(cr.user3 != null)			// Userfield 3 = waiting for fight
+	{
+	cr.user3=1+cr.user3;
+	if(cr.user3==ExpParams.waitCollide) cr.user3=null;
+	}
+
+// Adjust idle energy levels of creatures according to their lifespan.
+var i=0;
+while(i<(LiveLibrary.groupcount-1))	// For the creature populations
+{
+LiveLibrary.group=i; // Select the i-th population
+
+	if (ExpParams.aging>0)		// If aging is turned on (is not zero), adjust idle energy 
+					// according to lifespan.
+   	{
+   	var j=0;
+   		while(j < CreaturesGroup.creaturecount)	// For every creature j in population i
+      		{
+      		LiveLibrary.creature=j;	// Select creature j
+		// Adjust idle energy by some strange looking function
+      		Creature.idleen=ExpParams.e_meta*Creature.numjoints
+                      *Math.exp((0.06931471806*Creature.lifespan)/ExpParams.aging);
+		j++;
+      		}
+   	}
+	else 				// If aging is turned off (set to zero)
+					// IS THIS NECESSARY EACH STEP ???
+   	{
+   	var j=0;
+   		while(j < CreaturesGroup.creaturecount)
+      		{
+      		LiveLibrary.creature=j;
+	  	Creature.idleen=ExpParams.e_meta*Creature.numjoints;
+	  	j++;
+	  	}	 
+   	}
+i++	
+}
+
+// Adjust energy of all food parts
+// Food parts grow (gain energy) at constant rate, parameter foodgrowth.
+LiveLibrary.group=2;
+var f=0;
+	while(f < CreatureGroup.creaturecount)
+	{
+	LiveLibrary.creature=f;
+	Creature.energy=Creature.energy+ExpParams.foodgrowth;
+	f++;
+	}
+}
+// <<<<<<<<
+
+// >>>>>>>> Population specific onCollision methods. These are called at the event of a collision.
+// >>>>>>>> Note that the population specific collision mask (colmask) should be set appropriately.
+// 
+
+function onFoodCollision()
+{
+
+}
+
+function onACollision()
+{
+onCreaturesCollision();
+}
+
+function onBCollision()
+{
+onCreaturesCollision();
+}
+
+function onCreaturesCollision()
+{
+//Simulator.print("Collision");
+	var cr1 = Collision.Creature1();
+    var cr2 = Collision.Creature2();
+
+// IF COLLIDING CREATURE ARE OF THE SAME POPULATION -> TRY REPRODUCTION
+
+if(cr1.user1 == cr2.user1)
+{
+	var xovchild;
+	var mchild;
+	var random = Math.rnd01*100.0;
+
+	if( cr1!= cr2
+	&& cr1.user3 == null						&& cr2.user3 == null
+	&& cr1.energy>=ExpParams.reprEnergy 		&& cr2.energy>=ExpParams.reprEnergy
+	&& cr1.lifespan >=ExpParams.reprLifespan 	&& cr2.lifespan >= ExpParams.reprLifespan) 
+	{		
+		var geno1 = Geno.newFrom(cr1.genotype, -1, cr1.name, cr1.info);			// Create Geno objects
+		var geno2 = Geno.newFrom(cr2.genotype, -1, cr2.name, cr2.info);
+									
+//		xovchild = GenMan.crossOver(geno1, geno2);								// Crossover of the two Geno-objects
+		
+//		if (ExpParams.p_mut < random)					// If not mutate, then put crossover in the world
+//		{					
+//			Simulator.print("Putting crossover of group " +cr1.user1+ " in the world.");					
+//			LiveLibrary.getGroup((cr1.user1-1)).createFromGeno(xovchild);
+//			Creature.user1=cr1.user1;	
+//			Creature.energ0=cr1.energy/3 + cr2.energy/3;			// Suck energy out of parents (one-third of both parents)					
+//			Creature.energy=Creature.energ0;
+//			cr1.energy=2*cr1.energy/3;							// Parents are left with two-third of energy
+//			cr2.energy=2*cr2.energy/3;
+//			Creature.moveAbs(Math.rnd01*World.wrldsiz, Math.rnd01*World.wrldsiz, 0);  //Place random in the world
+//		 }
+			
+
+
+//		if (ExpParams.p_mut >= random)					// otherwise, put mutant in the world
+//		{ // mutation
+		
+			mchild = GenMan.mutate(geno1);  		//xovchild
+	
+	 		if (Genotype.isValid)													
+			{					
+				Simulator.print("Putting mutant of group " +mchild.user1+ " from " +xovchild.name+ " in the world.");				
+				LiveLibrary.getGroup((cr1.user1-1)).createFromGeno(mchild);				
+				Creature.user1=cr1.user1;	
+				Creature.energ0=cr1.energy/3 + cr2.energy/3;			// Suck energy out of parents (one-third of both parents)					
+				Creature.energy=Creature.energ0;
+				cr1.energy=2*cr1.energy/3;							// Parents are left with two-third of energy
+				cr2.energy=2*cr2.energy/3;
+				
+				Creature.moveAbs(Math.rnd01*World.wrldsiz, Math.rnd01*World.wrldsiz, 0);  //Place random in the world
+//			}
+		}
+		cr1.user3=0;
+		cr2.user3=0;
+		Simulator.print("Reproduced a creature?");
+	}
+
+}
+
+// IF COLLIDING CREATURE ARE OF OTHER POPULATIONS -> FIGHT
+
+else if(cr1.user1 != cr2.user1)
+{
+	if(cr1.user3 == null  && cr2.user3 == null)
+	{	
+//	Simulator.print("FIGHT!!");
+
+		if( cr1.energy > cr2.energy )		// If the one creature has more energy than the other (cr1 is the winner)
+		{
+		Simulator.print("FIGHT: Creature '"+cr1.name+"' of group "+cr1.user1+" wins from '"+cr2.name+"' of group "+cr2.user1);
+		cr1.energy=cr1.energy+cr2.energy;		// Add winergy (energy amount for winner) to the winner
+//		Simulator.print("FIGHT: Creature '"+cr1.name+"' of group "+cr1.user1+" gets '"+cr2.energy+"' from "+cr2.name);
+//		Simulator.print("FIGHT: Creature '"+cr2.name+"' of group "+cr2.user1+" looses'"+cr2.energy+"' to "+cr1.name);
+		cr2.energy=cr2.energy-cr2.energy;		// Substract winergy from the loser
+		}
+		else if( cr2.energy > cr1.energy )		// If the one creature has more energy than the other (cr1 is the winner)
+		{
+		Simulator.print("FIGHT: Creature '"+cr2.name+"' of group "+cr2.user1+" wins from '"+cr1.name+"' of group "+cr1.user1);
+		cr2.energy=cr2.energy+cr1.energy;
+//		Simulator.print("FIGHT: Creature '"+cr2.name+"' of group "+cr2.user1+" gets '"+cr1.energy+"' from "+cr1.name);
+//		Simulator.print("FIGHT: Creature '"+cr1.name+"' of group "+cr1.user1+" looses '"+cr1.energy+"' to "+cr2.name);
+		cr1.energy=cr1.energy-cr1.energy;	
+		}
+		
+	cr1.user3=0;
+	cr2.user3=0;
+	}	
+}
+}
+function onAKill(cr)
+{
+onCreaturesKill(cr);
+}
+function onBKill(cr)
+{
+onCreaturesKill(cr);
+}
+
+function onCreaturesKill(cr)
+{
+//Simulator.print("\""+cr.name+"\" died...");
+evolLog("Life:"+cr.lifespan);
+evolLog("Parts: ; ; " +cr.numparts);
+evolLog("Neurons: ; ; " +cr.numneurons);
+evolLog("Reproduction: ; ; ;" +cr.info);
+evolLog("Joints: ; ; ; ; ;" +cr.numjoints);
+
+//evolLog("-1");
+ExpState.totaltestedcr=ExpState.totaltestedcr+1;
+
+//LiveLibrary.group=cr.user1;
+//if(CreaturesGroup.creaturecount == 0)
+//{
+//	var j=0;
+//	while(j < ExpParams.numberCreatures)					// Fill each groups with 5 copies
+//	{
+//		var mutant;
+//		var newcreature;
+//		GenotypeLibrary.genotype=GenotypeLibrary.group.getGenotype(cr.user1);
+//		
+//		mutant=GenMan.mutate(GenotypeLibrary.genotype);
+//		
+//		newcreature = LiveLibrary.getGroup(cr.user1).createFromGenotype(mutant);
+//		newcreature.name=newcreature.name+"_"+(j+1);
+//		Simulator.print("TEAMBUILDER: "+Creature.name(newcreature));	
+//		newcreature.user1=cr.user1+1;			// Assign teams number to user field 1
+//		newcreature.energy = ExpParams.Energy0;
+//		place_randomly(newcreature);		// And place them randomly in arena
+//	j++;
+//	}
+//
+//}
+
+}
+
+
+function onExpLoad()
+{
+Simulator.message("not implemented",3);
+}
+
+function onExpSave()
+{
+var i=0;
+File.writeComment("'repro.expdef' data");
+File.writeObject(sim_params.*);
+GenotypeLibrary.group=0;
+File.writeObject(GenotypeGroup.*);
+LiveLibrary.group=0;
+File.writeObject(CreaturesGroup.*);
+LiveLibrary.group=1;
+File.writeObject(CreaturesGroup.*);
+GenotypeLibrary.group=0;
+while(i < GenotypeGroup.count)
+   {
+   GenotypeLibrary.genotype=i;
+   File.writeNameObject("org",Genotype.*);
+   i++;
+   }
+Simulator.print("Experiment saved ("+GenotypeGroup.count+" genotypes)");
+}
+
+function addFood()
+{}
+
+asm
+{
+:queryEventNames
+push "Place food"
+push "Drop food"
+return
+
+:onUserEvent
+call WorldMap.intersect
+if s0,==,0,:onUserEvent_fail
+call :addFood
+move Creature.size_x,m1
+div 2,m1
+sub m1,s1
+move Creature.size_y,m1
+div 2,m1
+sub m1,s2
+if s6,==,0,:onUserEvent_dontdrop
+add 10.0,s3
+:onUserEvent_dontdrop
+call Creature.moveAbs,s1,s2,s3
+:onUserEvent_fail
+return
+}
+
+~
+
+prop:
+id:creath
+name:Creation height
+type:f -1 50
+help:~
+Vertical position (above the surface) where new creatures are revived.
+Negative values are only used in the water area:
+  0   = at the surface
+-0.5 = half depth
+-1   = just above the bottom~
+
+prop:
+id:p_mut
+name:Mutated
+type:f 0 100
+group:Selection
+
+prop:
+id:paramfile
+name:Parameter file
+type:s
+group:
+
+prop:
+id:genefile
+name:Genotype file
+type:s
+group:
+
+prop:
+id:waitCollide
+name:Waiting time after collision
+type:f 0 1000
+group:
+
+prop:
+id:numberCreatures
+name:Creatures per population
+type:f 0 50
+group:
+
+prop:
+id:reprEnergy
+name:Reproduction energy
+type:f 0 10000
+group:Selection
+help:~Creature can produce offspring when its energy level reaches this 
+threshold. Note: either this or 'Reproduction Age' must be set on a positive 
+value to avoid population explosion.~
+
+prop:
+id:reprLifespan
+name:Reproduction Age
+type:f 0 100000
+group:Selection
+help:Creature can produce offspring when its reaches this lifespan. Note: either 
+this or 'Reproduction Energy' must be set on a positive value to avoid 
+population exploision.
+
+prop:
+id:Energy0
+name:Starting energy
+type:f 0 10000
+group:Energy
+help:Initial energy for the first creature
+
+prop:
+id:e_meta
+name:Idle metabolism
+type:f 0 1
+group:Energy
+help:Each stick consumes this amount of energy in one time step
+
+prop:
+id:feedrate
+name:Feeding rate
+type:f 0 100
+group:Energy
+help:How fast energy is created in the world
+
+prop:
+id:feede0
+name:Food's energy
+group:Energy
+type:f 0 1000
+
+prop:
+id:foodgen
+name:Food's genotype
+group:Energy
+type:s 1
+help:~
+The default food model is a simple, single part object:
+  //0
+  m:Vstyle=food
+  p:
+(this genotype is used when you leave this field blank).
+You can specify another genotype to create "intelligent" or mobile food.~
+
+prop:
+id:feedtrans
+name:Ingestion multiplier
+group:Energy
+type:f 0 100
+
+prop:
+id:aging
+name:Aging time
+group:Energy
+type:d 0 100000
+help:Idle metabolism doubles after this period (0 disables aging)
+
+
+prop:
+id:autorestart
+name:Restart after extinction
+group:
+help:Restarts automatically this experiment after the last creature dies
+type:d 0 1
+
+state:
+id:notes
+name:Notes
+type:s 1
+help:~
+You can write anything here
+(it will be written to the experiment file)~
+
+state:
+id:totaltestedcr
+name:Evaluated creatures
+help:Total number of the creatures evaluated in the experiment
+type:d
+flags:16

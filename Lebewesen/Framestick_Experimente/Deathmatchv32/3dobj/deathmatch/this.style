@@ -1,0 +1,445 @@
+style:
+name:Deathmatch
+info:Deathmatch Visual Style
+code:~
+function default_model_build()
+{VisualModel.jointshadow=1;}
+
+function food_model_build()
+{VisualModel.partshadow=0.4;}
+
+function default_part_build()
+{
+GeomBuilder.addTransform(GeomBuilder.rootNode);
+Element.node=GeomBuilder.currentNode;
+}
+
+function loadAndAddAsTransformNode(filename)
+{
+Loader.load(filename);
+if (Loader.loaded)
+  {
+  GeomBuilder.addTransform(GeomBuilder.rootNode);
+  Element.node=GeomBuilder.currentNode;
+  GeomBuilder.add(Loader.loaded);
+  }
+}
+
+function manipulator_part_build()
+{loadAndAddAsTransformNode("manip-close.ac");}
+
+function default_joint_build()
+{
+Element.useJointPart1();
+loadAndAddAsTransformNode("greenstick"+(1+4.999*p.as)+".ac");
+}
+
+function A_joint_build()
+{
+loadAndAddAsTransformNode("Astick.ac");
+}
+function B_joint_build()
+{
+loadAndAddAsTransformNode("Bstick.ac");
+}
+function C_joint_build()
+{
+loadAndAddAsTransformNode("Cstick.ac");
+}
+function D_joint_build()
+{
+loadAndAddAsTransformNode("Dstick.ac");
+}
+function E_joint_build()
+{
+loadAndAddAsTransformNode("Estick.ac");
+}
+function F_joint_build()
+{
+loadAndAddAsTransformNode("Fstick.ac");
+}
+function G_joint_build()
+{
+loadAndAddAsTransformNode("Gstick.ac");
+}
+function H_joint_build()
+{
+loadAndAddAsTransformNode("Hstick.ac");
+}
+function I_joint_build()
+{
+loadAndAddAsTransformNode("Istick.ac");
+}
+function J_joint_build()
+{
+loadAndAddAsTransformNode("Jstick.ac");
+}
+function K_joint_build()
+{
+loadAndAddAsTransformNode("Jstick.ac");
+}
+function L_joint_build()
+{
+loadAndAddAsTransformNode("Jstick.ac");
+}
+function M_joint_build()
+{
+loadAndAddAsTransformNode("Jstick.ac");
+}
+function N_joint_build()
+{
+loadAndAddAsTransformNode("Jstick.ac");
+}
+function O_joint_build()
+{
+loadAndAddAsTransformNode("Jstick.ac");
+}
+
+function default_neuro_build()
+{
+Element.useNeuro();
+var filename;
+if (n.class=="|") filename="neuro-bend.ac";
+else filename="neuro-"+n.class+".ac";
+Loader.load(filename);
+if (Loader.loaded)
+	GeomBuilder.add(Loader.loaded);
+}
+
+function default_part_update()
+{
+Element.useMechPart();
+GeomBuilder.matrixReset();
+GeomBuilder.matrixMove(MechPart.pos);
+GeomBuilder.matrixOrient(MechPart.orient);
+GeomBuilder.setMatrix(Element.node);
+}
+
+function food_part_build()
+{loadAndAddAsTransformNode("tyskie.ac");}
+
+function food_part_update()
+{
+Element.useMechPart();
+GeomBuilder.matrixReset();
+GeomBuilder.matrixMove(MechPart.pos);
+GeomBuilder.matrixMove(0.0, 0.0, 0.5);
+GeomBuilder.matrixOrient(MechPart.orient);
+Element.useCreature();
+var e=Creature.energy/Creature.energ0;
+if (e>1.0) e=1.0; else if (e<0.05) e=0.05;
+Element.node = Element.node;
+GeomBuilder.matrixScale(e,e,e);
+GeomBuilder.setMatrix(Element.node);
+VisualModel.partshadow=0.4;
+}
+
+function yellow_joint_update()
+{default_joint_update();}
+function blue_joint_update()
+{default_joint_update();}
+function red_joint_update()
+{default_joint_update();}
+
+function default_joint_update()
+{
+Element.useMechJointPart1();
+Element.useMechJoint();
+GeomBuilder.matrixReset();
+GeomBuilder.matrixMove(MechPart.pos);
+GeomBuilder.matrixOrient(MechJoint.calcorient);
+GeomBuilder.matrixScale(MechJoint.length,1.0,1.0);
+GeomBuilder.setMatrix(Element.node);
+}
+
+function setScenePanorama(which)
+{
+Scene.worldtexture=["","field_.png","ocean_.png","darkcity_.png"][which];
+}
+
+function world_build()
+{
+Scene.backcolor=0xffcc88;
+setScenePanorama(VisParams.worldpan);
+if (World.wrldbnd==0)
+	{
+	buildFlatBoundary();
+	}
+else
+	{
+	Loader.load("flyingworld3.ac");
+	if (!Loader.loaded) return;
+	GeomBuilder.addTransform(GeomBuilder.rootNode);
+	GeomBuilder.matrixReset();
+	var siz=World.wrldsiz/20.0;
+	GeomBuilder.matrixScale(siz,siz,siz);
+	GeomBuilder.setMatrix(GeomBuilder.currentNode);
+	GeomBuilder.add(Loader.loaded);
+	}
+switch(World.wrldtyp)
+	{
+	case 0: buildFlatWorld(); break;
+	case 2: buildSmoothWorld();
+	}
+}
+// creates the heightfield environment geometry
+
+function buildSmoothWorld()
+{
+//  Simulator.print("building smoothworld geometry...");
+  var dx, dy, mx, my, x, y;
+
+  dx = World.wrldsiz / (WorldMap.xsize-1);
+  dy = World.wrldsiz / (WorldMap.ysize-1);
+
+  y = 0.0;
+  for (my = 1;my < WorldMap.ysize;my++)
+  {
+    x = 0.0;
+    for (mx = 1;mx < WorldMap.xsize;mx++)
+    {
+      VertexBuilder.newTriangleStrip();
+      addSmoothPoint(mx - 1, my, x, y + dy);
+      addSmoothPoint(mx - 1, my - 1, x, y);
+      addSmoothPoint(mx, my, x + dx, y + dy);
+      addSmoothPoint(mx, my - 1, x + dx, y);
+      VertexBuilder.genTexCoordsXY(0.1, 0.1);
+      GeomBuilder.addBranch(GeomBuilder.rootNode);
+      Material.new();
+      Material.setSmooth();
+      Material.enable(GL.TEXTURE_2D);
+      Material.texture = "grass.png";
+      VertexBuilder.material = Material.object;
+      GeomBuilder.add(VertexBuilder.node);
+      x += dx;
+    }
+    y += dy;
+  }
+
+  buildWorldBoundary();
+  buildWorldWater();
+}
+
+function addSmoothPoint(mapx, mapy, x, y)
+{
+  // m7,m8 -> mapx,mapy   m9,m10 -> x,y
+  var z = WorldMap.getMap(mapx, mapy).z;
+  VertexBuilder.addVertex(x, y, z);
+  addHeightColor(z);
+  // calculate normal vector (approximate)
+  var xm1 = WorldMap.getMap(mapx - 1, mapy).z;
+  var xp1 = WorldMap.getMap(mapx + 1, mapy).z;
+  var ym1 = WorldMap.getMap(mapx, mapy - 1).z;
+  var yp1 = WorldMap.getMap(mapx, mapy + 1).z;
+  VertexBuilder.addNormal_1((xm1 - xp1) / World.wrldsiz*WorldMap.xsize,
+                            (ym1 - yp1) / World.wrldsiz*WorldMap.ysize, 2.0);
+}
+
+function addHeightColor(z)
+{VertexBuilder.addColor(1.0,(z/9.0)+0.8,0.0);}
+
+
+function buildFlatWorld()
+{
+GeomBuilder.addBranch(GeomBuilder.rootNode);
+VertexBuilder.newQuads();
+VertexBuilder.addVertex([0.0,0.0,0.0, World.wrldsiz,0.0,0.0,
+		 World.wrldsiz,World.wrldsiz,0.0, 0.0,World.wrldsiz,0.0]);
+//VertexBuilder.addColor(0.85,0.75,0.55);
+VertexBuilder.addNormal(0,0,1);
+Material.new();
+Material.setFlat();
+Material.enable(GL.TEXTURE_2D);
+Material.texture = "grass.png";
+VertexBuilder.material = Material.object;
+GeomBuilder.add(VertexBuilder.node);
+buildWorldBoundary();
+buildWorldWater();
+}
+
+function buildFlatBoundary()
+{
+var ma=World.wrldsiz*2;
+var mi=0.0-World.wrldsiz;
+var si=World.wrldsiz;
+GeomBuilder.addBranch(GeomBuilder.rootNode);
+VertexBuilder.newQuads();
+VertexBuilder.addVertex([si,0.0,0.0, ma,0.0,0.0,  ma,si,0.0,  si,si,0.0,
+			0.0,si,0.0,  si,si,0.0,   si,ma,0.0,  0.0,ma,0.0,
+			mi,0.0,0.0,  0.0,0.0,0.0, 0.0,si,0.0, mi,si,0.0,
+			0.0,mi,0.0,  si,mi,0.0,   si,0.0,0.0, 0.0,0.0,0.0]);
+VertexBuilder.addColor(0.80,0.70,0.50);
+VertexBuilder.addNormal(0,0,1);
+Material.new();
+Material.setFlat();
+Material.specular=0;
+Material.enable(GL.TEXTURE_2D);
+Material.texture = "grass.png";
+VertexBuilder.material=Material.object;
+
+GeomBuilder.add(VertexBuilder.node);
+GeomBuilder.addBranch(GeomBuilder.rootNode);
+VertexBuilder.newQuads();
+VertexBuilder.addVertex([si,si,0.0, ma,si,0.0, ma,ma,0.0, si,ma,0.0,
+			 si,mi,0.0, ma,mi,0.0, ma,0.0,0.0, si,0.0,0.0,
+			mi,si,0.0,  0.0,si,0.0,0.0,ma,0.0, mi,ma,0.0,
+			mi,mi,0.0,  0.0,mi,0.0,0.0,0.0,0.0,mi,0.0,0.0]);
+VertexBuilder.addColor(0.85,0.75,0.55);
+VertexBuilder.addNormal(0,0,1);
+Material.new();
+Material.setFlat();
+Material.disable(GL.TEXTURE_2D);
+Material.specular=0;
+VertexBuilder.material=Material.object;
+GeomBuilder.add(VertexBuilder.node);
+}
+
+function buildWorldWater()
+{
+if (World.wrldwat < -5.0) return;
+var mi=0.0, ma=World.wrldsiz;
+if (World.wrldbnd==0)
+   {mi-=ma; ma+=ma;}
+else
+   {
+   var z=World.wrldwat;
+   if (z>0.0)
+	{
+	z+=1.0;
+	GeomBuilder.addBranch(GeomBuilder.rootNode);
+	VertexBuilder.newLines();
+	VertexBuilder.addVertex([mi,mi,z, ma,mi,z, ma,mi,z, ma,ma,z,
+				ma,ma,z,  mi,ma,z, mi,ma,z, mi,mi,z,
+				mi,mi,z, mi,mi,mi, mi,ma,z, mi,ma,mi,
+				ma,ma,z, ma,ma,mi, ma,mi,z, ma,mi,mi]);
+	VertexBuilder.addColor(0xff000000);
+	Material.new();
+	Material.setFlat();
+	Material.disable(GL.TEXTURE_2D);
+	Material.disable(GL.LIGHTING);
+	Material.colormat=GL.AMBIENT_AND_DIFFUSE;
+	VertexBuilder.material=Material.object;
+	GeomBuilder.add(VertexBuilder.node);
+	}
+   }
+GeomBuilder.addBranch(GeomBuilder.rootNode);
+VertexBuilder.newQuads();
+VertexBuilder.addVertex([mi,mi,World.wrldwat, ma,mi,World.wrldwat, ma,ma,World.wrldwat, mi,ma,World.wrldwat]);
+VertexBuilder.addNormal(0.0,0.0,1.0);
+VertexBuilder.addColor(0x80ff8833);
+VertexBuilder.genTexCoordsXY(0.17,0.17);
+Material.new();
+Material.setFlat();
+Material.disable(GL.CULL_FACE);
+Material.enable(GL.TEXTURE_2D);
+Material.enable(GL.BLEND);
+Material.enable(GL.COLOR_MATERIAL);
+Material.disable(GL.LIGHTING);
+Material.translucent=1;
+Material.texture="waves.png";
+VertexBuilder.material=Material.object;
+GeomBuilder.add(VertexBuilder.node);
+}
+
+
+function buildWorldBoundary()
+{
+var spacing;
+switch(World.wrldbnd)
+	{
+	case 0: return;
+	case 1: Loader.load("fence-element.ac"); spacing=1.99; break;
+	case 2: Loader.load("teleport.ac"); spacing=3.0;
+		break;
+	}
+if (Loader.loaded==0) return;
+GeomBuilder.addBranch(GeomBuilder.rootNode);
+var node=GeomBuilder.currentNode;
+var pos=0.0;
+while(pos<=World.wrldsiz)
+   	{
+	GeomBuilder.addTransform(node);
+	GeomBuilder.matrixReset();
+	GeomBuilder.matrixMove(pos,0.0,0.0);
+	GeomBuilder.setMatrix(GeomBuilder.currentNode);
+	GeomBuilder.add(Loader.loaded);
+
+	GeomBuilder.addTransform(node);
+	GeomBuilder.matrixMove(0.0,World.wrldsiz,0.0);
+	GeomBuilder.setMatrix(GeomBuilder.currentNode);
+	GeomBuilder.add(Loader.loaded);
+
+	GeomBuilder.addTransform(node);
+	GeomBuilder.matrixReset();
+	GeomBuilder.matrixOrient(0.0,0.0,1.57);
+	GeomBuilder.matrixMove(0.0,pos,0.0);
+	GeomBuilder.setMatrix(GeomBuilder.currentNode);
+	GeomBuilder.add(Loader.loaded);
+
+	GeomBuilder.addTransform(node);
+	GeomBuilder.matrixMove(World.wrldsiz,0.0,0.0);
+	GeomBuilder.setMatrix(GeomBuilder.currentNode);
+	GeomBuilder.add(Loader.loaded);
+
+	pos+=spacing;
+	}
+}
+
+function onLoad()
+{
+if (style.tex)
+	{
+	VisParams.worldpan=2;
+	VisParams.modelpan=1;
+	}
+else
+	{
+	VisParams.worldpan=0;
+	VisParams.modelpan=0;
+	}
+}
+
+function VisParams_set()
+{style.rebuild();}
+
+function modelviewer_build_empty()
+{
+Scene.backcolor=0xffcc88;
+setScenePanorama(VisParams.modelpan);
+}
+
+// min.x/y/z = s6/5/4   max.x/y/z = s3/2/1
+function modelviewer_build(minx,miny,minz,maxx,maxy,maxz)
+{
+Scene.backcolor=0xffcc88;
+setScenePanorama(VisParams.modelpan);
+VertexBuilder.newQuads();
+VertexBuilder.addVertex([minx,miny,minz, maxx,miny,minz, maxx,maxy,minz, minx,maxy,minz]);
+Material.new();
+Material.setFlat();
+Material.colormat=GL.AMBIENT_AND_DIFFUSE;
+Material.disable(GL.TEXTURE_2D);
+Material.disable(GL.CULL_FACE);
+Material.disable(GL.LIGHTING);
+VertexBuilder.material=Material.object;
+GeomBuilder.add(VertexBuilder.node);
+VertexBuilder.newLines();
+VertexBuilder.addVertex([minx,miny,minz, minx,miny,maxz, minx,miny,maxz, maxx,miny,maxz,
+			maxx,miny,maxz, maxx,miny,minz, minx,maxy,minz, minx,maxy,maxz,
+			minx,maxy,maxz, maxx,maxy,maxz, maxx,maxy,maxz, maxx,maxy,minz,
+			minx,miny,maxz, minx,maxy,maxz, maxx,miny,maxz, maxx,maxy,maxz]);
+VertexBuilder.addColor(0xff000000);
+GeomBuilder.add(VertexBuilder.node);
+}
+~
+
+prop:
+id:worldpan
+name:World panorama
+type:d 0 3 ~None~Field~Ocean~Dark city
+
+prop:
+id:modelpan
+name:Body view panorama
+type:d 0 3 ~None~Field~Ocean~Dark city
+

@@ -1,0 +1,111 @@
+# created Sat Nov 27 18:25:21 2004
+# by Framsticks 2.10.2
+org:
+name:Basic Quadruped
+genotype:~
+MX[@*:-.4,2:-2.890,1 :-1.808](RX(FX,),MX[@-1 :1.849,0:3.094,0:-1.387][|-1 :1.287,0:.5](rX(,X),,RX(X,)),rX(,FX))~
+info:~
+a walking example sent by A.S.Wigand. 
+Manually created physical and neural structure, NN engram evolved~
+num:1
+gnum:0
+popsiz:3
+lifespan:0
+velocity:0
+distance:0
+vertvel:0
+vertpos:0
+user1:null
+user2:null
+user3:null
+uid:g956
+
+org:
+name:Food finder, 4 legs
+genotype:~
+lfffX[0:2.074,2:-2,1 :-0.839][-1 :1,0:3.156,0:-1][-1:0.119](RRfffMMMX[|-1:-10]rFFFMMMX[|-2:-1],fffwWLXfffMMMWLX[|6:10,3:-10](RRfffMMMX[|-4:-10]rrrFFFMMMX[|-5:-2.5][D:1],,RRfffMMMX[|-7:10]rFFFMMMX[|-8:-2.5][D:1]),RRfffMMMX[|-10:10]rrrFFFMMMX[|-11:-2.5])~
+info:~
+Land food finder. Created manually and then evolved by Miron Sadziak
+(manually modified)~
+num:6
+gnum:0
+popsiz:10
+lifespan:1673
+velocity:0.00637827
+distance:10.4275
+vertvel:0
+vertpos:0
+user1:null
+user2:null
+user3:null
+uid:g957
+
+org:
+name:Food finder worm
+genotype:~
+fffX(fffIX[S:-1.556],RRlFFFMMMX[|-1:-10,3:10]llllFFMMMX[|1:-4.450]RlllFFFMMMX[|G:-1.404],fffIX[S:1])~
+info:~
+Worm-like land food finder - created manually and then evolved by Miron Sadziak~
+num:6
+gnum:0
+popsiz:10
+lifespan:0
+velocity:0
+distance:0
+vertvel:0
+vertpos:0
+user1:null
+user2:null
+user3:null
+uid:g958
+
+org:
+name:Champ
+genotype:~
+MMMMM(rrrLLCCCCCXrrrFLLLLLX[|G:-1][@G:-1], LLXLLLLLLLX[|2:-1000,6:1000](rrrLLCCCCCX[CS][N,-1:0.1]rrrFLLLLLX[|G:-1][@G:-1],fffLfX,rLLCCCCCX[CS][N,-1:0.1]FLLLLLX[|G:-1][@G:1]), rLLCCCCCXFLLLLLX[|G:-1][@G:1])~
+info:~
+HOW CREATED:
+Designed and evolved
+I build the bones with a few sensors and a few
+simple neurons and muscels...
+I evolved it mostly only in speed and thats what
+came out...
+A very fast one i think.
+SUBMITTED BY: Ronny Schlegel (RoySchl@gmx.net), 2000-00-00
+I wanted to design a 4-legged running creature.
+PERFORMANCE:
+very small, but a velocity of 0.045
+(manually modified)~
+num:96
+gnum:0
+popsiz:30
+lifespan:9904.85
+velocity:0.0254585
+distance:317.715
+vertvel:0.00172342
+vertpos:0.095101
+user1:null
+user2:null
+user3:null
+uid:g959
+
+org:
+name:Oynuf Uotoysy
+genotype:~
+(AAfWWX[@, 10:-0.027][T]riX[S][T][3:1.417, -2:4.566, 6:6.002, -3:10, s:0, 6:-2.173, si:2][T][@, p:0.989, -2:1.73, p:0.951, p:1, p:0.992], rrrMqiA(MMWWM(rLLaaFFX[N, fo:0.956208, -5:9.373, s:0.066, in:0.8, 0:0.902, 7:3.205][Sin, t:3.01, f0:-0.006, t:0.411, f0:0.0628319, t:0, t:0][|-1:-10, 0:3.261, fo:0.126743, si:999, s:0.14, s:-0.132, 0:-2.725, in:0.8, s:0][|-1:-4.218, s:0.057, in:0.8, -3:-7.532, -6:3.127, si:-0.650512, in:0.8, s:0.265][|-1:-6.459, s:0.057, in:0.8, -3:-9.445, -6:10, si:-0.650512, in:0.8, s:0.265][N, fo:0.956208, -5:8.97, s:0.063, in:0.8, 0:4.43, 7:0.729][Sin, t:3.01, f0:-0.006, t:0.411, f0:0.0628319, t:0, t:0][|-1:-9.43, 0:3.154, fo:0.52718, si:999, s:0.14, s:-0.132, 0:0.273, in:0.8, s:0][|-1:-3.997, s:0.057, in:0.8, -3:-7.628, -6:8.174, si:-0.650512, in:0.8, s:0.265][|-1:-3.484, s:0.057, in:0.8, -3:-5.556, -6:10, si:-0.650512, in:0.8, s:0.265], ), X[T][T][S]))~
+info:~
+0.64% mutation of 'Anynum Uotoysy'
+(manually modified)~
+num:105078
+gnum:1702
+popsiz:1
+lifespan:5523
+velocity:0.0244793
+distance:135.199
+vertvel:0.00077455
+vertpos:0.0882149
+user1:null
+user2:null
+user3:null
+uid:g960
+

@@ -1,0 +1,14 @@
+# created Fri Sep 10 23:03:08 1999
+# by Framsticks simulator v0.950 (25-Apr-99) [PC Windows]
+
+org:
+name:Food finder, 4 legs
+genotype:~
+lllfffX[0:2.420,2:-2,1 :-1][-1 :1,0:1,0:-1][-1:1](RRlllfffMMMX[|-1:-10]lllFFFMMMX[|-2:-1],fffIXlllfffMMMsX[|6:10,3:-10](RRlllfffMMMIX[|-4:-10]lllFFFMMMIX[|-5:-1][S:1],,RRlllfffMMMIX[|-7:10]lllFFFMMMIX[|-8:-1][S:1]),RRlllfffMMMX[|-10:10]lllFFFMMMX[|-11:-1.784])~
+info:~
+Land food finder. Created manually and then evolved by Miron Sadziak~
+num:6
+popsiz:10
+lifespan:1673
+velocity:0.00637827
+distance:10.4275

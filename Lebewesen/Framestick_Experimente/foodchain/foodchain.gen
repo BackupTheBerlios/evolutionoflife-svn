@@ -1,0 +1,41 @@
+# created Sat May 22 16:00:56 2004
+# by Framsticks 2.88
+org:
+name:Food finder, 4 legs
+genotype:~
+lllfffX[0:2.420,2:-2.000,1 :-1.000][-1:1.000,0:1.000,0:-1.000][-1:1.000](RRlllfffMMMX[|-1:-10.000]lllFFFMMMX[|-2:-1.000],fffIXlllfffMMMsX[|6:10.000,3:-10.000](RRlllfffMMMIX[|-4:-10.000]lllFFFMMMIX[|-5:-1.000][Spr:1.000],,RRlllfffMMMIX[|-7:10.000]lllFFFMMMIX[|-8:-1.000][Spr:1.000]),RRlllfffMMMX[|-10:10.000]lllFFFMMMX[|-11:-1.784])~
+info:~
+Land food finder. Created manually and then evolved by Miron Sadziak
+(manually modified)~
+num:6
+gnum:0
+popsiz:10
+lifespan:1673
+velocity:0.00637827
+distance:10.4275
+vertvel:0
+vertpos:0
+user1:null
+user2:null
+user3:null
+
+org:
+name:Food finder, 4 legs (copy)
+genotype:~
+lllfffX[0:2.420,2:-2.000,1:-1.000][-1:1.000,0:1.000,0:-1.000][-1:1.000](RRlllfffMMMX[|-1:-10.000]lllFFFMMMX[|-2:-1.000],fffIXlllfffMMMsX[|6:10.000,3:-10.000](RRlllfffMMMIX[|-4:-10.000]lllFFFMMMIX[|-5:-1.000][Sfood:1.000],,RRlllfffMMMIX[|-7:10.000]lllFFFMMMIX[|-8:-1.000][Sfood:1.000]),RRlllfffMMMX[|-10:10.000]lllFFFMMMX[|-11:-1.784])~
+info:~
+Land food finder. Created manually and then evolved by Miron Sadziak
+(manually modified)
+(copy of 'Food finder, 4 legs')~
+num:6
+gnum:0
+popsiz:0
+lifespan:0
+velocity:0
+distance:0
+vertvel:0
+vertpos:0
+user1:null
+user2:null
+user3:null
+

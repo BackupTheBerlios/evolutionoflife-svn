@@ -1,0 +1,59 @@
+class:
+name:CS
+longname:Smell sensor
+description:Smells ALL food sources
+prefinputs:0
+prefoutput:1
+vectordata:~
+46,3,12,75,50,71,37,62,28,50,25,37,28,28,37,25,50,28,62,37,71,50,75,62,71,71,62,75,50,1,75,50,100,50,5,35,50,40,35,45,35,55,65,60,65,65,50~
+code:~
+function init()
+{}
+
+function go()
+{
+
+
+var s=0.0;
+var i=0;
+var j = 0;
+var avg_energy = 0.0;
+var weight = 0.0;
+
+
+while(i < LiveLibrary.groupcount-1)
+{
+	if(i != Neuro.creature.group.index && LiveLibrary.getGroup(i).creaturecount > 0) 
+	{
+		j=0;
+		avg_energy = 0.0;
+		while(j < LiveLibrary.getGroup(i).creaturecount)
+		{
+			avg_energy += 1.0*LiveLibrary.getGroup(i).getCreature(j).energy;
+			j++;
+		}
+		if(LiveLibrary.getGroup(i).creaturecount != 0)	avg_energy /= 1.0*LiveLibrary.getGroup(i).creaturecount;
+		else avg_energy = 0.000001;
+
+		if((0.995*Neuro.creature.energy/Neuro.creature.numparts) < (avg_energy/LiveLibrary.getGroup(i).getCreature(0).numparts))
+			weight = -0.05;
+		else
+			weight = 0.8;		
+		
+		s += weight * LiveLibrary.getGroup(i).senseCreaturesProperty(
+			Neuro.position_x, Neuro.position_y, Neuro.position_z, "energy", Neuro.creature);
+	}
+	i++;
+}
+
+s += LiveLibrary.getGroup(LiveLibrary.groupcount-1).senseCreaturesProperty(
+	Neuro.position_x, Neuro.position_y, Neuro.position_z, "energy", Neuro.creature);
+
+
+
+
+Neuro.state = s;
+
+}
+~
+

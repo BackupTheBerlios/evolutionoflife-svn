@@ -1,0 +1,809 @@
+expdef:
+name:Sexual Selection 1
+info:~
+Three populations:
+- Males
+- Females
+- Food
+
+Males and females eat food. Food is grown at constant rate.
+Males can fight with each other, males and females can reproduce on collision.
+Females can determine if they want to have offspring depending on the age of the male. The value which contributes to this decision is stored in userfield1.
+Offspring gets a value which is the avarage of both male and female, and this value can also be changed when mutation occurs.
+
+
+NEW FEATURES:
+1. User fields are now vectors.
+- reading an element from a vector:
+second element of user field 2 -> Creature.user2.get(1);
+- writing an element to a vector:
+write "bla" to second element of user field 2 -> Creature.user2.set(1, "bla");
+
+User1 is used for information about the individuals that is static during life. Like population number and generation.
+User2 is used for information about the individuals life. E.g. total energy consumed, number of fights, number of offspring
+User3 is used for dynamic values that chamge during life, and are only used within the expdef: e.g. wait after fight, wait after reproduction.
+
+Author:
+Leo - l.pape@phil.uu.nl
+Virtual Life lab - Utrecht University
+May 2004
+~
+code:~
+global foodwait;									// The number of time steps elapsed since the last foodpart was added
+global steps;										// The number of steps in the experiment. This will be incremented by 1 each step.
+
+// Load experiment definition.
+// This methods is called from the parameter window of GUI when with 'apply' or 'reload'.
+function onExpDefLoad()
+{
+	// Define experiment parameters, instantiation and initialization
+	// These can appear in the Parameter window in GUI, see on bottom of experiment definition
+
+	ExpParams.creath = 0;							// Height at which creatures are spawned.
+	ExpParams.paramfile = "sexual_selection_1.sim";
+	ExpParams.genefile = "sexual_selection_1.gen";
+	ExpParams.numberMales = 10;						// Number of prey creatures in population 0.
+	ExpParams.numberFemales = 10;					// Number of predator creatures in population 1.
+	ExpParams.autorestart = 0;						// Automatic restart at extinction (0 or 1).
+	ExpState.totaltestedcr = 0;						// Keeps track of total tested creatures.
+	ExpParams.p_mut = 100;							// Probability of mutation.
+
+	ExpParams.fightLifespan = 1000;					// Minimum fighting age (individuals can only figth above this age).
+	ExpParams.energyFight = 20;						// Energy loss at fight.
+	ExpParams.waitFight = 1000;
+
+	ExpParams.reprEnergy = 200;						// Reproductive energy (individuals can only reproduce above this level).
+	ExpParams.reprLifespan = 1000;					// Reproductive age (individuals can only reproduce above this age).
+	ExpParams.maleen = 2;							// Energy cost for a male to reproduce.
+	ExpParams.femaleen = 400;						// Energy cost for a female to reproduce.
+	ExpParams.waitMate = 1000;
+
+	ExpParams.Energy0 = 300;						// Starting energy.
+	ExpParams.e_meta = 0.001;						// Metabolistic energy (substracted for each stick each step)
+	ExpParams.feedtrans = 3;						// Transferral of energy per step from food part to creature
+	ExpParams.aging = 10000;						// Aging level, metabolic energy grows with age (doubled at this level).
+	ExpParams.feede0 = 300;							// Food's starting energy
+	ExpParams.feedrate = 2500;						// Rate at which new food parts are added to the world per step.
+	ExpParams.foodgrowth = 5;						// Rate at which food parts grow (gain energy).
+	ExpParams.maxfoodenergy = 1000;					// Maximum energy per food part.
+	ExpParams.maxfoodparts = 30;					// Maximum number of food parts.
+	ExpParams.foodgen = "";							// Genotype of standard food part.
+
+	// Clear and create the genepool in the GenotypeLibrary
+	if (GenotypeLibrary.groupcount != 0)
+		GenotypeLibrary.clear();
+
+	// The first always exist, and just needs to be named.
+	GenotypeGroup.name = "Genepool";
+	GenotypeGroup.fitness = "return this.user2.get(0);";
+
+
+	if (LiveLibrary.groupcount != 0)				// Clear the LiveLibrary
+		LiveLibrary.clear();
+	
+	CreaturesGroup.name = "Males";					// The first group always exist, and just needs to be named.
+	CreaturesGroup.nnsim = 1;						// Neural net simulation is turned on for this group.
+	CreaturesGroup.death = 1;						// Death is on
+	CreaturesGroup.enableperf = 1;					// Performance evaluation is turned on.
+	CreaturesGroup.colmask = 5;	 					// Collision mask is set to 1 (Standard) + 4 (Custom handler) = 5.
+	CreaturesGroup.em_stat = 0.002;
+	CreaturesGroup.em_dyn = 0.001;
+													// Standard handler is mechanical bounce.
+													// Custom collision handler calls onACollision() method below.
+
+	LiveLibrary.addGroup("Females");				// Add a second creatures group.
+	CreaturesGroup.nnsim = 1;						// Neural net simulation is turned on.
+	CreaturesGroup.death = 1;						// Death is on
+	CreaturesGroup.enableperf = 1;					// Performance evaluation is enabled.
+	CreaturesGroup.colmask = 5;						// Collision mask is set to 1 (Standard) + 4 (Custom handler) = 5.
+	CreaturesGroup.em_stat = 0.002;
+	CreaturesGroup.em_dyn = 0.001;
+													// Standard handler is mechanical bounce.
+
+	LiveLibrary.addGroup("Food");					// Add a third population.
+	CreaturesGroup.nnsim = 0;						// Neural net is turned off (individuals are not animated).
+	CreaturesGroup.death = 1;						// Death is on
+	CreaturesGroup.enableperf = 0;					// Performance is not evaluated.
+	CreaturesGroup.colmask = 5; 					// Collision mask is set to 1 (Standard) + 4 (Custom handler) = 5.
+													// Standard handler is mechanical bounce.
+
+	foodwait = 0;									// The number of time steps elapsed since the last foodpart was added
+	steps = 0;										// The number of steps in the experiment. This will be incremented by 1 each step.
+}
+
+
+// Initialize experiment. This is called from GUI when 'Initialise' is pressed.
+// Fills populations with creatures.
+function onExpInit()
+{
+	ExpState.totaltestedcr = 0;
+
+	// Clear content of genepools (before loading genotypes)
+	var i = 0;
+	while(i < GenotypeLibrary.groupcount)
+	{
+		GenotypeLibrary.clearGroup(i);
+		i++;
+	}
+
+	sim_params.import(ExpParams.paramfile, 4);		// Load parameter (*.sim) file and genotype (*.gen) file.
+	sim_params.import(ExpParams.genefile, 2);		// The genotype file should contain 1 genotype
+
+	// Clear content of population groups
+	var i = 0;
+	while(i < LiveLibrary.groupcount)
+	{
+		LiveLibrary.clearGroup(i);
+		i++;
+	}
+
+	// Fill two groups with creatures
+	var i = 0;
+	while(i < 2)									// This loop is called two times: females and males.
+	{
+		LiveLibrary.group = i;						// This selects the i-th population.
+													// This will be used during the rest of the method, 
+													// until another is selected.
+
+		var numberCreatures;
+		if(i == 0) numberCreatures = ExpParams.numberMales;
+		else if(i == 1) numberCreatures = ExpParams.numberFemales;
+		var j = 0;
+
+		while(j < numberCreatures)					// This loop is called once for every creature.
+		{
+			var sexname = "male";
+			if(i == 1)
+				sexname = "female";
+
+			// Get genotype from genepool on location corresponding to the population index i.
+			GenotypeLibrary.group = 0;
+			GenotypeLibrary.genotype = 0;
+
+			var newcreature = LiveLibrary.getGroup(i).createFromGenotype(GenotypeLibrary.genotype);
+			ExpState.totaltestedcr = ExpState.totaltestedcr + 1;
+
+			newcreature.name = newcreature.name + "_" + sexname + "_" + ExpState.totaltestedcr;	// Extend the creatures name with sex and index.
+
+			// Assign population number to user field 1 (starting from 0).
+			// NEW !! USER FIELDS ARE VECTORS!
+
+			// The minimum age a male must be for a woman to have offspring when mating with the male.
+			var minAgeRepr = Math.rnd01 * ExpParams.aging;
+		
+			// USER FIELD 1 CONTAINS NON-CHANGING INFORMATION ABOUT THE INDIVIDUAL, SET AT CREATION/BIRTH
+			var userfield1 = Vector.new();
+			userfield1.add(i);						// First element is POPULATION; 0 = males, 1 = females.
+			userfield1.add(minAgeRepr);				// Second element is minAgeRepr (see above).
+			newcreature.user1 = userfield1;
+
+			// USER FIELD 2 CONTAINS 'PERFORMANCE' INFORMATION, CHANGES DURING LIFETIME, USED FOR ANALYSIS.
+			var userfield2 = Vector.new();
+			userfield2.add(0);						// First element is Status
+			userfield2.add(0);						// Second element is for number of children reproduced.
+			newcreature.user2 = userfield2;
+
+			// USER FIELD 3 CONTAINS 'STATE' INFORMATION, USED ONLY WITHIN EXPERIMENT DEFINITION
+			var userfield3 = Vector.new();
+			userfield3.add(-1);						// First element is 'wait for FIGHT'
+			userfield3.add(-1);						// Second element is 'wait to MATE'
+			newcreature.user3 = userfield3;
+
+			// Place the new creature on a random location in the world. See method below.
+			place_randomly(newcreature);
+			j++;
+		}
+		i++;
+	}
+
+	foodwait = 0;									// The number of time steps elapsed since the last foodpart was added
+	steps = 0;										// The number of steps in the experiment. This will be incremented by 1 each step.
+
+	// Creature populations are now filled with creatures.
+	// Food parts will be added and grow step by step.
+	addfood();
+
+
+}
+
+
+// This method is called from onInitExp for initial *created* population
+// and from onBorn for *born* individuals, resulting from mating. It places a creature at a random place in the world.
+function place_randomly(cr)
+{
+	// Pick random x and y coordinates in the world.
+	var x = (World.wrldsiz - cr.size_x) * Math.rnd01 - cr.size_x / 2;
+	var y = (World.wrldsiz - cr.size_y) * Math.rnd01 - cr.size_y / 2;
+
+	// The z coordinate is not randomly chosen, but determined by creatheight parameter.
+	var z = WorldMap.getHeight(x, y);
+	
+	if (World.wrldwat > z)							// water here
+	{
+		if (ExpParams.creath > 0)
+			z = World.wrldwat + ExpParams.creath;
+		else
+			z = (1.0 + ExpParams.creath) * World.wrldwat - z * ExpParams.creath;
+	}
+	else											// land area
+	{
+	if (ExpParams . creath > 0)
+		z += ExpParams.creath;
+	}
+
+	// After setting the x, y, and z coordinates, place it in this location.
+	cr.moveAbs(x, y, z - 0.999);
+	return;
+}
+
+
+// This method is automatically called when creature is created in livelibrary.
+// It simply tries to place creatures randomly in the world, for 20 times.
+function onBorn()
+{
+	var retry = 20;									//retry 20 times
+	while(retry--)
+	{
+		place_randomly(Creature.*);
+		Creature.energy = ExpParams.Energy0;
+
+		if(ExpParams.aging == 0)					// If aging is turned off (set to zero), then set idle energy
+			Creature.idleen = ExpParams.e_meta;
+
+		if (!LiveLibrary.creatBBCollisions(0))		//If collision is avoided, then return normally, else try again
+			return;
+	}
+	Simulator.message("onBorn: Couldn't avoid collisions!", 2);
+}
+
+
+// The onStep method is called every step, mainly used for adjusting idle energy levels and adding food.
+// In some case it is advisable to divide this in population specific onAStep, onBStep en 
+// onFoodStep methods, but in this case it is more compact in this way.
+function onStep()
+{
+	steps = steps + 1;
+
+	// Adjust idle energy levels of creatures according to their lifespan.
+	var i = 0;
+	while(i < 2)									// For the creature populations
+	{
+		LiveLibrary.group = i;						// Select the i-th population
+
+		var j = 0;
+		while(j < CreaturesGroup.creaturecount)		// For every creature j in population i
+		{
+      		LiveLibrary.creature = j;				// Select creature j
+
+			// UPDATING WAITING TIME FOR FIGHT AND MATING
+			if(Creature.user3.get(0) != -1)
+			{
+				if(Creature.user3.get(0) > ExpParams.waitFight)
+					Creature.user3.set(0, -1);
+				else
+					Creature.user3.set(0, Creature.user3.get(0) + 1);
+			}
+			if(Creature.user3.get(1) != -1)
+			{
+				if(Creature.user3.get(1) > ExpParams.waitMate)
+					Creature.user3.set(1, -1);
+				else
+					Creature.user3.set(1, Creature.user3.get(1) + 1);
+			}
+			
+			// Adjust idle energy by some strange looking function
+			if (ExpParams.aging > 0)
+				Creature.idleen = ExpParams.e_meta * Math.exp((0.069 * Creature.lifespan) / ExpParams.aging);
+			j++;
+	    }
+		i++;
+	}
+
+	// Adjust energy of all food parts
+	// Food parts grow (gain energy) at constant rate, parameter foodgrowth.
+	LiveLibrary.group = 2;							// Select food group
+	var f = 0;
+	while(f < CreaturesGroup.creaturecount)
+	{
+		LiveLibrary.creature = f;
+
+		if(Creature.user1.get(0) < ExpParams.maxfoodenergy)	// If the energey that the foodpart is given, is below the max
+		{
+			// then add energy to the food part
+			Creature.energy = Creature.energy + ExpParams.foodgrowth;
+			Creature.user1.set(0, Creature.user1.get(0) + ExpParams.foodgrowth);
+		}
+		
+		//Set size proportional to energy
+		Creature.getMechPart(0).fr = Creature.energy / 100;
+		Creature.getMechPart(0).m = 0.5 + Creature.energy / 100;
+
+		f++;
+	}
+
+	foodwait = foodwait + 1;						// Increment the waiting time for food
+	
+	// If foodwait is greater than the feedrate, add a foodpart.
+	if(foodwait > ExpParams.feedrate && CreaturesGroup.creaturecount < ExpParams.maxfoodparts)
+	{
+		addfood();
+		foodwait = 0;
+	}
+
+}
+
+
+// Add food and set initial parameters of the food part.
+function addfood()
+{
+	LiveLibrary.group = 2;							// Select food group.
+	
+	// If foodgenotype is left unspecified, create default food part
+	if (ExpParams.foodgen == "")
+		LiveLibrary.createFromString("//0\nm:Vstyle=food\nm:se="+ExpParams.maxfoodenergy+"\np:");
+	else
+		LiveLibrary.createFromString(ExpParams.foodgen);
+
+	Creature.energy = ExpParams.feede0;				// Set food starting energy to feede0.
+	Creature.getMechPart(0).m = 0.5;				// Set size.
+	Creature.user1.set(0, 2);						// Set population to 2 (food).
+	Creature.name = "Food";
+	var userfield1 = Vector.new();
+	userfield1.add(0);								// First element is energy added.
+	Creature.user1 = userfield1;
+
+	place_randomly(Creature.*);
+
+	Simulator.print("" + steps + " FEED: Food part added, total no foodparts is: " + CreaturesGroup.creaturecount);
+}
+
+
+// Population specific onCollision methods. These are called at the event of a collision.
+// Note that the population specific collision mask (colmask) should be set appropriately.
+function onFoodCollision()
+{
+	var cr1 = Collision.Creature1;
+	var cr2 = Collision.Creature2;
+
+	if(cr2.user1.get(0) == 0 || cr2.user1.get(0) == 1)	// If food collided with male or female creature
+	{
+		var e = ExpParams.feedtrans;
+		cr1.energy_m = cr1.energy_m + e;
+		cr2.energy_p = cr2.energy_p + e;
+	}
+}
+
+
+function onMalesCollision()
+{
+	onCreaturesCollision();
+}
+
+function onFemalesCollision()
+{
+	onCreaturesCollision();
+}
+
+// This function creates offspring, given a male, and a female, if male and female satisfy certain conditions
+function reproduction(male, female)
+{
+	if(male.user3.get(1) == -1						// If the creatures are not in their wait MATE time
+		&& female.user3.get(1) == -1				
+		&& male.energy >= ExpParams.reprEnergy		// and have reached the minimum reproduction energy
+		&& female.energy >= ExpParams.reprEnergy
+		&& male.energy >= ExpParams.maleen			// and have enough reproduction energy
+		&& female.energy >= ExpParams.femaleen
+		&& male.lifespan >= ExpParams.reprLifespan	// and have reached the minimum reproduction age
+		&& female.lifespan >= ExpParams.reprLifespan
+	  )
+	{		
+		if( !(male.lifespan >= female.user1.get(1)) )	// If the female doesn't want to mate with a male of that age
+			Simulator.print("" + steps + " REPRODUCTION REJECTED: female '" + female.name + "' rejects male '" + male.name + "'. Female: " + female.user1.get(1) + " > Male: " + male.lifespan);
+		else
+		{
+			Simulator.print("" + steps + " REPRODUCTION ACCEPTED: female '" + female.name + "' accepts male '" + male.name + "'. Female: " + female.user1.get(1) + " <= Male: " + male.lifespan);
+
+			var geno1 = Geno.newFrom(male.genotype, -1, male.name, male.info);			// Create Geno objects
+			var geno2 = Geno.newFrom(female.genotype, -1, female.name, female.info);	// Create Geno objects
+
+			// Crossover, NB: segment proportional crossover should be enabled for f1!
+			var child = GenMan.crossOver(geno1, geno2);
+
+			// The minimum age a male must be for a woman to have offspring when mating with the male, is the average of both parents.
+			var minAgeRepr = (male.user1.get(1) + female.user1.get(1)) / 2;
+
+			// Mutate, if a random number is below the chance of mutation
+			if( (Math.rnd01 * 100) < ExpParams.p_mut)
+			{
+				child = GenMan.mutate(child);  			// xovchild
+				minAgeRepr = (minAgeRepr + (Math.rnd01 * ExpParams.aging)) / 2;	//Mutate this number
+			}
+
+			// Substract energy from parents
+			male.energy = male.energy - ExpParams.maleen;		// Male loses a certain amount of energy defined in ExpParams
+			female.energy = female.energy - ExpParams.femaleen;	// Female loses a certain amount of energy defined in ExpParams
+
+			if (Genotype.isValid)													
+			{	
+				// Determine the sex of the creature
+				var sex = 0;
+				var tmprnd = Math.rnd01;				// Generate random nuber
+				if(tmprnd > 0.5)						// If the random number is smaller than 0.5, then sex is male (0)
+					sex = 1;							// else the sex of the creature is female (1).
+					
+				var sexname = "male";
+				if(sex == 1)
+					sexname = "female";
+
+				// Add creature to LiveLibrary
+				var newcreature = LiveLibrary.getGroup(sex).createFromGeno(child);
+				ExpState.totaltestedcr = ExpState.totaltestedcr + 1;
+
+				var tmpName = String.split(male.name, "_");	// Strip sex and number from name
+				newcreature.name = tmpName.get(0) + "_" + sexname + "_" + (ExpState.totaltestedcr);	// Extend the creatures name with sex and index.
+			
+
+				// USER FIELD 1 CONTAINS NON-CHANGING INFORMATION ABOUT THE INDIVIDUAL, SET AT CREATION/BIRTH
+				var userfield1 = Vector.new();
+				userfield1.add(sex);					// First element is POPULATION; 0 = males, 1 = females.
+				userfield1.add(minAgeRepr);				// Second element is minAgeRepr (see above).
+				newcreature.user1 = userfield1;
+
+				// USER FIELD 2 CONTAINS 'PERFORMANCE' INFORMATION, CHANGES DURING LIFETIME, USED FOR ANALYSIS.
+				var userfield2 = Vector.new();
+				userfield2.add(0);						// First element is Status
+				userfield2.add(0);						// Second element is for number of children reproduced.
+				newcreature.user2 = userfield2;
+
+				// USER FIELD 3 CONTAINS 'STATE' INFORMATION, USED ONLY WITHIN EXPERIMENT DEFINITION
+				var userfield3 = Vector.new();
+				userfield3.add(-1);						// First element is 'wait for FIGHT'
+				userfield3.add(-1);						// Second element is 'wait to MATE'
+				newcreature.user3 = userfield3;	
+				
+				// Place the new creature at a random location in the world.
+				place_randomly(newcreature);
+				Simulator.print("" + steps + " BORN: new creature " + newcreature.name);
+	
+				// Adjust number of offspring
+				male.user2.set(1, male.user2.get(1) + 1);			// Add 1 to the number of children reproduced
+				female.user2.set(1, female.user2.get(1) + 1);		// Add 1 to the number of children reproduced
+			}
+		}
+
+		male.user3.set(1, 0);						// Set wait to MATE counter to 0 for male;
+		female.user3.set(1, 0);						// Set wait to MATE counter to 0 for female;
+	}
+}
+
+// This function computes the variables that change during a fight between two creatures, cr1 and cr2.
+// Fighting always costs a certain amount of energy, but a creature can gain status. The winner of a 
+// fight gains 1 status, and the other creature loses 1 status. Which creature wins the fight is deter-
+// mined with a energy-proportional chance.
+function fight(cr1, cr2)
+{
+	if(cr1 != cr2		 							// If the two creatures are not the same creature
+		&& cr1.lifespan >= ExpParams.fightLifespan	// and are old enough to fight
+		&& cr2.lifespan >= ExpParams.fightLifespan
+		&& cr1.user3.get(0) == -1					// and are not in their wait FIGHT time
+		&& cr2.user3.get(0) == -1
+	  )
+	{	
+		// all fighting costs energy, for both creatures!
+
+		cr1.energy = cr1.energy - ExpParams.energyFight;		// Subtract energy for a single fight
+		cr2.energy = cr2.energy - ExpParams.energyFight;		// Subtract energy for a single fight
+		Simulator.print("" + steps + " FIGHT: '" + cr1.name + "' vs. '" + cr2.name + "'");
+
+		if(cr1.energy > 0 && cr2.energy > 0)		// If both creatures are still alive, compute status
+		{
+			var sel = (cr1.energy + cr2.energy) * Math.rnd01;	// Compute energy-proportional chance of winning the fight
+			if(sel < cr1.energy)
+			{
+				cr1.user2.set(0, cr1.user2.get(0) + 1);			// Increase status
+				cr2.user2.set(0, cr2.user2.get(0) - 1);			// Decrease status
+				Simulator.print("" + steps + " WINNER: '" + cr1.name + "' WINS and gains status");
+			}
+			else
+			{
+				cr1.user2.set(0, cr1.user2.get(0) - 1);			// Decrease status
+				cr2.user2.set(0, cr2.user2.get(0) + 1);			// Increase status
+				Simulator.print("" + steps + " WINNER: '" + cr2.name + "' WINS and gains status");
+			}
+		}
+		else if(cr1.energy > 0)									// Else the surviving creature gains status
+		{
+			cr1.user2.set(0, cr1.user2.get(0) + 1);				// Increase status
+			Simulator.print("" + steps + " WINNER: '" + cr1.name + "' WINS and gains status");
+		}
+		else if(cr2.energy > 0)									// Else the surviving creature gains status
+		{
+			cr2.user2.set(0, cr2.user2.get(0) + 1);				// Increase status
+			Simulator.print("" + steps + " WINNER: '" + cr2.name + "' WINS and gains status");
+		}	
+	
+		cr1.user3.set(0, 0);						// Set wait for FIGHT time to 0
+		cr2.user3.set(0, 0);						// Set wait for FIGHT time to 0
+	}
+}
+
+function onCreaturesCollision()
+{
+	// TWO TYPES OF CREATURE-CREATURE COLLISION:
+	// 1. Intrassexual: Reproduction
+	// 2. Intersexual: Fight
+
+	var cr1 = Collision.Creature1();
+	var cr2 = Collision.Creature2();
+
+	// IF COLLIDING CREATURE ARE MALE AND FEMALE -> TRY REPRODUCTION
+	if( (cr1.user1.get(0) ==  0 && cr2.user1.get(0) == 1) || (cr1.user1.get(0) == 1 && cr2.user1.get(0) == 0) )
+	{
+		if(cr1.user1.get(0) != 0)
+		{
+			cr1 = Collision.Creature2();			// cr1 is always the male
+			cr2 = Collision.Creature1();			// and cr2 is always the female
+		}
+		reproduction(cr1, cr2);
+	}
+
+	// IF COLLIDING CREATURE ARE BOTH MALES -> FIGHT
+	else if(cr1.user1.get(0) == 0 && cr2.user1.get(0) == 0)
+	{
+		fight(cr1, cr2);
+	}
+}
+
+// Add genotype to the genotype library, and update stats
+function onKill()
+{
+	if(Creature.user1 == 2)							// Ignore food parts
+		return;
+
+	// Do not copy to the genepool
+	// GenotypeLibrary.getFromCreature();				// Copy the genotype of the dead creature to the genepool
+	// Genotype.user1 = Creature.user1;
+	// Genotype.user2 = Creature.user2;
+	// Genotype.user3 = Creature.user3;
+	// Genotype.num = 0;								// Genotype number = 0: it will be determined automatically
+	// Genotype.popsiz = 0;								// No copies
+	// GenotypeLibrary.addPerformanceFromCreature();	// Add performance figures
+
+	Simulator.print("" + steps + " DEATH: individual '" + Creature.name + "' died, removing corpse");
+}
+
+
+
+function onExpLoad()
+{
+	Simulator.message("not implemented",3);
+}
+
+function onExpSave()
+{
+	Simulator.print(" Not implemented");
+}
+
+
+function addFood(){}
+
+asm
+{
+:queryEventNames
+push "Place food"
+push "Drop food"
+return
+:onUserEvent
+call WorldMap.intersect
+if s0,==,0,:onUserEvent_fail
+call :addFood
+move Creature.size_x,m1
+div 2,m1
+sub m1,s1
+move Creature.size_y,m1
+div 2,m1
+sub m1,s2
+if s6,==,0,:onUserEvent_dontdrop
+add 10.0,s3
+:onUserEvent_dontdrop
+call Creature.moveAbs,s1,s2,s3
+:onUserEvent_fail
+return
+}
+
+~
+
+prop:
+id:creath
+name:Creation height
+type:f -1 50
+help:~
+Vertical position (above the surface) where new creatures are revived.
+Negative values are only used in the water area:
+  0   = at the surface
+-0.5 = half depth
+-1   = just above the bottom~
+
+prop:
+id:paramfile
+name:Parameter file
+type:s
+group:
+
+prop:
+id:genefile
+name:Genotype file
+type:s
+group:
+
+prop:
+id:numberMales
+name:Number of Males
+type:f 0 50
+group:
+help:Number of males created at start-up
+
+prop:
+id:numberFemales
+name:Number of Females
+type:f 0 50
+group:
+help:Number of females created at start-up
+
+prop:
+id:autorestart
+name:Restart after extinction
+group:
+help:Restarts automatically this experiment after the last creature dies
+type:d 0 1
+
+prop:
+id:p_mut
+name:Mutated
+type:f 0 100
+group:Selection
+
+prop:
+id:fightLifespan
+name:Miminum Fight Age
+type:f 0 50000
+group:Fight
+help:Creature can fight with other creatures when its reaches this lifespan.
+
+prop:
+id:energyFight
+name:Energy Loss at Fight
+type:f 0 5000
+group:Fight
+
+prop:
+id:waitFight
+name:Waiting Time after Fighting
+type:f 0 5000
+group:Fight
+
+prop:
+id:reprEnergy
+name:Minimum Reproduction Energy
+type:f 0 5000
+group:Reproduction
+help:~
+Creature can produce offspring when its energy level reaches this 
+threshold. Note: either this or 'Reproduction Age' must be set on a positive 
+value to avoid population explosion.~
+
+prop:
+id:reprLifespan
+name:Minimum Reproduction Age
+type:f 0 50000
+group:Reproduction
+help:~
+Creature can produce offspring when its reaches this lifespan. Note: either 
+this or 'Reproduction Energy' must be set on a positive value to avoid 
+population exploision.~
+
+prop:
+id:maleen
+name:Male Reproduction Energy Cost
+type:f 0 1000
+group:Reproduction
+help:The amount of energy loss for a male to generate offspring at collision with a female
+
+prop:
+id:femaleen
+name:Female Reproduction Energy Cost
+type:f 0 5000
+group:Reproduction
+help:The amount of energy loss for a female to generate offspring at collision with a male
+
+prop:
+id:waitMate
+name:Waiting Time after Mating
+type:f 0 5000
+group:Reproduction
+
+prop:
+id:Energy0
+name:Starting Energy
+type:f 0 5000
+group:Energy
+help:Initial energy for the creatures when born
+
+prop:
+id:e_meta
+name:Idle Metabolism
+type:f 0 1
+group:Energy
+help:Each stick consumes this amount of energy in one time step
+
+prop:
+id:feedtrans
+name:Eating Rate
+group:Energy
+type:f 0 100
+
+prop:
+id:aging
+name:Aging Time
+group:Energy
+type:d 0 50000
+help:Idle metabolism doubles after this period (0 disables aging)
+
+prop:
+id:feedrate
+name:Feeding Rate
+type:f 0 5000
+group:Food
+help:How fast energy is created in the world
+
+prop:
+id:feede0
+name:Food's Starting Energy
+group:Food
+type:f 0 1000
+
+prop:
+id:foodgrowth
+name:Food Growth Rate
+group:Food
+type:f 0 10
+
+prop:
+id:maxfoodenergy
+name:Max Energy of Food Part
+group:Food
+type:f 1 5000
+
+prop:
+id:maxfoodparts
+name:Max Number of Food Parts
+group:Food
+type:f 0 500
+
+prop:
+id:foodgen
+name:Food's Genotype
+group:Food
+type:s 1
+help:~
+The default food model is a simple, single part object:
+  //0
+  m:Vstyle=food
+  p:
+(this genotype is used when you leave this field blank).
+You can specify another genotype to create "intelligent" or mobile food.~
+
+state:
+id:notes
+name:Notes
+type:s 1
+help:~
+You can write anything here
+(it will be written to the experiment file)~
+
+state:
+id:totaltestedcr
+name:Evaluated creatures
+help:Total number of the creatures evaluated in the experiment
+type:d
+flags:16

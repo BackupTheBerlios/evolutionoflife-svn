@@ -1,0 +1,877 @@
+expdef:
+name:Framsticks DEATHMATCH v3.2
+info:~
+This is an experiment definition in which teams of creatures compete for world dominance. 
+Each student team must build/evolve a creature to be best at survival in this Deathmatch.
+
+This version is compatible with Framsticks v2.10.
+
+The DEATHMATCH is an arena in which:
+- creatures can forage, fight, die and clone.
+- creatures must collect energy to stay alive. This can be done in two ways: 
+(1) collecting food, and (2) fighting creatures from other teams.
+- In a fight (i.e. when they collide), the creature with the most energy wins, 
+and some energy (win energy) is transferred from the loser to the winner.
+- When a creature has a lot of energy (above reproduction energy), 
+it spawns a baby-clone and thus the teams has a new competitor.
+
+USAGE:
+1- Save genotypes to a *.gen-file (default = deathmatch.gen) 
+You do not need to load genotypes. This is done during initialisation.
+2- Select deathmatch_v3 and press apply (or reload).
+This will load the experiment and generate several empty population groups.
+3- Press initialize to read simulation parameter-file and fill population groups (except food).
+Parameters are set, and genotypes are loaded, and teams are filled.
+4- DO NOT FORGET TO LOAD THE DEATHMATCH VISUAL STYLE !
+Do this in the Interface -> Options -> Visual Style panel.
+5- Now Framsticks is ready for Deathmatch!
+
+
+SCORE:
+- The score of a team is the sum of the lifespans of all individuals in the team (also clones)
+- Plus an (optional) extra bonus for the winner.
+- The scores arenot reset on re-initialization (to allow multiple subsequent matches).
+- The scores are only reset at reload.
+
+Some SPECS(in default simulation parameters):
+- 11 populations: 10 teams + 1 food population
+- Each population start with 5 individuals (clones)
+- There is land (height field), water and food. 
+
+
+
+IMPORTANT NOTES:
+- After changing simulation parameters, SAVE them to a *.sim-file 
+(default=deathmatch.sim). Changes ccome into effect only after RE-INITIALISATION.
+- After adding your own creature to genotype file, save it to a *.gen-file and re-initialize.
+
+Framsticks Deathmatch Website:
+http://www.aisland.org/vll/projects/deathmatch.htm
+
+Contact:
+Walter de Back
+Virtual Life lab
+Utrecht University
+http://www.aisland.org/vll
+~
+code:~
+
+global oldcollider1;	// last collider
+global oldcollider2;  	// other last collider
+
+global scores;			// Total score of team is the sum of the lifespans of each individual in the team (See onDeath)
+global numberextinct;
+global pastmatches;
+global placegroup;
+global teamnames;
+global f;
+
+function onExpDefLoad()
+{
+// define genotype and creature groups
+if (GenotypeLibrary.groupcount != 0) GenotypeLibrary.clear();
+GenotypeGroup.name="Deathmatch Competitors";
+if (LiveLibrary.groupcount != 0) LiveLibrary.clear();
+
+ExpParams.energyperstick=1;			// If 0 -> starting energy is per creature; if 1 -> starting energy is per stick!
+ExpParams.removeImmobile=1;			// Remove immobile creatures after 100 steps.
+ExpParams.Energy0=10000;			// Starting energy (per creature) is 10000 (for 1st generation)
+ExpParams.BaseEnergyClone=5000;			// Base energy of cloes
+ExpParams.reprEnergy=11000;			// Creatures with energy level 11000 (or over) is copied
+ExpParams.reprLifespan=2000;			// Creatures have to be older than 2000 steps to be cloned
+ExpParams.winergy=500;				// Win energy (the amount transfered with a fight) is set to 250
+ExpParams.reprInheritEnergy=0.5;		// Half of energy of parent is inherited by child.
+ExpParams.e_meta=0.3;				// Metabolism per step per stick is 1
+ExpParams.waitFight=150;			// Colliders have to wait 150 steps to fight again
+ExpParams.waitCloning=150;			// Colliders have to wait 150 steps to fight again
+ExpParams.numberCreatures=5;			// Number of creatures in each population/team
+ExpParams.numberTeams=3;			// Number of participating teams (max=5)
+ExpParams.bonus=10000;				// Bonus for winning team (added to their score)
+									// The score is the sum of the lifespans of all individuals in the team (+bonus)
+ExpParams.feed=25;				// There are 25 food items in the world
+ExpParams.feede0=250;				// Each food item contains 250 energy
+
+ExpParams.creath=10;				// Creatures are created on some height
+ExpParams.clonenocontact=0;
+ExpParams.foodgen="";
+ExpParams.paramfile="deathmatch.sim"; 		// Parameter file to be loaded at start-up (at initialize)
+ExpParams.genepoolfile="deathmatch.gen";        // Genepool file to be loaded at start-up (at initialize)
+ExpParams.poplimit=100;				// Teamsize is limited to 100 individuals per population
+
+ExpParams.autorestart=0;			// Auto restart is switched off
+ExpParams.numberMatches=0;			// Auto restart is switched off
+
+pastmatches=0;
+numberextinct=0;
+placegroup=-1;
+teamnames = "ABCDEFGHIJKLMNO";
+
+sim_params.import(ExpParams.paramfile, 4);              // Load simulation parameters
+f = File.createDirect("deathmatch.log","teamsizes A..n (n=numberteams)");
+scores = Vector.new();
+
+var i=0;
+while(i < ExpParams.numberTeams)
+{
+	scores.add(0);
+i++;
+}
+
+// Here the first population group is made.
+CreaturesGroup.name="TeamA";			// Population name is "TeamA"
+CreaturesGroup.nnsim=1;				// Neural network is simulated
+CreaturesGroup.enableperf=1;		// Performance calculation is swithed off
+CreaturesGroup.colmask=5;			// Collision mask is 5 (4+1 -- Standard handling + Custom handling)
+CreaturesGroup.perfperiod=100;			// Performance period = 1000
+									// Standard handling: rebouncing
+									// Custom handling: call OnXCollision
+									// Here 'X' is substituted for population name (NO NUMBERS OR SPACES IN NAME!)
+									//it eats food and collides with other creatures
+CreaturesGroup.em_stat=0.0;		// Energy requirements for a muscle resisting an external force (when colliding)
+CreaturesGroup.em_dyn=0.0;		// Energy requirements for a muscle moving a stick
+									// Userfield 1 (creatures.user1) = teamnumber (=population number + 1)
+									// Userfield 2 (creatures.user2) = reproduction (=times of cloning)
+									// Userfield 3 (creatures.user3) = wait for fight
+// Create CreaturesGroups
+var i=0;
+while(i < ExpParams.numberTeams-1)
+{
+LiveLibrary.addGroup("Team"+String.substr(teamnames, i+1, 1));
+CreaturesGroup.nnsim=1;
+CreaturesGroup.enableperf=1;
+CreaturesGroup.perfperiod=100;
+CreaturesGroup.colmask=5;
+CreaturesGroup.em_stat=0.0;
+CreaturesGroup.em_dyn=0.0;
+
+i++;
+}
+
+// And finally the Food population
+LiveLibrary.addGroup("Food");
+CreaturesGroup.colmask=148;			
+CreaturesGroup.nnsim=0;				// No neural network simulation
+CreaturesGroup.enableperf=0;			// No performance calculation
+
+
+// Here are some important parameters (see also deathmatch.sim in root folder)
+
+}
+
+function onExpInit()
+{
+Simulator.time=0;
+// Clear all populations
+var empty=0;
+GenotypeLibrary.clearGroup(0);
+//sim_params.import(ExpParams.paramfile, 4);              // First of all, load simulation parameters
+//Simulator.print("INITIALIZATION: Simulator Parameters file '"+ExpParams.paramfile+"' loaded...");
+
+GenotypeLibrary.group=0;
+GenotypeLibrary.clearGroup();			// clear it,
+sim_params.import(ExpParams.genepoolfile, 2);	// and fill it with genotypes in genepool
+Simulator.print("INITIALIZATION: Genotypes file '"+ExpParams.genepoolfile+"' loaded...");
+
+if(GenotypeLibrary.getGroup(0).count < ExpParams.numberTeams)
+{
+Simulator.message("INITIALIZATION: Only "+GenotypeLibrary.getGroup(0).count+" genotypes in genotype file: '"+ExpParams.genepoolfile, 1);
+Simulator.print("INITIALIZATION: Assuming that number of teams actually is: "+GenotypeLibrary.getGroup(0).count);
+Simulator.print("INITIALIZATION: The number of teams may be set wrong in simulation parameters.");
+ExpParams.numberTeams = GenotypeLibrary.getGroup(0).count;
+}
+else if (GenotypeLibrary.getGroup(0).count > ExpParams.numberTeams)
+{
+Simulator.message("INITIALIZATION: "+GenotypeLibrary.getGroup(0).count+" genotypes in genotype file: '"+ExpParams.genepoolfile, 1);
+Simulator.print("INITIALIZATION:  Assuming that number of teams actually is: "+ExpParams.numberTeams);
+Simulator.print("INITIALIZATION:  Only using the first "+ExpParams.numberTeams+" genotypes.");
+}
+
+var i=0;
+while(i < ExpParams.numberTeams)						// For every populationgroup
+{
+LiveLibrary.group=i;					
+LiveLibrary.clearGroup(i);				// Clear group
+Simulator.print("TEAMBUILDER: Building team "+String.substr(teamnames, i, 1));
+		
+GenotypeGroup.index=0;
+
+	var j=0;
+	while(j < ExpParams.numberCreatures)					// Fill each groups with 5 copies
+	{
+		var newcreature;
+		GenotypeLibrary.group=i;
+		GenotypeLibrary.genotype=i;
+		newcreature = LiveLibrary.getGroup(i).createFromGenotype(GenotypeLibrary.genotype);
+		newcreature.name=newcreature.name+"_"+(j+1); // String.substr(teamnames, i, 1)+"_"+(j+1); 
+//		Simulator.print("TEAMBUILDER: "+newcreature.name);	
+		newcreature.user1=i+1;			// Assign teams number to user field 1
+
+			if(ExpParams.energyperstick == 1)
+			{
+			newcreature.energ0 = ExpParams.Energy0 * newcreature.numjoints;
+			newcreature.energy = newcreature.energ0;
+			newcreature.idleen = ExpParams.e_meta*Creature.numjoints;
+			}
+			if(ExpParams.energyperstick == 0)
+			{
+			newcreature.energ0 = ExpParams.Energy0;
+			newcreature.energy = newcreature.energ0;
+			newcreature.idleen = ExpParams.e_meta;
+			}
+		
+		newcreature.model.Vstyle=String.substr(teamnames, i, 1);
+
+		placegroup=i;
+		if(j==0)place_randomly(newcreature);		// And place them randomly in arena
+		else placeTheClone(newcreature, LiveLibrary.getGroup(i).getCreature(0));	
+	j++;
+	}
+//Simulator.print("TEAMBUILDER: Done building team "+String.substr(teamnames, i, 1));	
+i++;
+}
+numberextinct=0;
+
+if(pastmatches > 0)
+{
+	Simulator.print("************ TEMPORARY SCORES ******************");	
+	var c=0;
+	while(c < ( LiveLibrary.groupcount -1) )
+	{
+		var scorestring = "";
+		var length = 0;
+		length = scores.get(c) / 10000;
+		var l=0;
+		while(l < length)
+		{
+		scorestring += "$";
+		l++;
+		}
+
+		Simulator.print("Team "+String.substr(teamnames, c, 1)+" is "+scorestring);
+	c++;
+	}
+}
+
+Simulator.print("DEATHMATCH: ***********************");	
+Simulator.print("DEATHMATCH: Get ready to RUMBLE !!");	
+Simulator.print("DEATHMATCH: ***********************");	
+
+}
+
+function place_randomly(cr)
+{
+var x=(World.wrldsiz-cr.size_x)*Math.rnd01-cr.size_x/2;
+var y=(World.wrldsiz-cr.size_y)*Math.rnd01-cr.size_y/2;
+var z=WorldMap.getHeight(x,y);
+if (World.wrldwat>z) // water here!
+  {
+  if (ExpParams.creath>0)
+    z=World.wrldwat+ExpParams.creath;
+  else
+    z=(1.0+ExpParams.creath)*World.wrldwat - z*ExpParams.creath;
+  }
+else // land area
+  {
+  if (ExpParams.creath>0)
+    z+=ExpParams.creath;
+  }
+cr.moveAbs(x,y,z-0.999);
+return;
+}
+
+
+function onCreaturesBorn()
+{
+ Simulator.print("On BORN ");
+var retry=20; //retry 20 times
+while(retry--)
+  {
+  place_randomly(Creature.*);
+
+ 	if (ExpParams.energyperstick == 1) Creature.idleen=ExpParams.e_meta*Creature.numjoints;
+	 else Creature.idleen= ExpParams.e_meta;
+
+ Simulator.print("IDLE ENERGY: "+Creature.idleen);
+
+  if (!LiveLibrary.creatBBCollisions(0)) return;
+  }
+
+}
+
+function onStep()
+{
+if(Simulator.time%100!=0) return;
+
+
+if(Simulator.time%100==0 && ExpParams.removeImmobile == 1) removeImmobileCreatures();
+
+LiveLibrary.group=(LiveLibrary.groupcount-1); // food
+	if(ExpParams.feed > CreaturesGroup.creaturecount) // if there are too few food parts
+	{
+		var i=0;
+		while(i < (ExpParams.feed - CreaturesGroup.creaturecount))	// fill the food population to ExpParams.feed value.
+		{
+		  addFood();
+		i++;
+		}
+	}
+}
+
+function removeImmobileCreatures()
+{
+var j=0;
+	while(j<ExpParams.numberTeams)
+	{
+	LiveLibrary.group=j;
+			var numbercreatures = CreaturesGroup.creaturecount;
+		    var i=0;
+		  	while(i < numbercreatures)
+		   	{
+		   	LiveLibrary.creature=i;
+				if(Creature.c_velocity < 0.0001 && Creature.lifespan > 999)
+				{
+				Simulator.print("DEATHMATCH: Removed immobile creature");
+				LiveLibrary.kill();
+				}
+			i++;
+		    }
+	j++;
+	}
+}
+
+function addFood()
+{
+LiveLibrary.group=(LiveLibrary.groupcount-1);
+if (ExpParams.foodgen=="") LiveLibrary.createFromString("//0\nm:Vstyle=food\np:");
+else LiveLibrary.createFromString(ExpParams.foodgen);
+
+Creature.name="Food";
+Creature.idleen=0;
+Creature.energy=ExpParams.feede0;
+Creature.user1=(LiveLibrary.groupcount-1);
+
+var retry=20; //retry 20 times
+while(retry--)
+  {
+  place_randomly(Creature.*);
+  if (!LiveLibrary.creatBBCollisions(0))
+        return;
+  }
+// Simulator.message("couldn't avoid collisions!",2);
+}
+
+function addfood()
+{
+}
+
+
+function onTeamAStep,onTeamBStep,onTeamCStep, onTeamDStep,onTeamEStep,onTeamFStep,onTeamGStep,onTeamHStep,onTeamIStep,onTeamJStep,onTeamKStep,onTeamLStep,onTeamMStep,onTeamNStep,onTeamOStep(cr)
+{
+onCreaturesStep(cr);
+}
+
+function max(a,b)
+{if (a>b) return a; else return b;}
+
+function max4(a,b,c,d)
+{
+var x=max(a,b), y=max(c,d);
+return max(x,y);
+}
+
+function placeTheClone(newcr,cr)
+{
+if (ExpParams.clonenocontact==0)
+	newcr.moveAbs(cr.pos_x+(cr.size_x-newcr.size_x)/2,cr.pos_y+(cr.size_y-newcr.size_y)/2,cr.pos_z+(cr.size_z-newcr.size_z)/2);
+else
+	{
+// selects one of 8 possible safe starting positions for "newcr"
+// 1 |  2 | 3
+// 4 | cr | 5
+// 6 |  7 | 8
+var dx,dy,x,y,z;
+var retry=20;
+while(retry--)
+  {
+dx=-1+(Math.rnd01*3.0);
+dy=-1+(Math.rnd01*3.0); // possible values: -1,0,+1
+x=cr.pos_x+cr.size_x/2-newcr.size_x/2+((cr.size_x+newcr.size_x+0.5)*dx);
+y=cr.pos_y+cr.size_y/2-newcr.size_y/2+((cr.size_y+newcr.size_y+0.5)*dy);
+z=max4(WorldMap.getHeight(x,y),WorldMap.getHeight(x+newcr.size_x,y),
+	WorldMap.getHeight(x,y+newcr.size_y),WorldMap.getHeight(x+newcr.size_x,y+newcr.size_y));
+newcr.moveAbs(x,y,z-0.999);
+if (!LiveLibrary.creatBBCollisions(0)) break;
+  }
+placed_ok:
+//Simulator.print("clone("+newcr.pos_x+","+newcr.pos_y+","+newcr.pos_z+") from ("+cr.pos_x+","+cr.pos_y+","+cr.pos_z+")");
+	}
+}
+
+function onCreaturesStep(cr)
+{
+ 	var newcreature;
+	var inheritEnergy;
+	var group;
+	
+	if (cr.energy >=ExpParams.reprEnergy 
+	&& cr.lifespan >=ExpParams.reprLifespan
+	&& LiveLibrary.getGroup(cr.group.index).creaturecount < ExpParams.poplimit
+	&& (cr.user3 == null || cr.user3 > 0) )
+	{
+		Simulator.print("CLONING:   Creating clone for TEAM "+String.substr(teamnames, cr.group.index, 1));
+		var geno = GenotypeLibrary.getFromCreatureObject(cr);
+		LiveLibrary.group=cr.group.index;
+		newcreature=LiveLibrary.createFromGenotype(geno);
+		newcreature.name=cr.name+"_clone";
+			if(cr.user2==null) cr.user2=1;				// Userfield 2 = reproduction
+			else cr.user2=cr.user2+1;
+		newcreature.user1=cr.user1;
+		newcreature.model.Vstyle = String.substr(teamnames, cr.group.index, 1);
+		inheritEnergy= ExpParams.reprInheritEnergy * cr.energy;		// Child inherits portion of parent's energy
+		cr.energy=cr.energy-inheritEnergy;								// Parent's energy is substracted
+		
+			if(ExpParams.energyperstick == 1) 
+			{
+				newcreature.energy = inheritEnergy + (ExpParams.BaseEnergyClone * newcreature.numjoints);
+				newcreature.idleen = ExpParams.e_meta*Creature.numjoints;
+			}
+			else
+			{
+				newcreature.energy = inheritEnergy + ExpParams.BaseEnergyClone;	
+				newcreature.idleen = ExpParams.e_meta;
+			}
+						
+		placeTheClone(newcreature,cr);
+		cr.user3=-ExpParams.waitCloning;
+	}
+	if(cr.user3 != null)			// Userfield 3 = waiting for fight
+	{
+		if(cr.user3 < 0)	cr.user3 = cr.user3+1;
+		if(cr.user3 > 0)	cr.user3 = cr.user3-1;
+		if(cr.user3 == 0)	cr.user3 = null;
+	}
+}
+
+function onFoodCollision()
+{
+//Simulator.print("FOOD collision between '"+Collision.Creature1.group+"' and '"+Collision.Creature2.group+"'");
+var cr1 = Collision.Creature1;
+var cr2 = Collision.Creature2;
+
+	if(cr1.group.index == (LiveLibrary.groupcount-1))				// Exactly the same, but now colliding creature 2 is a real creature and 1 is a food item
+	{
+	var e=ExpParams.feede0;
+	cr2.energy=cr2.energy+e;
+	cr1.energy=cr1.energy-e;
+//	Simulator.print("FORAGING:   '"+cr2.name+"' eats");
+	}	
+}
+
+function onTeamACollision,onTeamBCollision,onTeamCCollision,onTeamDCollision,onTeamECollision,onTeamFCollision,onTeamGCollision,onTeamHCollision,onTeamICollision,onTeamJCollision,onTeamKCollision,onTeamLCollision,onTeamMCollision,onTeamNCollision,onTeamOCollision()
+{	
+	var cr1 =  Collision.Creature1;
+        var cr2 =  Collision.Creature2;
+ 	onCreaturesCollision(cr1, cr2);
+}
+
+function onCreaturesCollision(cr1, cr2)
+{
+if(cr1.group.index != (LiveLibrary.groupcount-1) && cr2.group.index != (LiveLibrary.groupcount-1))  // Only fight if both are not food items
+{
+	// The colliders can 'fight' and transfer energy if
+	if(
+	cr1.group.index != cr2.group.index &&					// 1) They are of different teams
+	(cr1.user3 == null || cr1.user3 < 0)	   && 
+	(cr2.user3 == null || cr2.user3 < 0)
+	)
+	{	
+	if(ExpParams.energyperstick == 1)			// IF ENERGY IS RELATIVE to number of sticks
+	{	
+
+			if( (cr1.energy/cr1.numjoints) > (cr2.energy/cr2.numjoints) )		// If the one creature has more energy than the other (cr1 is the winner)
+			{
+			Simulator.print("FIGHT:   Creature of TEAM "+String.substr(teamnames, cr1.group.index, 1)+" wins from TEAM "+String.substr(teamnames, cr2.group.index, 1));
+			cr1.energy=cr1.energy+ExpParams.winergy;		// Add winergy (energy amount for winner) to the winner
+			cr2.energy=cr2.energy-ExpParams.winergy;		// Substract winergy from the loser
+			}
+			else						// Else do otherwise
+			{
+			Simulator.print("FIGHT:   Creature of TEAM "+String.substr(teamnames, cr2.group.index, 1)+" wins from TEAM "+String.substr(teamnames, cr1.group.index, 1));
+			cr1.energy=cr1.energy-ExpParams.winergy;	
+			cr2.energy=cr2.energy+ExpParams.winergy;
+			}
+	}
+	if(ExpParams.energyperstick == 0)
+	{
+			if( cr1.energy > cr2.energy )		// If the one creature has more energy than the other (cr1 is the winner)
+			{
+			Simulator.print("FIGHT:   Creature of TEAM "+String.substr(teamnames, cr1.group.index, 1)+" wins from TEAM "+String.substr(teamnames, cr2.group.index, 1));
+			cr1.energy=cr1.energy+ExpParams.winergy;		// Add winergy (energy amount for winner) to the winner
+			cr2.energy=cr2.energy-ExpParams.winergy;		// Substract winergy from the loser
+			}
+			else						// Else do otherwise
+			{
+			Simulator.print("FIGHT:   Creature of TEAM "+String.substr(teamnames, cr2.group.index, 1)+" wins from TEAM "+String.substr(teamnames, cr1.group.index, 1));
+			cr1.energy=cr1.energy-ExpParams.winergy;	
+			cr2.energy=cr2.energy+ExpParams.winergy;
+			}
+	}
+		
+	cr1.user3=ExpParams.waitFight;
+	cr2.user3=ExpParams.waitFight;
+	return;
+	}
+}
+}
+
+function onTeamAKill,onTeamBKill,onTeamCKill,onTeamDKill,onTeamEKill,onTeamFKill,onTeamGKill,onTeamHKill,onTeamIKill,onTeamJKill,onTeamKKill,onTeamLKill,onTeamMKill,onTeamNKill,onTeamOKill(cr)
+{
+scores.set(cr.group.index, (scores.get(cr.group.index) + cr.lifespan));
+onDeath(cr);
+}
+
+function onDeath(cr)
+{
+Simulator.print("DEATH:  '"+cr.name+"' has died at the age of "+cr.lifespan);
+
+	if( (LiveLibrary.getGroup(cr.group.index).creaturecount - 1) == 0) 
+	{
+	Simulator.message("EXTINCT:  *************************",2);
+	Simulator.print("EXTINCT:    Team "+String.substr(teamnames, cr.group.index, 1)+" is extinct!");
+	Simulator.print("EXTINCT:   *************************");
+	numberextinct = 1+numberextinct;
+	onExtinct(cr);
+	}
+}
+
+function onExtinct(cr)
+{
+var teamnumber = 0;
+var addscore = 0;
+
+if(numberextinct==ExpParams.numberTeams - 1)
+{
+// if the winning team is the only one alive, calculate their additional score, and end the match.
+	var i=0;
+	while(i < (LiveLibrary.groupcount -1) )
+	{
+		if(LiveLibrary.getGroup(i).creaturecount > 0 && i != cr.group.index)
+		{
+		teamnumber = i;
+			var j=0;
+			while(j < LiveLibrary.getGroup(i).creaturecount)
+			{
+				if(ExpParams.energyperstick == 1)
+				{
+				addscore += LiveLibrary.getGroup(i).getCreature(j).lifespan 
+						+ ( LiveLibrary.getGroup(i).getCreature(j).energy / (ExpParams.e_meta * LiveLibrary.getGroup(i).getCreature(j).numjoints) );
+				}
+				else 
+				{
+				addscore += LiveLibrary.getGroup(i).getCreature(j).lifespan 
+						+ ( LiveLibrary.getGroup(i).getCreature(j).energy / ExpParams.e_meta );
+				}
+				j++;
+			}
+			
+		}	
+	i++;
+	} 
+	
+	scores.set(teamnumber, (scores.get(teamnumber) + addscore + ExpParams.bonus) );
+	pastmatches=pastmatches+1;
+
+	Simulator.message("DEATHMATCH:  *************************");
+	Simulator.print("DEATHMATCH:   THE RESULTS ARE IN !!");
+	Simulator.print("DEATHMATCH:   And the winner is ..... team "+String.substr(teamnames, teamnumber, 1)+" !!!");
+	Simulator.print("DEATHMATCH:   We add "+addscore+" to their score...");
+	Simulator.print("DEATHMATCH:   And team "+String.substr(teamnames, teamnumber, 1)+" gets the bonus of "+ExpParams.bonus+" points.");
+	Simulator.print("DEATHMATCH:  *************************");
+	Simulator.print("DEATHMATCH:  STATISTICS:");
+var c=0;
+while(c < LiveLibrary.groupcount -1)
+{
+	Simulator.print("DEATHMATCH:   Team "+String.substr(teamnames, c, 1)+": "+scores.get(c));
+c++;
+}
+    Simulator.message("DEATHMATCH:  *********** AFTER "+pastmatches+" MATCH ***********", 2);
+    Simulator.print(" ");
+    Simulator.print("DEATHMATCH:   Stopping simulation...");
+    Simulator.print("DEATHMATCH:   RE-'INITIALIZE' AND 'RUN' TO CONTINUE COMPETITION (new scores will be added to this run).");
+    Simulator.message("DEATHMATCH:   'Reload' will erase scores!");
+    
+
+		if(ExpParams.autorestart==1)
+		{
+			if(pastmatches<ExpParams.numberMatches)
+			{
+			Simulator.init();
+			}
+			else Simulator.stop();
+		}
+		else Simulator.stop();
+}
+}
+
+function onExpLoad()
+{
+Simulator.print("NOT IMPLEMENTED");
+}
+
+function onExpSave()
+{
+var i=0;
+File.writeComment("'deathmatch.expdef' data");
+File.writeObject(sim_params.*);
+GenotypeLibrary.group=0;
+File.writeObject(GenotypeGroup.*);
+LiveLibrary.group=0;
+File.writeObject(CreaturesGroup.*);
+LiveLibrary.group=1;
+File.writeObject(CreaturesGroup.*);
+GenotypeLibrary.group=0;
+while(i < GenotypeGroup.count)
+   {
+   GenotypeLibrary.genotype=i;
+   File.writeNameObject("org",Genotype.*);
+   i++;
+   }
+Simulator.print("Experiment saved ("+GenotypeGroup.count+" genotypes)");
+}
+
+@include "standard_events.inc"
+
+~
+
+prop:
+id:creath
+name:Creation height
+type:f -1 50
+group:Birth
+help:~
+Vertical position (above the surface) where new creatures are revived.
+Negative values are only used in the water area:
+  0   = at the surface
+-0.5 = half depth
+-1   = just above the bottom~
+
+prop:
+id:clonenocontact
+name:Prevent collisions on birth?
+group:Birth
+type:d 0 1
+help:~
+The newly created clones will be placed in safe starting position to avoid collision with other creatures.
+This influences the deathmatch rules: big creatures will spread faster because their starting position is farther away from the parent.
+~
+
+prop:
+id:energyperstick
+name:energy calculation (0=creature,1=stick)?
+type:d 0 1
+group:Birth
+help:~
+If checked, energy calculation (specified below) is provided for stick! Starting energy is per creature, otherwise.
+If checked, the winner of a fight is determined by calculating relative energy (=Creature Energy / Number of sticks)! Otherwise, winner is the one with more absolute energy.
+~
+
+
+
+prop:
+id:Energy0
+name:Starting energy for 1st generation
+type:f 0 10000
+group:Birth
+help:~
+Initial energy for the first creature. 
+Note: Only for creatures created at initialization, not for clones!
+~
+
+prop:
+id:BaseEnergyClone
+name:Starting energy for clones
+type:f 0 10000
+group:Birth
+help:~
+Base energy for clones.
+Is added to the inherited energy from parent. 
+(See Cloning parameters.)
+~
+
+prop:
+id:e_meta
+name:Idle metabolism 
+type:f 0 1
+group:Life
+help:~
+Energy consumption per step
+If energy calculation is set per STICK, metabolsim is per stick.
+If energy calculation is set per CREATURE, metabolsim is per CREATURE.
+~
+
+prop:
+id:numberTeams
+name:Number of teams
+type:f 2 15
+group:
+help:Number of teams 
+
+prop:
+id:numberCreatures
+name:Creatures per team (init)
+type:f 1 25
+group:
+help:Number of creatures in each team at initialization
+
+prop:
+id:feed
+name:Feeding rate
+type:f 0 100
+group:Foraging
+help:How many food items are in the world
+
+prop:
+id:feede0
+name:Food's energy
+group:Foraging
+type:f 0 1000
+help:Energy of each food item
+
+prop:
+id:foodgen
+name:Food's genotype
+group:Foraging
+type:s
+help:~
+The default food model is a simple, single part object:
+  //0
+  m:Vstyle=food
+  p:
+(this genotype is used when you leave this field blank).
+You can specify another genotype to create "intelligent" or mobile food.~
+
+prop:
+id:winergy
+name:Fight win Price
+type:f 0 10000
+group:Fighting
+help:~This amount of energy is added to the winner 
+of a 'fight' (collision) and substracted from the loser~
+
+prop:
+id:waitFight
+name:Wait after fight
+type:f 0 1000
+group:Fighting
+help:A creature has to wait for this amount of steps after energy transfer to be able to fight again
+
+prop:
+id:bonus
+name:Bonus for winning team
+type:d 0 100000
+group:
+help:The last surviving team in the world gets this bonus added to their total summed lifespan
+
+prop:
+id:reprEnergy
+name:Reproduction energy
+type:f 0 100000
+group:Cloning
+help:~
+Creature can produce offspring when its energy level reaches this 
+threshold. Note: either this or 'Reproduction Age' must be set on a positive 
+value to avoid population explosion.
+~
+
+prop:
+id:reprLifespan
+name:Reproduction age
+type:f 0 10000
+group:Cloning
+help:Creatures must have lived this amount of steps to be able to be cloned
+
+prop:
+id:reprInheritEnergy
+name:Inherit energy
+type:f 0.1 0.9
+group:Cloning
+help:~
+Portion of energy to be transferred (inherited) to child.
+0 would cause immediate death of child!
+1 would cause immediate death of parent!
+~
+
+prop:
+id:waitCloning
+name:Wait after cloning
+type:f 0 1000
+group:Cloning
+help:~
+After cloning, a creature has to wait this amount of steps to be able to clone again.
+~
+
+prop:
+id:paramfile
+name:Simulation Parameter file (*.sim)
+group:
+type:s
+help:This simulation parameter file is loaded when the button 'Initialize' is pressed. It overrules the parameters set in the experiment definition.~
+
+prop:
+id:genepoolfile
+name:Genepool file (*.gen)
+group:
+type:s
+help:This genepool is loaded when the button 'Initialize' is pressed. It overrules the parameters set in the experiment definition.~
+
+prop:
+id:numberMatches
+name:Number of matches
+type:f 1 50
+group:
+help:Only when restart is enabled (numberMatches= number restarts - 1).
+
+prop:
+id:removeImmobile
+name:Remove immobile creatures?
+type:d 0 1
+group:
+help:~
+Immobile creatures will be removed from the field. This prevents cheating with non-moving creatures.
+(Immobile is defined as distance < 1 after 100 steps.)
+~
+
+prop:
+id:autorestart
+name:Restart after extinction
+group:
+help:Restarts automatically this experiment after the last creature dies
+type:d 0 1
+
+prop:
+id:poplimit
+name:Limit teamsize
+type:f 5 100
+group:Cloning
+help:Teamsize cannot exceed this amount of creatures
+
+state:
+id:notes
+name:Notes
+type:s 1
+help:~
+You can write anything here
+(it will be written to the experiment file)~
+
+state:
+id:totaltestedcr
+name:Evaluated creatures
+help:Total number of the creatures evaluated in the experiment
+type:d
+flags:16
+
+state:
+id:creaturesgrouploaded
+name:creaturesgrouploaded
+type:d
+flags:34
