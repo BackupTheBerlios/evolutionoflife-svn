@@ -65,16 +65,14 @@ Imports Microsoft.VisualStudio.QualityTools.UnitTesting.Framework
 	''' </summary>
 	<TestMethod()> Public Sub ToXMLTest()
 
-		Dim target As Klassen.Author = New Klassen.Author(Me.ScreenName, Me.Vorname, Me.Nachname, Me.Mail, Me.Passwort)
+		Dim UID As System.Guid = System.Guid.NewGuid
 
-		' TODO: Überarbeiten
-		Dim expected As String = "Sollte"
-		Dim actual As String = "Ist"
+		Dim target As Klassen.Author = New Klassen.Author(UID, Me.ScreenName, Me.Vorname, Me.Nachname, Me.Mail, Me.Passwort, New System.Uri("http://www.berlios.de/"), "N/A", "N/A", "N/A", "Deutschland", "12627", "Berlin", "Irgendwo", "1a")
 
-		actual = target.ToXML
-		Assert.AreEqual(expected, actual)
+		' TODO: Überarbeiten, den irgendwie haut das ganze nicht hin ;-(
+		Dim soll As String = "<author><guid>8e739904-117c-4265-935c-bd603b03d69c</guid><ScreenName>henryfr</ScreenName><VorName>Henry</VorName><NachName>Frädrich</NachName><GeburtsTag>01.01.0001 00:00:00</GeburtsTag><Passwort>PkWvTKJ+orA/xhg69A6hEg==</Passwort><Mails><Mail>henryfr@web.de</Mail></Mails><ICQs><ICQ>N/A</ICQ></ICQs><MSNs><MSN>N/A</MSN></MSNs><YIDs><YID>N/A</></YIDs><URLs><URL>http://www.berlios.de/</URL></URLs><Adressen><Adresse><Land>Deutschland</Land><PostleitZahl>12627</PostleitZahl><Ort>Berlin</Ort><Strasse>Irgendwo</Strasse><HausNummer>1a</HausNummer></Adresse></Adressen></author>"
 
-		Assert.Inconclusive("Verify the correctness of this test method.")
+		Assert.AreEqual(soll, target.ToXML)
 	End Sub
 
 	''' <summary>
@@ -84,14 +82,12 @@ Imports Microsoft.VisualStudio.QualityTools.UnitTesting.Framework
 
 		Dim target As Klassen.Author = New Klassen.Author(Me.ScreenName, Me.Vorname, Me.Nachname, Me.Mail, Me.Passwort)
 
-		target.Geburtstag = New Date(CLng("21.12.1958"))
+		target.Geburtstag = #12/21/1958#
 
 		' TODO: Stimmt das ?
-		Dim val As Integer = 45
+		Dim val As Integer = 47
 
 		Assert.AreEqual(val, target.Alter)
-
-		Assert.Inconclusive("Verify the correctness of this test method.")
 	End Sub
 
 	''' <summary>
@@ -113,13 +109,11 @@ Imports Microsoft.VisualStudio.QualityTools.UnitTesting.Framework
 	''' </summary>
 	<TestMethod()> Public Sub GUIDTest()
 
-		Dim target As Klassen.Author = New Klassen.Author(Me.ScreenName, Me.Vorname, Me.Nachname, Me.Mail, Me.Passwort)
+		Dim UID As System.Guid = System.Guid.NewGuid
 
-		Dim val As System.Guid = System.Guid.NewGuid
+		Dim target As Klassen.Author = New Klassen.Author(UID, Me.ScreenName, Me.Vorname, Me.Nachname, Me.Mail, Me.Passwort, New System.Uri("http://www.berlios.de/"), "N/A", "N/A", "N/A", "Deutschland", "12627", "Berlin", "Irgendwo", "1a")
 
-		Assert.AreEqual(val, target.GUID)
-
-		Assert.Inconclusive("Verify the correctness of this test method.")
+		Assert.AreEqual(UID, target.GUID)
 	End Sub
 
 	''' <summary>
@@ -173,11 +167,12 @@ Imports Microsoft.VisualStudio.QualityTools.UnitTesting.Framework
 
 		Dim val As String = "ich@wir.de"
 
+		' TODO: Hmm da scheint es noch zu klemmen, den wenn die Angegebene Mail-Adresse
+		' TODO: fehlerhaft ist, soll diese nicht gesetzt werden, also brauchen wir noch eine Funktion
+		' TODO: zum prüfen der Adresse im vorfehlt
 		target.Mail = val
 
 		Assert.AreEqual(val, target.Mail)
-
-		Assert.Inconclusive("Verify the correctness of this test method.")
 	End Sub
 
 	''' <summary>
@@ -234,9 +229,7 @@ Imports Microsoft.VisualStudio.QualityTools.UnitTesting.Framework
 		target.Passwort = val
 
 		' Kommt verschlüsselt zurück
-		Assert.AreEqual(val, target.Passwort)
-
-		Assert.Inconclusive("Verify the correctness of this test method.")
+		Assert.AreEqual(target.EncryptPassword(val), target.Passwort)
 	End Sub
 
 	''' <summary>

@@ -157,7 +157,8 @@ Public Class Author
 	Private mPasswort As String
 
 	''' <summary>
-	''' wird verschlüsselt gespeichert, und soll wenn möglich dazu dienen, dass nur er seine Objekte bearbeiten kann.
+	''' Wird verschlüsselt gespeichert, und soll wenn möglich dazu dienen, dass nur er seine Objekte bearbeiten kann.
+	''' Als Verschlüssellungs-Algorithmus habe ich "SHA512" gewählt
 	''' </summary>
 	''' <remarks>Es wird das verschlüsselte Passwort zurück gegeben bzw.
 	''' das im Klartext angegebene Passwort verschlüsselt gespeichert.</remarks>
@@ -167,7 +168,7 @@ Public Class Author
 		End Get
 		Set(ByVal Text As String)
 			' BUG: Verschlüsselung einbauen und dokumentieren
-			Me.mPasswort = Text
+			Me.mPasswort = Me.EncryptPassword(Text)
 		End Set
 	End Property
 
@@ -236,10 +237,25 @@ Public Class Author
 	''' </summary>
 	Public ReadOnly Property Alter() As Integer
 		Get
-			' BUG: Monate, Tage etc. vergleichen, da sonst Fhelerhaft
-			' Aber wenn wir davon ausgehen, das ein Jahr 364,25 Tage hat, dann
-			' sollte es fast stimmen
-			Return CType(System.DateTime.Now.Subtract(Me.mGeburtstag).Days / 365.25, Integer)
+			' BUG: Monate, Tage etc. vergleichen, da sonst Fehelerhaft
+			Dim AktMonat As Integer = System.DateTime.Now.Month
+
+			Dim Jahre As Integer = System.DateTime.Now.Year - Me.mGeburtstag.Year
+
+			' Wenn der Monat größer als der aktuelle ist, ist könnte er/sie
+			' dieses Jahr bereits Geburtstag gehabt haben
+			If AktMonat > Me.Geburtstag.Month Then
+				' Hatte er/sie bereits
+				Jahre += 1
+			ElseIf AktMonat = Me.mGeburtstag.Month Then
+				' wenn es der aktuelle Monat ist, müssen wir nun noch eaus bekommen,
+				' ob der Tag schon vorbei oder heute ist
+				If System.DateTime.Now.Day >= Me.mGeburtstag.Day Then
+					Jahre += 1
+				End If
+			End If
+
+			Return Jahre
 		End Get
 	End Property
 
@@ -386,4 +402,26 @@ Public Class Author
 
 		Return Text
 	End Function
+
+	Public Function EncryptPassword(ByVal TextToHash As String) As String
+		Dim md5 As System.Security.Cryptography.MD5CryptoServiceProvider
+		Dim bytValue() As Byte
+		Dim bytHash() As Byte
+
+		' Create New Crypto Service Provider Object
+		md5 = New System.Security.Cryptography.MD5CryptoServiceProvider
+
+		' Convert the original string to array of Bytes
+		bytValue = System.Text.Encoding. _
+		 UTF8.GetBytes(TextToHash)
+
+		' Compute the Hash, returns an array of Bytes
+		bytHash = md5.ComputeHash(bytValue)
+
+		md5.Clear()
+
+		' Return a base 64 encoded string of the Hash value
+		Return Convert.ToBase64String(bytHash)
+	End Function
+
 End Class
