@@ -79,14 +79,14 @@ Public Class Author
 		End Set
 	End Property
 
-	Private mMail As Uri
+	Private mMail As String
 
-	Public Property Mail() As Uri
+	Public Property Mail() As String
 		Get
 			Return Me.mMail
 		End Get
 
-		Set(ByVal MailAdresse As Uri)
+		Set(ByVal MailAdresse As String)
 			Me.mMail = MailAdresse
 		End Set
 	End Property
@@ -248,7 +248,8 @@ Public Class Author
 	''' </summary>
 	''' <param name="GUID"></param>
 	Public Sub New(ByVal GUID As System.Guid, ByVal ScreenName As String, _
-	 ByVal Vorname As String, ByVal Nachname As String, ByVal MailAddresse As Uri, _
+	 ByVal Vorname As String, ByVal Nachname As String, _
+	 ByVal MailAddresse As String, _
 	 ByVal Passwort As String, ByVal WwwAdresse As Uri, ByVal IcqKennung As String, _
 	 ByVal MsnKennung As String, ByVal YahooKennung As String, ByVal Land As String, _
 	 ByVal Postleitzahl As String, ByVal Ort As String, ByVal Strasse As String, _
@@ -275,7 +276,7 @@ Public Class Author
 	''' Der Standardkostruktor, der ein "NEUES" Objekt anlegen soll
 	''' </summary>
 	''' <param name="Passwort">im Klartext !!</param>
-	Public Sub New(ByVal ScreenName As String, ByVal Vorname As String, ByVal Nachname As String, ByVal Mail As System.Uri, ByVal Passwort As String)
+	Public Sub New(ByVal ScreenName As String, ByVal Vorname As String, ByVal Nachname As String, ByVal Mail As String, ByVal Passwort As String)
 		Me.mGUID = System.Guid.NewGuid
 		Me.ScreenName = ScreenName
 		Me.Vorname = Nachname

@@ -4,13 +4,12 @@
     <AbsoluteBounds X="0" Y="0" Height="8.5" Width="11" />
     <Font Name="Tahoma" Size="0.1145833358168602" />
     <Class NewMemberLocation="Author.vb" Collapsed="false">
-      <AbsoluteBounds X="1" Y="0.5" Height="1.53503194441398" Width="1.5" />
+      <AbsoluteBounds X="1" Y="0.5" Height="4.3683652777473121" Width="1.5" />
       <TypeIdentifier>
         <FullName>Klassen.Author</FullName>
         <FileName>Author.vb</FileName>
         <HashCode>AEFCUACBEAgACEECCAAEAAIAACAAACCgAgACAwABxBQ=</HashCode>
       </TypeIdentifier>
-      <Compartment Group="Kind" HasGroup="true" HeaderText="Properties" IsDefaultExpandCollapseState="false" />
       <Compartment Group="Kind" HasGroup="true" HeaderText="Fields" IsDefaultExpandCollapseState="false" />
     </Class>
   </View>
