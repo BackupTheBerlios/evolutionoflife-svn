@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Diagram xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" MajorVersion="1" MinorVersion="1" xmlns="http://www.microsoft.com/VisualStudio/EnterpriseTools/ClassDesigner/V1.1/DiagramSchema.xsd">
+  <View FilterFieldProperty="false" LastOpened="true" Name="Main">
+    <AbsoluteBounds X="0" Y="0" Height="16.95" Width="11" />
+    <Font Name="Tahoma" Size="0.1145833358168602" />
+    <Class Collapsed="true">
+      <AbsoluteBounds X="0.5" Y="0.5" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.Geno</FullName>
+        <FileName>Geno.vb</FileName>
+        <HashCode>AAAAIgAABAAgEAAIAAAAEg4AAAwAQAgAAAgAIEAAAQA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="2.25" Y="1.25" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.Joint</FullName>
+        <FileName>Joint.vb</FileName>
+        <HashCode>AAEhEAABAAAAAAAgAAAKAAAAAQkCAAIQoBAEAAAABAA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="2.25" Y="2" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.Genotype</FullName>
+        <FileName>Genotype.vb</FileName>
+        <HashCode>BAIAASAAgqICGEYSAwABPCFhAEAcAAAIUAxIqIAKASI=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="4" Y="0.5" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.Collision</FullName>
+        <FileName>Collision.vb</FileName>
+        <HashCode>AAQMBAAAAAAAAAAAAAAAAAIgAgAAAAAAAAAAAABIAAA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="4" Y="2" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.NeuroDef</FullName>
+        <FileName>NeuroDef.vb</FileName>
+        <HashCode>AAAgEAAAAAAAAAAAAAAKAAAAAAAAAAAEIFEAAAAgAAA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="2.25" Y="2.75" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.Model</FullName>
+        <FileName>Model.vb</FileName>
+        <HashCode>AAAgBAACwAKAAAAAAAQAAAxAYAAAQAAAQBBIAAAAAQI=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="0.5" Y="2.75" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.Part</FullName>
+        <FileName>Part.vb</FileName>
+        <HashCode>AAEgMAABIAAQAIEggAAIAAAAQCAAAAAAIpBkAQAAAgA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="4" Y="2.75" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.MechJoint</FullName>
+        <FileName>MechJoint.vb</FileName>
+        <HashCode>AAEAAAABAAAAAAAgAAAIAAAAAAgCAAIQIAAEAAAABAA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="0.5" Y="3.5" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.MechPart</FullName>
+        <FileName>MechPart.vb</FileName>
+        <HashCode>EAAAAAAAAAAAAIEAggAAACgAQCCAAAAAAtBgAQAAAAA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="4" Y="3.5" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.Creature</FullName>
+        <FileName>Creature_GlobalContext.vb</FileName>
+        <HashCode>RAMABZEq5CKCMESSACCQBGRIYEJGYAEJVCx4IIAKASI=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="2.25" Y="4.25" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.Dictionary</FullName>
+        <FileName>Dictionary.vb</FileName>
+        <HashCode>AMAAAAAAgAAAAAAEAIAAAAAAAAAAAAAACAgAAAAAAAA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="4" Y="4.25" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.File</FullName>
+        <FileName>File.vb</FileName>
+        <HashCode>CgEAAAAARAACAgAAAiAKAAgAACAEAAAAQYlAJABYACA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="0.5" Y="5" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.CreatureGroup</FullName>
+        <FileName>CreatureGroup.vb</FileName>
+        <HashCode>AAARQABABEAFAAQCAAMAAgIACgAEAgCAgAgIKAGBAAg=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="4" Y="5" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.GenotypeGroup</FullName>
+        <FileName>GenotypeGroup.vb</FileName>
+        <HashCode>AAAAQEEAIEAhAAAIBAAAAIAAAAAEAABAhAwAIAApAAA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="0.5" Y="5.75" Height="0.45" Width="2.25" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.GenotypeLibrary</FullName>
+        <FileName>GenotypeLibrary.vb</FileName>
+        <HashCode>QEAIIEgAAEAQEADAAACAAABBAAQIEAAAIIQABAYDAQA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="0.5" Y="6.5" Height="0.45" Width="1.75" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.GenMan</FullName>
+        <FileName>GenMan.vb</FileName>
+        <HashCode>6Mlj3JYEF3PMXUQdk5NqW4IoY9LLcDBjYInHwIGbngI=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="2.5" Y="6.5" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.GenManStats</FullName>
+        <FileName>GenManStats.vb</FileName>
+        <HashCode>AAAIAACAgAKACIAIIMAGKAAiAACAAABAAAAAIIAAAgA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="4.75" Y="5.75" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.Vector</FullName>
+        <FileName>Vector.vb</FileName>
+        <HashCode>AMCgAAAAQAAAAAAkAIAAAAAIAAAAAAAACAAAAAACACA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="0.5" Y="7.25" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.LiveLibrary</FullName>
+        <FileName>LiveLibrary.vb</FileName>
+        <HashCode>QEABAEAAAAAEAABAAAGABQAAAAAAIACAIIAABAAAAAA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="2.25" Y="7.25" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.Loader</FullName>
+        <FileName>Loader_GlobalContext.vb</FileName>
+        <HashCode>AAQAAgCwAACSUEAAAEAwgSAFABBCCAACBgAIIAAAAAA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="4" Y="7.25" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.Math</FullName>
+        <FileName>Math.vb</FileName>
+        <HashCode>AAERCQAAAgAASAYAAggCDYAAgAAoAAAAAAYAIAAABgA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="0.5" Y="8" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.NeuroClass</FullName>
+        <FileName>NeuroClass.vb</FileName>
+        <HashCode>AAMAACAQAAAAABAAYABAAAAAAACEIgAAgAggQCAAIAA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="2.25" Y="8" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.NeuroClassLibrary</FullName>
+        <FileName>NeuroClassLibrary.vb</FileName>
+        <HashCode>AAAAAAAAAAACAAAIBAAAAAAAAAAAAgAAAAAEAAAAAAA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="0.5" Y="8.75" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.Simulator</FullName>
+        <FileName>Simulator.vb</FileName>
+        <HashCode>wEahMIKAA4CgAEAgAQAAgGAAhAQCACoAIIQSwAAADCA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="4.25" Y="6.5" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.Interfaces</FullName>
+        <FileName>Interface.vb</FileName>
+        <HashCode>QgIIAAAAAAAAAAgASAIAAAGAAAAEAAACAQgEBATAABA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="2.25" Y="8.75" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.Strings</FullName>
+        <FileName>String.vb</FileName>
+        <HashCode>AAEAIAAAAAAAAAAAgICACAAAABAIAAAAEAAAAABAgAA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="0.5" Y="9.5" Height="0.45" Width="1.75" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.stats</FullName>
+        <FileName>stats.vb</FileName>
+        <HashCode>VWpPUKn656PQ2fkPb9Smujp/J/qZdkDkYyUC5r/XZkg=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="2.5" Y="9.5" Height="0.45" Width="1.75" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.sim_params</FullName>
+        <FileName>sim_params.vb</FileName>
+        <HashCode>7M/n/NakP/Ps9UY/k7/r6/qq7//vd/t7aN/X4Ke/vuY=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="0.5" Y="10.25" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.Neuro</FullName>
+        <FileName>Neuro_GlobalContext.vb</FileName>
+        <HashCode>AEABggAAmAQQAAABBAAAAEAAQkAAJCCOAQAUgAAQAAg=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="0.5" Y="11" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.ExperimentDefinition.ExpParams</FullName>
+        <FileName>ExpParams.vb</FileName>
+        <HashCode>JCaBxlQBAEQBqEADACCABIiGQCNsRU0RQIAQpAlHgAA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="2.25" Y="11" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.ExperimentDefinition.ExpState</FullName>
+        <FileName>ExpState.vb</FileName>
+        <HashCode>QEAAAAAAAAAAQIAEAAAAAgAAAAAAAIAAYAIAAEQCIAA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="0.5" Y="11.75" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.ExperimentDefinition.NeuronDefinitions.n</FullName>
+        <FileName>n.vb</FileName>
+        <HashCode>AAAgEAAAAAAAAAAAAAAKAAAAAAAAAAAEIFEAAAAgAAA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="2.25" Y="11.75" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.ExperimentDefinition.NeuronDefinitions.Neuro</FullName>
+        <FileName>Neuro_NeuronDefinitions.vb</FileName>
+        <HashCode>AEABAgAAGAQQAAABBAAAAEAAQkAAJCCOAQCUgAAQAQg=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="2.25" Y="10.25" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.ExperimentDefinition.FitnessFormula.this</FullName>
+        <FileName>this.vb</FileName>
+        <HashCode>BAIAASAAgqICGEYSAwABPCFgAEAcAAAIUAxIqIAKASI=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="0.5" Y="12.5" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.ExperimentDefinition.VisualStyleDefinition.Element</FullName>
+        <FileName>Element.vb</FileName>
+        <HashCode>AQAYQAIAAAAAAAAAgQAAAAIAAAQAACAAAAIEASCAAAA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="2.25" Y="12.5" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.ExperimentDefinition.VisualStyleDefinition.GeomBuilder</FullName>
+        <FileName>GeomBuilder.vb</FileName>
+        <HashCode>IwAAgAAA8AAAAACA8IAAQQAIYD4AAAIIQIgAEAASgNA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="0.5" Y="13.25" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.ExperimentDefinition.CommandLineInterface.ClassBrowser</FullName>
+        <FileName>ClassBrowser.vb</FileName>
+        <HashCode>AAgAAAAAAAAAAAAIAAAAAAQQAgAAAAQIAAAAAAAgAgA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="2.25" Y="13.25" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.ExperimentDefinition.CommandLineInterface.CLI</FullName>
+        <FileName>CLI.vb</FileName>
+        <HashCode>AAAAAABAAIBAAAQAAICAAEAAIAAAAAACAAAAAQAkGQA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="0.5" Y="14" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.ExperimentDefinition.VisualStyleDefinition.Creature</FullName>
+        <FileName>Creature_VisualStyleDefinition.vb</FileName>
+        <HashCode>RAMABZEq5CKCMESSACCQBGRIYEJGYAEJVCx4IIAKASI=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="2.25" Y="14" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.ExperimentDefinition.VisualStyleDefinition.World</FullName>
+        <FileName>World.vb</FileName>
+        <HashCode>BAgCEAAAAAAAAAAAAQAAAAgAAAggAAARAAAAAAACAAA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="0.5" Y="14.75" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.ExperimentDefinition.VisualStyleDefinition.WorldMap</FullName>
+        <FileName>WorldMap.vb</FileName>
+        <HashCode>AAAABAAQAAAAAAAAAAAAAAAABAAAQAAAEAAAAAAAAIg=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="2.25" Y="14.75" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.ExperimentDefinition.VisualStyleDefinition.GL</FullName>
+        <FileName>GL.vb</FileName>
+        <HashCode>AAAoCoAAAAAAgAAAAAAAAQIABgAEAEAgBCBAhAAEAAA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="0.5" Y="15.5" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.ExperimentDefinition.VisualStyleDefinition.j</FullName>
+        <FileName>j.vb</FileName>
+        <HashCode>AAEhEAABAAAAAAAgAAAKAAAAAQkCAAIQoBAEAAAABAA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="2.25" Y="15.5" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.ExperimentDefinition.VisualStyleDefinition.Loader</FullName>
+        <FileName>Loader_VisualStyleDefinition.vb</FileName>
+        <HashCode>AAAAAAAAAIAAAAABAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="0.5" Y="16.25" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.ExperimentDefinition.VisualStyleDefinition.m</FullName>
+        <FileName>m.vb</FileName>
+        <HashCode>AAAgAAAAAAAAAAAAAAQAAAAAAAAAAAAAABBAAAAAAAA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class Collapsed="true">
+      <AbsoluteBounds X="2.25" Y="16.25" Height="0.45" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>FrameStick.GlobalContext.ExperimentDefinition.VisualStyleDefinition.Material</FullName>
+        <FileName>Material.vb</FileName>
+        <HashCode>QIAhAAAAkAAAAABMAAAIIoMAACAAAhAAAgAAgABAIAg=</HashCode>
+      </TypeIdentifier>
+    </Class>
+  </View>
+</Diagram>
