@@ -41,27 +41,27 @@ Public Class Author
 		End Set
 	End Property
 
-	Private mVorname As String
+	Private mVorName As String
 
-	Public Property Vorname() As String
+	Public Property VorName() As String
 		Get
-			Return Me.mVorname
+			Return Me.mVorName
 		End Get
 
 		Set(ByVal Name As String)
-			Me.mVorname = Name
+			Me.mVorName = Name
 		End Set
 	End Property
 
-	Private mNachname As String
+	Private mNachName As String
 
-	Public Property Nachname() As String
+	Public Property NachName() As String
 		Get
-			Return Me.mNachname
+			Return Me.mNachName
 		End Get
 
 		Set(ByVal Name As String)
-			Me.mNachname = Name
+			Me.mNachName = Name
 		End Set
 	End Property
 
@@ -79,76 +79,23 @@ Public Class Author
 		End Set
 	End Property
 
-	Private mMail As String
 
-	Public Property Mail() As String
-		Get
-			Return Me.mMail
-		End Get
 
-		Set(ByVal MailAdresse As String)
-			Me.mMail = MailAdresse
-		End Set
-	End Property
 
-	Private mURL As Uri
 
-	Public Property URL() As Uri
-		Get
-			Return Me.mURL
-		End Get
 
-		Set(ByVal WwwAdresse As Uri)
-			Me.mURL = WwwAdresse
-		End Set
-	End Property
 
-	Private mICQ As String
 
-	Public Property ICQ() As String
-		Get
-			Return Me.mICQ
-		End Get
-
-		Set(ByVal IcqKennung As String)
-			' BUG: lässt sich abfragen !!
-			Me.mICQ = IcqKennung
-		End Set
-	End Property
-
-	Private mMSN As String
-
-	Public Property MSN() As String
-		Get
-			Return Me.mMSN
-		End Get
-
-		Set(ByVal MsnKennung As String)
-			' BUG: lässt sich sicher testen !!
-			Me.mMSN = MsnKennung
-		End Set
-	End Property
 
 	''' <summary>
 	''' Yahoo Kennung
 	''' </summary>
 	''' <remarks></remarks>
-	Private mYID As String
 
 	''' <summary>
 	''' Yahoo Kennung
 	''' </summary>
 	''' <remarks></remarks>
-	Public Property YID() As String
-		Get
-			Return Me.mYID
-		End Get
-
-		Set(ByVal YahooKennung As String)
-			' BUG: lässt sich bestimmt testen
-			Me.mYID = YahooKennung
-		End Set
-	End Property
 
 	''' <summary>
 	''' wird verschlüsselt gespeichert, und soll wenn möglich dazu dienen, dass nur er seine Objekte bearbeiten kann.
@@ -172,65 +119,15 @@ Public Class Author
 		End Set
 	End Property
 
-	Private mLand As String
 
-	Public Property Land() As String
-		Get
-			Return Me.mLand
-		End Get
 
-		Set(ByVal value As String)
-			Me.mLand = value
-		End Set
-	End Property
 
-	Private mPLZ As String
 
-	Public Property PLZ() As String
-		Get
-			Return Me.mPLZ
-		End Get
 
-		Set(ByVal PostleitZahl As String)
-			Me.mPLZ = PostleitZahl
-		End Set
-	End Property
 
-	Private mOrt As String
 
-	Public Property Ort() As String
-		Get
-			Return Me.mOrt
-		End Get
 
-		Set(ByVal Value As String)
-			Me.mOrt = Value
-		End Set
-	End Property
 
-	Private mHausnummer As String
-
-	Public Property Hausnummer() As String
-		Get
-			Return Me.mHausnummer
-		End Get
-
-		Set(ByVal Value As String)
-			Me.mHausnummer = Value
-		End Set
-	End Property
-
-	Private mStrasse As String
-
-	Public Property Strasse() As String
-		Get
-			Return Me.mStrasse
-		End Get
-
-		Set(ByVal value As String)
-			Me.mStrasse = value
-		End Set
-	End Property
 
 	''' <summary>
 	''' Das aus dem Geburtstag errechnete Alter des Authos
@@ -273,8 +170,8 @@ Public Class Author
 
 		Me.mGUID = GUID
 		Me.ScreenName = ScreenName
-		Me.Vorname = Vorname
-		Me.Nachname = Nachname
+		Me.VorName = Vorname
+		Me.NachName = Nachname
 		Me.Mail = MailAddresse
 		Me.Passwort = Passwort
 		Me.URL = WwwAdresse
@@ -295,8 +192,8 @@ Public Class Author
 	Public Sub New(ByVal ScreenName As String, ByVal Vorname As String, ByVal Nachname As String, ByVal Mail As String, ByVal Passwort As String)
 		Me.mGUID = System.Guid.NewGuid
 		Me.ScreenName = ScreenName
-		Me.Vorname = Nachname
-		Me.Nachname = Nachname
+		Me.VorName = Nachname
+		Me.NachName = Nachname
 		Me.Mail = Mail
 		Me.Passwort = Passwort
 	End Sub
@@ -315,11 +212,11 @@ Public Class Author
 		Text += "</ScreenName>"
 
 		Text += "<VorName>"
-		Text += Me.Vorname
+		Text += Me.VorName
 		Text += "</VorName>"
 
 		Text += "<NachName>"
-		Text += Me.Nachname
+		Text += Me.NachName
 		Text += "</NachName>"
 
 		Text += "<GeburtsTag>"

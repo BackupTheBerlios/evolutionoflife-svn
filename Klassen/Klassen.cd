@@ -3,14 +3,52 @@
   <View FilterFieldProperty="false" LastOpened="true" Name="Main">
     <AbsoluteBounds X="0" Y="0" Height="8.5" Width="11" />
     <Font Name="Tahoma" Size="0.1145833358168602" />
+    <Comment CommentText="Natürlich gibt es dann auch eine Liste von Kontakten ;-)">
+      <AbsoluteBounds X="5" Y="0.5" Height="0.5" Width="1.5" />
+    </Comment>
+    <Comment CommentText="Natürlich gibt es dann auch eine Liste der Adressen ;-)">
+      <AbsoluteBounds X="3" Y="0.5" Height="0.5" Width="1.5" />
+    </Comment>
     <Class NewMemberLocation="Author.vb" Collapsed="false">
-      <AbsoluteBounds X="1" Y="0.5" Height="4.3683652777473121" Width="1.5" />
+      <AbsoluteBounds X="1" Y="0.5" Height="2.868365277747313" Width="1.5" />
       <TypeIdentifier>
         <FullName>Klassen.Author</FullName>
         <FileName>Author.vb</FileName>
-        <HashCode>AEFCUACBEAgACEECCAAEAAIAACAAACCgAgACAwABxBQ=</HashCode>
+        <HashCode>AABAQACBAAAAAAEAAAAEAgIAgAAAAACAAIAAAAABggQ=</HashCode>
       </TypeIdentifier>
       <Compartment Group="Kind" HasGroup="true" HeaderText="Fields" IsDefaultExpandCollapseState="false" />
     </Class>
+    <Class NewMemberLocation="Kontakt.vb" Collapsed="false">
+      <AbsoluteBounds X="5" Y="1" Height="1.433448285559813" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Klassen.Kontakt</FullName>
+        <FileName>Kontakt.vb</FileName>
+        <HashCode>QABAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Class NewMemberLocation="Adresse.vb" Collapsed="false">
+      <AbsoluteBounds X="3" Y="1" Height="2.10011495222648" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Klassen.Adresse</FullName>
+        <FileName>Adresse.vb</FileName>
+        <HashCode>QABAUAAAAAAAAAAAAAAAAAEAAAAAAAAgAgAAAAAAABA=</HashCode>
+      </TypeIdentifier>
+    </Class>
+    <Enum NewMemberLocation="KontaktArten.vb" Collapsed="false">
+      <AbsoluteBounds X="7" Y="1" Height="1.5593231227993969" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Klassen.KontaktArten</FullName>
+        <FileName>KontaktArten.vb</FileName>
+        <HashCode>AAAAAAAAQAAAAEAAAAAAAAAAACAAAAAAAAAAAQABCAA=</HashCode>
+      </TypeIdentifier>
+    </Enum>
+    <Enum NewMemberLocation="AdressArten.vb" Collapsed="false">
+      <AbsoluteBounds X="7" Y="2.75" Height="1.225989789466063" Width="1.5" />
+      <TypeIdentifier>
+        <FullName>Klassen.AdressArten</FullName>
+        <FileName>AdressArten.vb</FileName>
+        <HashCode>AAAAAEAQAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAIA=</HashCode>
+      </TypeIdentifier>
+    </Enum>
   </View>
 </Diagram>

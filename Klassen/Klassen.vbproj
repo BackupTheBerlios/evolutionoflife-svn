@@ -37,6 +37,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -50,10 +51,24 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdressArten.vb" />
+    <Compile Include="Adresse.vb" />
     <Compile Include="Author.vb" />
+    <Compile Include="DataDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Kontakt.vb" />
+    <Compile Include="KontaktArten.vb" />
     <Compile Include="My Project\MyApplication.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>MyApplication.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="ReplikatVonDataDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReplikatVonDataDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="UserControl1.vb">
       <SubType>UserControl</SubType>
@@ -85,6 +100,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+    <None Include="DataDataSet.xsc">
+      <DependentUpon>DataDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DataDataSet.xss">
+      <DependentUpon>DataDataSet.xsd</DependentUpon>
+    </None>
     <None Include="My Project\MyApplication.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>MyApplication.vb</LastGenOutput>
@@ -93,15 +115,36 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>MySettings.vb</LastGenOutput>
     </None>
+    <None Include="ReplikatVonDataDataSet.xsc">
+      <DependentUpon>ReplikatVonDataDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ReplikatVonDataDataSet.xss">
+      <DependentUpon>ReplikatVonDataDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <AppDesigner Include="My Project\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+    <Service Include="{AD028B85-FA21-41B1-AB4A-08672F633506}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\Data.mdb">
+      <CopyToOutputDirectory>True</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\ReplikatVonData.mdb">
+      <CopyToOutputDirectory>True</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DataDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataDataSet.Designer.vb</LastGenOutput>
+    </Content>
     <Content Include="Klassen.cd" />
+    <Content Include="ReplikatVonDataDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReplikatVonDataDataSet.Designer.vb</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.Targets" />
   <PropertyGroup>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<DiagramLayout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ex:showrelationlabel="False" ViewPortX="218" ViewPortY="60" xmlns:ex="urn:schemas-microsoft-com:xml-msdatasource-layout-extended" xmlns="urn:schemas-microsoft-com:xml-msdatasource-layout">
+  <Shapes>
+    <Shape ID="DesignTable:Kontakte" ZOrder="9" X="228" Y="115" Height="133" SplitterPosition="87" Width="173" />
+    <Shape ID="DesignTable:Autoren" ZOrder="2" X="498" Y="118" Height="165" SplitterPosition="119" Width="167" />
+    <Shape ID="DesignTable:Adressen" ZOrder="3" X="770" Y="126" Height="197" SplitterPosition="151" Width="174" />
+    <Shape ID="DesignTable:KontaktArten" ZOrder="1" X="286" Y="360" Height="101" SplitterPosition="55" Width="197" />
+    <Shape ID="DesignTable:AdressArten" ZOrder="6" X="659" Y="393" Height="101" SplitterPosition="55" Width="190" />
+  </Shapes>
+  <Connectors>
+    <Connector ID="DesignRelation:AutorenKontakte" ZOrder="8" LineWidth="11">
+      <RoutePoints>
+        <Point>
+          <X>498</X>
+          <Y>165</Y>
+        </Point>
+        <Point>
+          <X>401</X>
+          <Y>165</Y>
+        </Point>
+      </RoutePoints>
+    </Connector>
+    <Connector ID="DesignRelation:AutorenAdressen" ZOrder="7" LineWidth="11">
+      <RoutePoints>
+        <Point>
+          <X>665</X>
+          <Y>176</Y>
+        </Point>
+        <Point>
+          <X>770</X>
+          <Y>176</Y>
+        </Point>
+      </RoutePoints>
+    </Connector>
+    <Connector ID="DesignRelation:KontaktArtenKontakte" ZOrder="5" LineWidth="11">
+      <RoutePoints>
+        <Point>
+          <X>331</X>
+          <Y>360</Y>
+        </Point>
+        <Point>
+          <X>331</X>
+          <Y>248</Y>
+        </Point>
+      </RoutePoints>
+    </Connector>
+    <Connector ID="DesignRelation:AdressArtenAdressen" ZOrder="4" LineWidth="11">
+      <RoutePoints>
+        <Point>
+          <X>810</X>
+          <Y>393</Y>
+        </Point>
+        <Point>
+          <X>810</X>
+          <Y>323</Y>
+        </Point>
+      </RoutePoints>
+    </Connector>
+  </Connectors>
+</DiagramLayout>

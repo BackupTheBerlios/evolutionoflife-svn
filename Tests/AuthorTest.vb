@@ -198,9 +198,9 @@ Imports Microsoft.VisualStudio.QualityTools.UnitTesting.Framework
 
 		Dim val As String = "Mustermann"
 
-		target.Nachname = val
+		target.NachName = val
 
-		Assert.AreEqual(val, target.Nachname)
+		Assert.AreEqual(val, target.NachName)
 	End Sub
 
 	''' <summary>
@@ -283,9 +283,9 @@ Imports Microsoft.VisualStudio.QualityTools.UnitTesting.Framework
 
 		Dim val As String = "Klaus"
 
-		target.Vorname = val
+		target.VorName = val
 
-		Assert.AreEqual(val, target.Vorname)
+		Assert.AreEqual(val, target.VorName)
 	End Sub
 
 	''' <summary>

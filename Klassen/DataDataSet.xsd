@@ -1,0 +1,812 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataDataSet" targetNamespace="http://tempuri.org/DataDataSet.xsd" xmlns:mstns="http://tempuri.org/DataDataSet.xsd" xmlns="http://tempuri.org/DataDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" GeneratorTypeConverterClassName="Converter" Modifier="AutoLayout, AnsiClass, NotPublic, Public" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="Connection" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Public" Name="Connection (MySettings)" PropertyReference="&lt;SOAP-ENV:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:SOAP-ENC=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot; xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:clr=&quot;http://schemas.microsoft.com/soap/encoding/clr/1.0&quot; SOAP-ENV:encodingStyle=&quot;http://schemas.xmlsoap.org/soap/encoding/&quot;&gt;&#xD;&#xA;&lt;SOAP-ENV:Body&gt;&#xD;&#xA;&lt;a1:CodePropertyReferenceExpression id=&quot;ref-1&quot; xmlns:a1=&quot;http://schemas.microsoft.com/clr/nsassem/System.CodeDom/System%2C%20Version%3D2.0.3600.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Db77a5c561934e089&quot;&gt;&#xD;&#xA;&lt;targetObject href=&quot;#ref-3&quot;/&gt;&#xD;&#xA;&lt;propertyName id=&quot;ref-4&quot;&gt;Connection&lt;/propertyName&gt;&#xD;&#xA;&lt;parameters href=&quot;#ref-5&quot;/&gt;&#xD;&#xA;&lt;CodeObject_x002B_userData xsi:null=&quot;1&quot;/&gt;&#xD;&#xA;&lt;/a1:CodePropertyReferenceExpression&gt;&#xD;&#xA;&lt;a1:CodePropertyReferenceExpression id=&quot;ref-3&quot; xmlns:a1=&quot;http://schemas.microsoft.com/clr/nsassem/System.CodeDom/System%2C%20Version%3D2.0.3600.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Db77a5c561934e089&quot;&gt;&#xD;&#xA;&lt;targetObject href=&quot;#ref-6&quot;/&gt;&#xD;&#xA;&lt;propertyName id=&quot;ref-7&quot;&gt;Value&lt;/propertyName&gt;&#xD;&#xA;&lt;parameters href=&quot;#ref-8&quot;/&gt;&#xD;&#xA;&lt;CodeObject_x002B_userData xsi:null=&quot;1&quot;/&gt;&#xD;&#xA;&lt;/a1:CodePropertyReferenceExpression&gt;&#xD;&#xA;&lt;a1:CodeExpressionCollection id=&quot;ref-5&quot; xmlns:a1=&quot;http://schemas.microsoft.com/clr/nsassem/System.CodeDom/System%2C%20Version%3D2.0.3600.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Db77a5c561934e089&quot;&gt;&#xD;&#xA;&lt;CollectionBase_x002B_list href=&quot;#ref-9&quot;/&gt;&#xD;&#xA;&lt;/a1:CodeExpressionCollection&gt;&#xD;&#xA;&lt;a1:CodeTypeReferenceExpression id=&quot;ref-6&quot; xmlns:a1=&quot;http://schemas.microsoft.com/clr/nsassem/System.CodeDom/System%2C%20Version%3D2.0.3600.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Db77a5c561934e089&quot;&gt;&#xD;&#xA;&lt;type href=&quot;#ref-10&quot;/&gt;&#xD;&#xA;&lt;CodeObject_x002B_userData xsi:null=&quot;1&quot;/&gt;&#xD;&#xA;&lt;/a1:CodeTypeReferenceExpression&gt;&#xD;&#xA;&lt;a1:CodeExpressionCollection id=&quot;ref-8&quot; xmlns:a1=&quot;http://schemas.microsoft.com/clr/nsassem/System.CodeDom/System%2C%20Version%3D2.0.3600.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Db77a5c561934e089&quot;&gt;&#xD;&#xA;&lt;CollectionBase_x002B_list href=&quot;#ref-11&quot;/&gt;&#xD;&#xA;&lt;/a1:CodeExpressionCollection&gt;&#xD;&#xA;&lt;a2:ArrayList id=&quot;ref-9&quot; xmlns:a2=&quot;http://schemas.microsoft.com/clr/ns/System.Collections&quot;&gt;&#xD;&#xA;&lt;_items href=&quot;#ref-12&quot;/&gt;&#xD;&#xA;&lt;_size&gt;0&lt;/_size&gt;&#xD;&#xA;&lt;_version&gt;0&lt;/_version&gt;&#xD;&#xA;&lt;/a2:ArrayList&gt;&#xD;&#xA;&lt;a1:CodeTypeReference id=&quot;ref-10&quot; xmlns:a1=&quot;http://schemas.microsoft.com/clr/nsassem/System.CodeDom/System%2C%20Version%3D2.0.3600.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Db77a5c561934e089&quot;&gt;&#xD;&#xA;&lt;baseType id=&quot;ref-13&quot;&gt;Klassen.MySettings&lt;/baseType&gt;&#xD;&#xA;&lt;arrayRank&gt;0&lt;/arrayRank&gt;&#xD;&#xA;&lt;arrayElementType xsi:null=&quot;1&quot;/&gt;&#xD;&#xA;&lt;typeArguments xsi:null=&quot;1&quot;/&gt;&#xD;&#xA;&lt;referenceOptions&gt;0&lt;/referenceOptions&gt;&#xD;&#xA;&lt;CodeObject_x002B_userData xsi:null=&quot;1&quot;/&gt;&#xD;&#xA;&lt;/a1:CodeTypeReference&gt;&#xD;&#xA;&lt;a2:ArrayList id=&quot;ref-11&quot; xmlns:a2=&quot;http://schemas.microsoft.com/clr/ns/System.Collections&quot;&gt;&#xD;&#xA;&lt;_items href=&quot;#ref-12&quot;/&gt;&#xD;&#xA;&lt;_size&gt;0&lt;/_size&gt;&#xD;&#xA;&lt;_version&gt;0&lt;/_version&gt;&#xD;&#xA;&lt;/a2:ArrayList&gt;&#xD;&#xA;&lt;SOAP-ENC:Array id=&quot;ref-12&quot; SOAP-ENC:arrayType=&quot;xsd:anyType[0]&quot;&gt;&#xD;&#xA;&lt;/SOAP-ENC:Array&gt;&#xD;&#xA;&lt;/SOAP-ENV:Body&gt;&#xD;&#xA;&lt;/SOAP-ENV:Envelope&gt;&#xD;&#xA;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;&#x0;" Provider="System.Data.OleDb">
+          </Connection>
+        </Connections>
+        <Tables>
+          <DbTable BaseClass="System.ComponentModel.Component" DataAccessorName="KontakteTableAdapter" GeneratorDataComponentClassName="KontakteTableAdapter" GeneratorDataComponentInterfaceName="IKontakteTableAdapter" Modifier="AutoLayout, AnsiClass, NotPublic, Public" Name="Kontakte" UserDataComponentName="KontakteTableAdapter" WebServiceAttribute="False">
+            <MainSource>
+              <DbSource ConnectionRef="Connection (MySettings)" DbObjectName="Kontakte" DbObjectType="Table" EnableWebMethods="False" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GeneratePagingMethods="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>DELETE FROM `Kontakte` WHERE ((`UID` = ?) AND ((? = 1 AND `Autor_UID` IS NULL) OR (`Autor_UID` = ?)) AND ((? = 1 AND `KontaktDaten` IS NULL) OR (`KontaktDaten` = ?)) AND ((? = 1 AND `KontaktArt_UID` IS NULL) OR (`KontaktArt_UID` = ?)))</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="UID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p2" Precision="0" Scale="0" Size="0" SourceColumn="Autor_UID" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p3" Precision="0" Scale="0" Size="0" SourceColumn="Autor_UID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p4" Precision="0" Scale="0" Size="0" SourceColumn="KontaktDaten" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p5" Precision="0" Scale="0" Size="0" SourceColumn="KontaktDaten" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p6" Precision="0" Scale="0" Size="0" SourceColumn="KontaktArt_UID" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p7" Precision="0" Scale="0" Size="0" SourceColumn="KontaktArt_UID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>INSERT INTO `Kontakte` (`Autor_UID`, `KontaktDaten`, `KontaktArt_UID`) VALUES (?, ?, ?)</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="Autor_UID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p2" Precision="0" Scale="0" Size="0" SourceColumn="KontaktDaten" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p3" Precision="0" Scale="0" Size="0" SourceColumn="KontaktArt_UID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>SELECT UID, Autor_UID, KontaktDaten, KontaktArt_UID FROM Kontakte</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+                <ShortDeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>DELETE FROM `Kontakte` WHERE ((`UID` = ?))</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="UID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </ShortDeleteCommand>
+                <ShortInsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>INSERT INTO `Kontakte` (`Autor_UID`, `KontaktDaten`, `KontaktArt_UID`) VALUES (?, ?, ?)</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="Autor_UID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p2" Precision="0" Scale="0" Size="0" SourceColumn="KontaktDaten" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p3" Precision="0" Scale="0" Size="0" SourceColumn="KontaktArt_UID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </ShortInsertCommand>
+                <ShortUpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>UPDATE `Kontakte` SET `Autor_UID` = ?, `KontaktDaten` = ?, `KontaktArt_UID` = ? WHERE ((`UID` = ?))</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="Autor_UID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p2" Precision="0" Scale="0" Size="0" SourceColumn="KontaktDaten" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p3" Precision="0" Scale="0" Size="0" SourceColumn="KontaktArt_UID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p4" Precision="0" Scale="0" Size="0" SourceColumn="UID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </ShortUpdateCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>UPDATE `Kontakte` SET `Autor_UID` = ?, `KontaktDaten` = ?, `KontaktArt_UID` = ? WHERE ((`UID` = ?) AND ((? = 1 AND `Autor_UID` IS NULL) OR (`Autor_UID` = ?)) AND ((? = 1 AND `KontaktDaten` IS NULL) OR (`KontaktDaten` = ?)) AND ((? = 1 AND `KontaktArt_UID` IS NULL) OR (`KontaktArt_UID` = ?)))</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="Autor_UID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p2" Precision="0" Scale="0" Size="0" SourceColumn="KontaktDaten" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p3" Precision="0" Scale="0" Size="0" SourceColumn="KontaktArt_UID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p4" Precision="0" Scale="0" Size="0" SourceColumn="UID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p5" Precision="0" Scale="0" Size="0" SourceColumn="Autor_UID" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p6" Precision="0" Scale="0" Size="0" SourceColumn="Autor_UID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p7" Precision="0" Scale="0" Size="0" SourceColumn="KontaktDaten" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p8" Precision="0" Scale="0" Size="0" SourceColumn="KontaktDaten" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p9" Precision="0" Scale="0" Size="0" SourceColumn="KontaktArt_UID" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p10" Precision="0" Scale="0" Size="0" SourceColumn="KontaktArt_UID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="UID" DataSetColumn="UID" />
+              <Mapping SourceColumn="Autor_UID" DataSetColumn="Autor_UID" />
+              <Mapping SourceColumn="KontaktDaten" DataSetColumn="KontaktDaten" />
+              <Mapping SourceColumn="KontaktArt_UID" DataSetColumn="KontaktArt_UID" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </DbTable>
+          <DbTable BaseClass="System.ComponentModel.Component" DataAccessorName="AutorenTableAdapter" GeneratorDataComponentClassName="AutorenTableAdapter" GeneratorDataComponentInterfaceName="IAutorenTableAdapter" Modifier="AutoLayout, AnsiClass, NotPublic, Public" Name="Autoren" UserDataComponentName="AutorenTableAdapter" WebServiceAttribute="False">
+            <MainSource>
+              <DbSource ConnectionRef="Connection (MySettings)" DbObjectName="Autoren" DbObjectType="Table" EnableWebMethods="False" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GeneratePagingMethods="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>DELETE FROM `Autoren` WHERE ((`UID` = ?) AND ((? = 1 AND `ScreenName` IS NULL) OR (`ScreenName` = ?)) AND ((? = 1 AND `VorName` IS NULL) OR (`VorName` = ?)) AND ((? = 1 AND `NachName` IS NULL) OR (`NachName` = ?)) AND ((? = 1 AND `Geburtstag` IS NULL) OR (`Geburtstag` = ?)) AND ((? = 1 AND `Passwort` IS NULL) OR (`Passwort` = ?)))</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="UID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p2" Precision="0" Scale="0" Size="0" SourceColumn="ScreenName" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p3" Precision="0" Scale="0" Size="0" SourceColumn="ScreenName" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p4" Precision="0" Scale="0" Size="0" SourceColumn="VorName" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p5" Precision="0" Scale="0" Size="0" SourceColumn="VorName" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p6" Precision="0" Scale="0" Size="0" SourceColumn="NachName" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p7" Precision="0" Scale="0" Size="0" SourceColumn="NachName" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p8" Precision="0" Scale="0" Size="0" SourceColumn="Geburtstag" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="p9" Precision="0" Scale="0" Size="0" SourceColumn="Geburtstag" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p10" Precision="0" Scale="0" Size="0" SourceColumn="Passwort" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p11" Precision="0" Scale="0" Size="0" SourceColumn="Passwort" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>INSERT INTO `Autoren` (`ScreenName`, `VorName`, `NachName`, `Geburtstag`, `Passwort`) VALUES (?, ?, ?, ?, ?)</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="ScreenName" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p2" Precision="0" Scale="0" Size="0" SourceColumn="VorName" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p3" Precision="0" Scale="0" Size="0" SourceColumn="NachName" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="p4" Precision="0" Scale="0" Size="0" SourceColumn="Geburtstag" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p5" Precision="0" Scale="0" Size="0" SourceColumn="Passwort" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>SELECT UID, ScreenName, VorName, NachName, Geburtstag, Passwort FROM Autoren</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+                <ShortDeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>DELETE FROM `Autoren` WHERE ((`UID` = ?))</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="UID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </ShortDeleteCommand>
+                <ShortInsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>INSERT INTO `Autoren` (`ScreenName`, `VorName`, `NachName`, `Geburtstag`, `Passwort`) VALUES (?, ?, ?, ?, ?)</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="ScreenName" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p2" Precision="0" Scale="0" Size="0" SourceColumn="VorName" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p3" Precision="0" Scale="0" Size="0" SourceColumn="NachName" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="p4" Precision="0" Scale="0" Size="0" SourceColumn="Geburtstag" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p5" Precision="0" Scale="0" Size="0" SourceColumn="Passwort" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </ShortInsertCommand>
+                <ShortUpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>UPDATE `Autoren` SET `ScreenName` = ?, `VorName` = ?, `NachName` = ?, `Geburtstag` = ?, `Passwort` = ? WHERE ((`UID` = ?))</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="ScreenName" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p2" Precision="0" Scale="0" Size="0" SourceColumn="VorName" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p3" Precision="0" Scale="0" Size="0" SourceColumn="NachName" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="p4" Precision="0" Scale="0" Size="0" SourceColumn="Geburtstag" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p5" Precision="0" Scale="0" Size="0" SourceColumn="Passwort" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p6" Precision="0" Scale="0" Size="0" SourceColumn="UID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </ShortUpdateCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>UPDATE `Autoren` SET `ScreenName` = ?, `VorName` = ?, `NachName` = ?, `Geburtstag` = ?, `Passwort` = ? WHERE ((`UID` = ?) AND ((? = 1 AND `ScreenName` IS NULL) OR (`ScreenName` = ?)) AND ((? = 1 AND `VorName` IS NULL) OR (`VorName` = ?)) AND ((? = 1 AND `NachName` IS NULL) OR (`NachName` = ?)) AND ((? = 1 AND `Geburtstag` IS NULL) OR (`Geburtstag` = ?)) AND ((? = 1 AND `Passwort` IS NULL) OR (`Passwort` = ?)))</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="ScreenName" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p2" Precision="0" Scale="0" Size="0" SourceColumn="VorName" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p3" Precision="0" Scale="0" Size="0" SourceColumn="NachName" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="p4" Precision="0" Scale="0" Size="0" SourceColumn="Geburtstag" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p5" Precision="0" Scale="0" Size="0" SourceColumn="Passwort" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p6" Precision="0" Scale="0" Size="0" SourceColumn="UID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p7" Precision="0" Scale="0" Size="0" SourceColumn="ScreenName" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p8" Precision="0" Scale="0" Size="0" SourceColumn="ScreenName" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p9" Precision="0" Scale="0" Size="0" SourceColumn="VorName" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p10" Precision="0" Scale="0" Size="0" SourceColumn="VorName" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p11" Precision="0" Scale="0" Size="0" SourceColumn="NachName" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p12" Precision="0" Scale="0" Size="0" SourceColumn="NachName" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p13" Precision="0" Scale="0" Size="0" SourceColumn="Geburtstag" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="p14" Precision="0" Scale="0" Size="0" SourceColumn="Geburtstag" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p15" Precision="0" Scale="0" Size="0" SourceColumn="Passwort" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p16" Precision="0" Scale="0" Size="0" SourceColumn="Passwort" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="UID" DataSetColumn="UID" />
+              <Mapping SourceColumn="ScreenName" DataSetColumn="ScreenName" />
+              <Mapping SourceColumn="VorName" DataSetColumn="VorName" />
+              <Mapping SourceColumn="NachName" DataSetColumn="NachName" />
+              <Mapping SourceColumn="Geburtstag" DataSetColumn="Geburtstag" />
+              <Mapping SourceColumn="Passwort" DataSetColumn="Passwort" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </DbTable>
+          <DbTable BaseClass="System.ComponentModel.Component" DataAccessorName="AdressenTableAdapter" GeneratorDataComponentClassName="AdressenTableAdapter" GeneratorDataComponentInterfaceName="IAdressenTableAdapter" Modifier="AutoLayout, AnsiClass, NotPublic, Public" Name="Adressen" UserDataComponentName="AdressenTableAdapter" WebServiceAttribute="False">
+            <MainSource>
+              <DbSource ConnectionRef="Connection (MySettings)" DbObjectName="Adressen" DbObjectType="Table" EnableWebMethods="False" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GeneratePagingMethods="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>DELETE FROM `Adressen` WHERE ((`UID` = ?) AND ((? = 1 AND `Author_UID` IS NULL) OR (`Author_UID` = ?)) AND ((? = 1 AND `Land` IS NULL) OR (`Land` = ?)) AND ((? = 1 AND `PLZ` IS NULL) OR (`PLZ` = ?)) AND ((? = 1 AND `Ort` IS NULL) OR (`Ort` = ?)) AND ((? = 1 AND `Strasse` IS NULL) OR (`Strasse` = ?)) AND ((? = 1 AND `HausNummer` IS NULL) OR (`HausNummer` = ?)) AND ((? = 1 AND `AdressArt_UID` IS NULL) OR (`AdressArt_UID` = ?)))</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="UID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p2" Precision="0" Scale="0" Size="0" SourceColumn="Author_UID" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p3" Precision="0" Scale="0" Size="0" SourceColumn="Author_UID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p4" Precision="0" Scale="0" Size="0" SourceColumn="Land" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p5" Precision="0" Scale="0" Size="0" SourceColumn="Land" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p6" Precision="0" Scale="0" Size="0" SourceColumn="PLZ" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p7" Precision="0" Scale="0" Size="0" SourceColumn="PLZ" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p8" Precision="0" Scale="0" Size="0" SourceColumn="Ort" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p9" Precision="0" Scale="0" Size="0" SourceColumn="Ort" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p10" Precision="0" Scale="0" Size="0" SourceColumn="Strasse" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p11" Precision="0" Scale="0" Size="0" SourceColumn="Strasse" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p12" Precision="0" Scale="0" Size="0" SourceColumn="HausNummer" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p13" Precision="0" Scale="0" Size="0" SourceColumn="HausNummer" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p14" Precision="0" Scale="0" Size="0" SourceColumn="AdressArt_UID" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p15" Precision="0" Scale="0" Size="0" SourceColumn="AdressArt_UID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>INSERT INTO `Adressen` (`Author_UID`, `Land`, `PLZ`, `Ort`, `Strasse`, `HausNummer`, `AdressArt_UID`) VALUES (?, ?, ?, ?, ?, ?, ?)</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="Author_UID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p2" Precision="0" Scale="0" Size="0" SourceColumn="Land" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p3" Precision="0" Scale="0" Size="0" SourceColumn="PLZ" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p4" Precision="0" Scale="0" Size="0" SourceColumn="Ort" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p5" Precision="0" Scale="0" Size="0" SourceColumn="Strasse" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p6" Precision="0" Scale="0" Size="0" SourceColumn="HausNummer" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p7" Precision="0" Scale="0" Size="0" SourceColumn="AdressArt_UID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>SELECT UID, Author_UID, Land, PLZ, Ort, Strasse, HausNummer, AdressArt_UID FROM Adressen</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+                <ShortDeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>DELETE FROM `Adressen` WHERE ((`UID` = ?))</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="UID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </ShortDeleteCommand>
+                <ShortInsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>INSERT INTO `Adressen` (`Author_UID`, `Land`, `PLZ`, `Ort`, `Strasse`, `HausNummer`, `AdressArt_UID`) VALUES (?, ?, ?, ?, ?, ?, ?)</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="Author_UID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p2" Precision="0" Scale="0" Size="0" SourceColumn="Land" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p3" Precision="0" Scale="0" Size="0" SourceColumn="PLZ" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p4" Precision="0" Scale="0" Size="0" SourceColumn="Ort" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p5" Precision="0" Scale="0" Size="0" SourceColumn="Strasse" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p6" Precision="0" Scale="0" Size="0" SourceColumn="HausNummer" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p7" Precision="0" Scale="0" Size="0" SourceColumn="AdressArt_UID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </ShortInsertCommand>
+                <ShortUpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>UPDATE `Adressen` SET `Author_UID` = ?, `Land` = ?, `PLZ` = ?, `Ort` = ?, `Strasse` = ?, `HausNummer` = ?, `AdressArt_UID` = ? WHERE ((`UID` = ?))</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="Author_UID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p2" Precision="0" Scale="0" Size="0" SourceColumn="Land" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p3" Precision="0" Scale="0" Size="0" SourceColumn="PLZ" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p4" Precision="0" Scale="0" Size="0" SourceColumn="Ort" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p5" Precision="0" Scale="0" Size="0" SourceColumn="Strasse" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p6" Precision="0" Scale="0" Size="0" SourceColumn="HausNummer" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p7" Precision="0" Scale="0" Size="0" SourceColumn="AdressArt_UID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p8" Precision="0" Scale="0" Size="0" SourceColumn="UID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </ShortUpdateCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>UPDATE `Adressen` SET `Author_UID` = ?, `Land` = ?, `PLZ` = ?, `Ort` = ?, `Strasse` = ?, `HausNummer` = ?, `AdressArt_UID` = ? WHERE ((`UID` = ?) AND ((? = 1 AND `Author_UID` IS NULL) OR (`Author_UID` = ?)) AND ((? = 1 AND `Land` IS NULL) OR (`Land` = ?)) AND ((? = 1 AND `PLZ` IS NULL) OR (`PLZ` = ?)) AND ((? = 1 AND `Ort` IS NULL) OR (`Ort` = ?)) AND ((? = 1 AND `Strasse` IS NULL) OR (`Strasse` = ?)) AND ((? = 1 AND `HausNummer` IS NULL) OR (`HausNummer` = ?)) AND ((? = 1 AND `AdressArt_UID` IS NULL) OR (`AdressArt_UID` = ?)))</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="Author_UID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p2" Precision="0" Scale="0" Size="0" SourceColumn="Land" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p3" Precision="0" Scale="0" Size="0" SourceColumn="PLZ" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p4" Precision="0" Scale="0" Size="0" SourceColumn="Ort" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p5" Precision="0" Scale="0" Size="0" SourceColumn="Strasse" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p6" Precision="0" Scale="0" Size="0" SourceColumn="HausNummer" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p7" Precision="0" Scale="0" Size="0" SourceColumn="AdressArt_UID" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p8" Precision="0" Scale="0" Size="0" SourceColumn="UID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p9" Precision="0" Scale="0" Size="0" SourceColumn="Author_UID" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p10" Precision="0" Scale="0" Size="0" SourceColumn="Author_UID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p11" Precision="0" Scale="0" Size="0" SourceColumn="Land" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p12" Precision="0" Scale="0" Size="0" SourceColumn="Land" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p13" Precision="0" Scale="0" Size="0" SourceColumn="PLZ" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p14" Precision="0" Scale="0" Size="0" SourceColumn="PLZ" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p15" Precision="0" Scale="0" Size="0" SourceColumn="Ort" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p16" Precision="0" Scale="0" Size="0" SourceColumn="Ort" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p17" Precision="0" Scale="0" Size="0" SourceColumn="Strasse" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p18" Precision="0" Scale="0" Size="0" SourceColumn="Strasse" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p19" Precision="0" Scale="0" Size="0" SourceColumn="HausNummer" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p20" Precision="0" Scale="0" Size="0" SourceColumn="HausNummer" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p21" Precision="0" Scale="0" Size="0" SourceColumn="AdressArt_UID" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p22" Precision="0" Scale="0" Size="0" SourceColumn="AdressArt_UID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="UID" DataSetColumn="UID" />
+              <Mapping SourceColumn="Author_UID" DataSetColumn="Author_UID" />
+              <Mapping SourceColumn="Land" DataSetColumn="Land" />
+              <Mapping SourceColumn="PLZ" DataSetColumn="PLZ" />
+              <Mapping SourceColumn="Ort" DataSetColumn="Ort" />
+              <Mapping SourceColumn="Strasse" DataSetColumn="Strasse" />
+              <Mapping SourceColumn="HausNummer" DataSetColumn="HausNummer" />
+              <Mapping SourceColumn="AdressArt_UID" DataSetColumn="AdressArt_UID" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </DbTable>
+          <DbTable BaseClass="System.ComponentModel.Component" DataAccessorName="KontaktArtenTableAdapter" GeneratorDataComponentClassName="KontaktArtenTableAdapter" GeneratorDataComponentInterfaceName="IKontaktArtenTableAdapter" Modifier="AutoLayout, AnsiClass, NotPublic, Public" Name="KontaktArten" UserDataComponentName="KontaktArtenTableAdapter" WebServiceAttribute="False">
+            <MainSource>
+              <DbSource ConnectionRef="Connection (MySettings)" DbObjectName="KontaktArten" DbObjectType="Table" EnableWebMethods="False" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GeneratePagingMethods="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>DELETE FROM `KontaktArten` WHERE ((`UID` = ?) AND ((? = 1 AND `KontaktArt` IS NULL) OR (`KontaktArt` = ?)))</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="UID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p2" Precision="0" Scale="0" Size="0" SourceColumn="KontaktArt" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p3" Precision="0" Scale="0" Size="0" SourceColumn="KontaktArt" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>INSERT INTO `KontaktArten` (`KontaktArt`) VALUES (?)</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="KontaktArt" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>SELECT UID, KontaktArt FROM KontaktArten</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+                <ShortDeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>DELETE FROM `KontaktArten` WHERE ((`UID` = ?))</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="UID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </ShortDeleteCommand>
+                <ShortInsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>INSERT INTO `KontaktArten` (`KontaktArt`) VALUES (?)</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="KontaktArt" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </ShortInsertCommand>
+                <ShortUpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>UPDATE `KontaktArten` SET `KontaktArt` = ? WHERE ((`UID` = ?))</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="KontaktArt" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p2" Precision="0" Scale="0" Size="0" SourceColumn="UID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </ShortUpdateCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>UPDATE `KontaktArten` SET `KontaktArt` = ? WHERE ((`UID` = ?) AND ((? = 1 AND `KontaktArt` IS NULL) OR (`KontaktArt` = ?)))</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="KontaktArt" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p2" Precision="0" Scale="0" Size="0" SourceColumn="UID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p3" Precision="0" Scale="0" Size="0" SourceColumn="KontaktArt" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p4" Precision="0" Scale="0" Size="0" SourceColumn="KontaktArt" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="UID" DataSetColumn="UID" />
+              <Mapping SourceColumn="KontaktArt" DataSetColumn="KontaktArt" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </DbTable>
+          <DbTable BaseClass="System.ComponentModel.Component" DataAccessorName="AdressArtenTableAdapter" GeneratorDataComponentClassName="AdressArtenTableAdapter" GeneratorDataComponentInterfaceName="IAdressArtenTableAdapter" Modifier="AutoLayout, AnsiClass, NotPublic, Public" Name="AdressArten" UserDataComponentName="AdressArtenTableAdapter" WebServiceAttribute="False">
+            <MainSource>
+              <DbSource ConnectionRef="Connection (MySettings)" DbObjectName="AdressArten" DbObjectType="Table" EnableWebMethods="False" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GeneratePagingMethods="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>DELETE FROM `AdressArten` WHERE ((`UID` = ?) AND ((? = 1 AND `AdressArt` IS NULL) OR (`AdressArt` = ?)))</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="UID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p2" Precision="0" Scale="0" Size="0" SourceColumn="AdressArt" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p3" Precision="0" Scale="0" Size="0" SourceColumn="AdressArt" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>INSERT INTO `AdressArten` (`AdressArt`) VALUES (?)</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="AdressArt" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>SELECT UID, AdressArt FROM AdressArten</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+                <ShortDeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>DELETE FROM `AdressArten` WHERE ((`UID` = ?))</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="UID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </ShortDeleteCommand>
+                <ShortInsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>INSERT INTO `AdressArten` (`AdressArt`) VALUES (?)</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="AdressArt" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </ShortInsertCommand>
+                <ShortUpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>UPDATE `AdressArten` SET `AdressArt` = ? WHERE ((`UID` = ?))</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="AdressArt" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p2" Precision="0" Scale="0" Size="0" SourceColumn="UID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </ShortUpdateCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="False">
+                    <CommandText>UPDATE `AdressArten` SET `AdressArt` = ? WHERE ((`UID` = ?) AND ((? = 1 AND `AdressArt` IS NULL) OR (`AdressArt` = ?)))</CommandText>
+                    <Parameters>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p1" Precision="0" Scale="0" Size="0" SourceColumn="AdressArt" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p2" Precision="0" Scale="0" Size="0" SourceColumn="UID" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="p3" Precision="0" Scale="0" Size="0" SourceColumn="AdressArt" SourceColumnNullMapping="True" SourceVersion="Original">
+                      </Parameter>
+                      <Parameter AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="p4" Precision="0" Scale="0" Size="0" SourceColumn="AdressArt" SourceColumnNullMapping="False" SourceVersion="Original">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="UID" DataSetColumn="UID" />
+              <Mapping SourceColumn="AdressArt" DataSetColumn="AdressArt" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </DbTable>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataDataSet" msdata:IsDataSet="true" msdata:Locale="de-DE" msdata:EnforceConstraints="False" msprop:User_DataSetName="DataDataSet" msprop:DSGenerator_DataSetName="DataDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Kontakte" msprop:Generator_SuspendValidationVarName="m_suspendValidation" msprop:Generator_SuspendValidationPropName="SuspendValidation" msprop:User_TableName="Kontakte" msprop:Generator_RowClassName="KontakteRow" msprop:Generator_RowEvArgName="KontakteRowChangeEvent" msprop:Generator_RowEvHandlerName="KontakteRowChangeEventHandler" msprop:Generator_TableClassName="KontakteDataTable" msprop:Generator_TableVarName="tableKontakte" msprop:Generator_TablePropName="Kontakte">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="UID" msdata:AutoIncrement="true" msprop:Generator_DelegateName="UIDChangeEventHandler" msprop:Generator_ChangingEventName="UIDChanging" msprop:Generator_ColumnVarNameInTable="columnUID" msprop:Generator_EventArgName="UIDChangeEventArg" msprop:User_ColumnName="UID" msprop:Generator_ColumnPropNameInRow="UID" msprop:Generator_ChangedEventName="UIDChanged" msprop:Generator_ColumnPropNameInTable="UIDColumn" type="xs:int" />
+              <xs:element name="Autor_UID" msprop:Generator_DelegateName="Autor_UIDChangeEventHandler" msprop:Generator_ChangingEventName="Autor_UIDChanging" msprop:Generator_ColumnVarNameInTable="columnAutor_UID" msprop:Generator_EventArgName="Autor_UIDChangeEventArg" msprop:User_ColumnName="Autor_UID" msprop:Generator_ColumnPropNameInRow="Autor_UID" msprop:Generator_ChangedEventName="Autor_UIDChanged" msprop:Generator_ColumnPropNameInTable="Autor_UIDColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="KontaktDaten" msprop:Generator_DelegateName="KontaktDatenChangeEventHandler" msprop:Generator_ChangingEventName="KontaktDatenChanging" msprop:Generator_ColumnVarNameInTable="columnKontaktDaten" msprop:Generator_EventArgName="KontaktDatenChangeEventArg" msprop:User_ColumnName="KontaktDaten" msprop:Generator_ColumnPropNameInRow="KontaktDaten" msprop:Generator_ChangedEventName="KontaktDatenChanged" msprop:Generator_ColumnPropNameInTable="KontaktDatenColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="KontaktArt_UID" msprop:Generator_DelegateName="KontaktArt_UIDChangeEventHandler" msprop:Generator_ChangingEventName="KontaktArt_UIDChanging" msprop:Generator_ColumnVarNameInTable="columnKontaktArt_UID" msprop:Generator_EventArgName="KontaktArt_UIDChangeEventArg" msprop:User_ColumnName="KontaktArt_UID" msprop:Generator_ColumnPropNameInRow="KontaktArt_UID" msprop:Generator_ChangedEventName="KontaktArt_UIDChanged" msprop:Generator_ColumnPropNameInTable="KontaktArt_UIDColumn" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Autoren" msprop:Generator_SuspendValidationVarName="m_suspendValidation" msprop:Generator_SuspendValidationPropName="SuspendValidation" msprop:User_TableName="Autoren" msprop:Generator_RowClassName="AutorenRow" msprop:Generator_RowEvArgName="AutorenRowChangeEvent" msprop:Generator_RowEvHandlerName="AutorenRowChangeEventHandler" msprop:Generator_TableClassName="AutorenDataTable" msprop:Generator_TableVarName="tableAutoren" msprop:Generator_TablePropName="Autoren">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="UID" msdata:AutoIncrement="true" msprop:Generator_DelegateName="UIDChangeEventHandler" msprop:Generator_ChangingEventName="UIDChanging" msprop:Generator_ColumnVarNameInTable="columnUID" msprop:Generator_EventArgName="UIDChangeEventArg" msprop:User_ColumnName="UID" msprop:Generator_ColumnPropNameInRow="UID" msprop:Generator_ChangedEventName="UIDChanged" msprop:Generator_ColumnPropNameInTable="UIDColumn" type="xs:int" />
+              <xs:element name="ScreenName" msprop:Generator_DelegateName="ScreenNameChangeEventHandler" msprop:Generator_ChangingEventName="ScreenNameChanging" msprop:Generator_ColumnVarNameInTable="columnScreenName" msprop:Generator_EventArgName="ScreenNameChangeEventArg" msprop:User_ColumnName="ScreenName" msprop:Generator_ColumnPropNameInRow="ScreenName" msprop:Generator_ChangedEventName="ScreenNameChanged" msprop:Generator_ColumnPropNameInTable="ScreenNameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="VorName" msprop:Generator_DelegateName="VorNameChangeEventHandler" msprop:Generator_ChangingEventName="VorNameChanging" msprop:Generator_ColumnVarNameInTable="columnVorName" msprop:Generator_EventArgName="VorNameChangeEventArg" msprop:User_ColumnName="VorName" msprop:Generator_ColumnPropNameInRow="VorName" msprop:Generator_ChangedEventName="VorNameChanged" msprop:Generator_ColumnPropNameInTable="VorNameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NachName" msprop:Generator_DelegateName="NachNameChangeEventHandler" msprop:Generator_ChangingEventName="NachNameChanging" msprop:Generator_ColumnVarNameInTable="columnNachName" msprop:Generator_EventArgName="NachNameChangeEventArg" msprop:User_ColumnName="NachName" msprop:Generator_ColumnPropNameInRow="NachName" msprop:Generator_ChangedEventName="NachNameChanged" msprop:Generator_ColumnPropNameInTable="NachNameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Geburtstag" msprop:Generator_DelegateName="GeburtstagChangeEventHandler" msprop:Generator_ChangingEventName="GeburtstagChanging" msprop:Generator_ColumnVarNameInTable="columnGeburtstag" msprop:Generator_EventArgName="GeburtstagChangeEventArg" msprop:User_ColumnName="Geburtstag" msprop:Generator_ColumnPropNameInRow="Geburtstag" msprop:Generator_ChangedEventName="GeburtstagChanged" msprop:Generator_ColumnPropNameInTable="GeburtstagColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Passwort" msprop:Generator_DelegateName="PasswortChangeEventHandler" msprop:Generator_ChangingEventName="PasswortChanging" msprop:Generator_ColumnVarNameInTable="columnPasswort" msprop:Generator_EventArgName="PasswortChangeEventArg" msprop:User_ColumnName="Passwort" msprop:Generator_ColumnPropNameInRow="Passwort" msprop:Generator_ChangedEventName="PasswortChanged" msprop:Generator_ColumnPropNameInTable="PasswortColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Adressen" msprop:Generator_SuspendValidationVarName="m_suspendValidation" msprop:Generator_SuspendValidationPropName="SuspendValidation" msprop:User_TableName="Adressen" msprop:Generator_RowClassName="AdressenRow" msprop:Generator_RowEvArgName="AdressenRowChangeEvent" msprop:Generator_RowEvHandlerName="AdressenRowChangeEventHandler" msprop:Generator_TableClassName="AdressenDataTable" msprop:Generator_TableVarName="tableAdressen" msprop:Generator_TablePropName="Adressen">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="UID" msdata:AutoIncrement="true" msprop:Generator_DelegateName="UIDChangeEventHandler" msprop:Generator_ChangingEventName="UIDChanging" msprop:Generator_ColumnVarNameInTable="columnUID" msprop:Generator_EventArgName="UIDChangeEventArg" msprop:User_ColumnName="UID" msprop:Generator_ColumnPropNameInRow="UID" msprop:Generator_ChangedEventName="UIDChanged" msprop:Generator_ColumnPropNameInTable="UIDColumn" type="xs:int" />
+              <xs:element name="Author_UID" msprop:Generator_DelegateName="Author_UIDChangeEventHandler" msprop:Generator_ChangingEventName="Author_UIDChanging" msprop:Generator_ColumnVarNameInTable="columnAuthor_UID" msprop:Generator_EventArgName="Author_UIDChangeEventArg" msprop:User_ColumnName="Author_UID" msprop:Generator_ColumnPropNameInRow="Author_UID" msprop:Generator_ChangedEventName="Author_UIDChanged" msprop:Generator_ColumnPropNameInTable="Author_UIDColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Land" msprop:Generator_DelegateName="LandChangeEventHandler" msprop:Generator_ChangingEventName="LandChanging" msprop:Generator_ColumnVarNameInTable="columnLand" msprop:Generator_EventArgName="LandChangeEventArg" msprop:User_ColumnName="Land" msprop:Generator_ColumnPropNameInRow="Land" msprop:Generator_ChangedEventName="LandChanged" msprop:Generator_ColumnPropNameInTable="LandColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PLZ" msprop:Generator_DelegateName="PLZChangeEventHandler" msprop:Generator_ChangingEventName="PLZChanging" msprop:Generator_ColumnVarNameInTable="columnPLZ" msprop:Generator_EventArgName="PLZChangeEventArg" msprop:User_ColumnName="PLZ" msprop:Generator_ColumnPropNameInRow="PLZ" msprop:Generator_ChangedEventName="PLZChanged" msprop:Generator_ColumnPropNameInTable="PLZColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Ort" msprop:Generator_DelegateName="OrtChangeEventHandler" msprop:Generator_ChangingEventName="OrtChanging" msprop:Generator_ColumnVarNameInTable="columnOrt" msprop:Generator_EventArgName="OrtChangeEventArg" msprop:User_ColumnName="Ort" msprop:Generator_ColumnPropNameInRow="Ort" msprop:Generator_ChangedEventName="OrtChanged" msprop:Generator_ColumnPropNameInTable="OrtColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Strasse" msprop:Generator_DelegateName="StrasseChangeEventHandler" msprop:Generator_ChangingEventName="StrasseChanging" msprop:Generator_ColumnVarNameInTable="columnStrasse" msprop:Generator_EventArgName="StrasseChangeEventArg" msprop:User_ColumnName="Strasse" msprop:Generator_ColumnPropNameInRow="Strasse" msprop:Generator_ChangedEventName="StrasseChanged" msprop:Generator_ColumnPropNameInTable="StrasseColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="HausNummer" msprop:Generator_DelegateName="HausNummerChangeEventHandler" msprop:Generator_ChangingEventName="HausNummerChanging" msprop:Generator_ColumnVarNameInTable="columnHausNummer" msprop:Generator_EventArgName="HausNummerChangeEventArg" msprop:User_ColumnName="HausNummer" msprop:Generator_ColumnPropNameInRow="HausNummer" msprop:Generator_ChangedEventName="HausNummerChanged" msprop:Generator_ColumnPropNameInTable="HausNummerColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AdressArt_UID" msprop:Generator_DelegateName="AdressArt_UIDChangeEventHandler" msprop:Generator_ChangingEventName="AdressArt_UIDChanging" msprop:Generator_ColumnVarNameInTable="columnAdressArt_UID" msprop:Generator_EventArgName="AdressArt_UIDChangeEventArg" msprop:User_ColumnName="AdressArt_UID" msprop:Generator_ColumnPropNameInRow="AdressArt_UID" msprop:Generator_ChangedEventName="AdressArt_UIDChanged" msprop:Generator_ColumnPropNameInTable="AdressArt_UIDColumn" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="KontaktArten" msprop:Generator_SuspendValidationVarName="m_suspendValidation" msprop:Generator_SuspendValidationPropName="SuspendValidation" msprop:Generator_TableClassName="KontaktArtenDataTable" msprop:User_TableName="KontaktArten" msprop:Generator_RowClassName="KontaktArtenRow" msprop:Generator_RowEvArgName="KontaktArtenRowChangeEvent" msprop:Generator_RowEvHandlerName="KontaktArtenRowChangeEventHandler" msprop:Generator_TablePropName="KontaktArten" msprop:Generator_TableVarName="tableKontaktArten">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="UID" msdata:AutoIncrement="true" msprop:Generator_DelegateName="UIDChangeEventHandler" msprop:Generator_ChangingEventName="UIDChanging" msprop:Generator_ColumnVarNameInTable="columnUID" msprop:Generator_EventArgName="UIDChangeEventArg" msprop:User_ColumnName="UID" msprop:Generator_ColumnPropNameInRow="UID" msprop:Generator_ChangedEventName="UIDChanged" msprop:Generator_ColumnPropNameInTable="UIDColumn" type="xs:int" />
+              <xs:element name="KontaktArt" msprop:Generator_DelegateName="KontaktArtChangeEventHandler" msprop:Generator_ChangingEventName="KontaktArtChanging" msprop:Generator_ColumnVarNameInTable="columnKontaktArt" msprop:Generator_EventArgName="KontaktArtChangeEventArg" msprop:User_ColumnName="KontaktArt" msprop:Generator_ColumnPropNameInRow="KontaktArt" msprop:Generator_ChangedEventName="KontaktArtChanged" msprop:Generator_ColumnPropNameInTable="KontaktArtColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AdressArten" msprop:Generator_SuspendValidationVarName="m_suspendValidation" msprop:Generator_SuspendValidationPropName="SuspendValidation" msprop:Generator_TableClassName="AdressArtenDataTable" msprop:User_TableName="AdressArten" msprop:Generator_RowClassName="AdressArtenRow" msprop:Generator_RowEvArgName="AdressArtenRowChangeEvent" msprop:Generator_RowEvHandlerName="AdressArtenRowChangeEventHandler" msprop:Generator_TablePropName="AdressArten" msprop:Generator_TableVarName="tableAdressArten">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="UID" msdata:AutoIncrement="true" msprop:Generator_DelegateName="UIDChangeEventHandler" msprop:Generator_ChangingEventName="UIDChanging" msprop:Generator_ColumnVarNameInTable="columnUID" msprop:Generator_EventArgName="UIDChangeEventArg" msprop:User_ColumnName="UID" msprop:Generator_ColumnPropNameInRow="UID" msprop:Generator_ChangedEventName="UIDChanged" msprop:Generator_ColumnPropNameInTable="UIDColumn" type="xs:int" />
+              <xs:element name="AdressArt" msprop:Generator_DelegateName="AdressArtChangeEventHandler" msprop:Generator_ChangingEventName="AdressArtChanging" msprop:Generator_ColumnVarNameInTable="columnAdressArt" msprop:Generator_EventArgName="AdressArtChangeEventArg" msprop:User_ColumnName="AdressArt" msprop:Generator_ColumnPropNameInRow="AdressArt" msprop:Generator_ChangedEventName="AdressArtChanged" msprop:Generator_ColumnPropNameInTable="AdressArtColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Kontakte" />
+      <xs:field xpath="mstns:UID" />
+    </xs:unique>
+    <xs:unique name="Autoren_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Autoren" />
+      <xs:field xpath="mstns:UID" />
+    </xs:unique>
+    <xs:unique name="Adressen_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Adressen" />
+      <xs:field xpath="mstns:UID" />
+    </xs:unique>
+    <xs:unique name="KontaktArten_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:KontaktArten" />
+      <xs:field xpath="mstns:UID" />
+    </xs:unique>
+    <xs:unique name="AdressArten_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:AdressArten" />
+      <xs:field xpath="mstns:UID" />
+    </xs:unique>
+    <xs:keyref name="AdressArtenAdressen" refer="AdressArten_Constraint1" msprop:rel_Generator_RelationVarName="relationAdressArtenAdressen" msprop:rel_User_ParentTable="AdressArten" msprop:rel_User_ChildTable="Adressen" msprop:rel_User_RelationName="AdressArtenAdressen" msprop:rel_Generator_ParentPropName="AdressArtenRow" msprop:rel_Generator_ChildPropName="GetAdressenRows">
+      <xs:selector xpath=".//mstns:Adressen" />
+      <xs:field xpath="mstns:AdressArt_UID" />
+    </xs:keyref>
+    <xs:keyref name="AutorenAdressen" refer="Autoren_Constraint1" msprop:rel_Generator_RelationVarName="relationAutorenAdressen" msprop:rel_User_ParentTable="Autoren" msprop:rel_User_ChildTable="Adressen" msprop:rel_User_RelationName="AutorenAdressen" msprop:rel_Generator_ParentPropName="AutorenRow" msprop:rel_Generator_ChildPropName="GetAdressenRows">
+      <xs:selector xpath=".//mstns:Adressen" />
+      <xs:field xpath="mstns:Author_UID" />
+    </xs:keyref>
+    <xs:keyref name="KontaktArtenKontakte" refer="KontaktArten_Constraint1" msprop:rel_Generator_RelationVarName="relationKontaktArtenKontakte" msprop:rel_User_ParentTable="KontaktArten" msprop:rel_User_ChildTable="Kontakte" msprop:rel_User_RelationName="KontaktArtenKontakte" msprop:rel_Generator_ParentPropName="KontaktArtenRow" msprop:rel_Generator_ChildPropName="GetKontakteRows">
+      <xs:selector xpath=".//mstns:Kontakte" />
+      <xs:field xpath="mstns:KontaktArt_UID" />
+    </xs:keyref>
+    <xs:keyref name="AutorenKontakte" refer="Autoren_Constraint1" msprop:rel_Generator_RelationVarName="relationAutorenKontakte" msprop:rel_User_ParentTable="Autoren" msprop:rel_User_ChildTable="Kontakte" msprop:rel_User_RelationName="AutorenKontakte" msprop:rel_Generator_ParentPropName="AutorenRow" msprop:rel_Generator_ChildPropName="GetKontakteRows">
+      <xs:selector xpath=".//mstns:Kontakte" />
+      <xs:field xpath="mstns:Autor_UID" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>
